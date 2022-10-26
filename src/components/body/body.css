@@ -1,0 +1,11 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: #f0fef2;
+}
+.mainbody{
+    display: flex;
+    height: 100vh;
+}

@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url(/src/assets/fonts/BebasNeue-Regular.ttf);
+}
+.navbtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0fef2;
+    border: 1px solid rgb(129, 129, 129);
+    border-radius: 5px;
+    width: 180px;
+    height: 40px;
+    font-family:'Bebas Neue';
+    font-size: 18px;
+    font-weight: 600;
+}
+.navbtns.logoutbtn{
+    position: absolute;
+    bottom: 10px;
+}
