@@ -3,37 +3,35 @@
     src: url(/src/assets/fonts/BebasNeue-Regular.ttf);
 }
 
-.main {
-    text-align: justify;
-    justify-content: right;
-    padding-right: 100px;
-    display: flex; 
-    margin-top: 80px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    background-image: url(/src/assets/images/banner2.png);
-    background-size: cover;
-  }
+    .main {
+        text-align: justify;
+        justify-content: right;
+        padding-right: 100px;
+        display: flex; 
+        margin-top: 80px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-image: url(/src/assets/images/banner2.png);
+        background-size: cover;
+    }
 
+    .sub-main {
+        font-family: 'Bebas';
+        letter-spacing: 3px;
+        display: flex;
+        justify-content: left;
+        height: 550px;
+        width: 30%;
+        box-shadow: 5px 6px 7px 6px rgb(207, 207, 207);
+        padding-top: 50px;
+        margin-top: 5px;
+        margin-bottom: 50px;
+        border-radius: 60px; 
+        padding-left: 50px;
+        background-color: #f0fef2;
+    }
 
-
-  .sub-main {
-    font-family: 'Bebas';
-    letter-spacing: 3px;
-    display: flex;
-    justify-content: left;
-    height: 550px;
-    width: 30%;
-    box-shadow: 5px 6px 7px 6px rgb(207, 207, 207);
-    padding-top: 50px;
-    margin-top: 5px;
-    margin-bottom: 50px;
-    border-radius: 60px; 
-    padding-left: 50px;
-    background-color: #f0fef2;
-  }
-
-  .imgs {
+    .imgs {
       padding-top: 20px;
       justify-content: center;
       display: flex;
@@ -44,60 +42,60 @@
     }
 
 
-  input{
-      width: 150%;
-      height: 50px;
-      border-radius: 5px;
-      background-color: #fff;
-  }
+    input{
+        width: 150%;
+        height: 50px;
+        border-radius: 5px;
+        background-color: #fff;
+    }
 
-  .email{
-      height: 25px;
-      width: 25px;
-      position: absolute;
-      padding: 14px 0 0 25px;
-  }
+    .email{
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        padding: 14px 0 0 25px;
+    }
 
-  .name{
-      padding-left: 20px;
-      font-size: 15px;
-  }
+    .name{
+        padding-left: 20px;
+        font-size: 15px;
+    }
 
-  .first-input{
-    padding-top: 20px;
-  }
+    .first-input{
+        padding-top: 20px;
+    }
 
-  .second-input{
-      padding-top: 20px;
-  }
+    .second-input{
+        padding-top: 20px;
+    }
 
-  .third-input{
-    padding-top: 50px;
-  }
+    .third-input{
+        padding-top: 50px;
+    }
 
-  button{
-      width: 200px;
-      height: 50px;
-      border-radius: 60px;
-      background-color: teal;
-      color: white;
-      font-size: 25px;
-      border: none;
-      font-family: 'bebas';
-      letter-spacing: 3px;
-      opacity: 1;
-  }
+    button{
+        width: 200px;
+        height: 50px;
+        border-radius: 60px;
+        background-color: teal;
+        color: white;
+        font-size: 25px;
+        border: none;
+        font-family: 'bebas';
+        letter-spacing: 3px;
+        opacity: 1;
+    }
 
-  .login-button{
-      padding-top: 25px;
-  }
+    .login-button{
+        padding-top: 25px;
+    }
 
-  .link{
-      font-size: 20px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      margin-top: 15%;
-  }
+    .link{
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 3px;
+        margin-top: 15%;
+    }
 
    a{
        color: blue;

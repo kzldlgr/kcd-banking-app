@@ -1,5 +1,16 @@
 export default [
     { 
+        firstname: 'admin', 
+        lastname: 'user', 
+        myaddress: '', 
+        mymobileno: '', 
+        myemail: 'adminuser@email.com', 
+        mypassword: '12345678',
+        myhistory: [],
+        usertype: 'admin',
+        cardnum: '',
+    },
+    { 
         firstname: 'Daniel', 
         lastname: 'Calingo', 
         myaddress: 'Rizal', 

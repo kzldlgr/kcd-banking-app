@@ -5,18 +5,16 @@ import "./Login.css"
 function Login() {
 
 localStorage.setItem('users', JSON.stringify(usersData))
-  
+const emailUser = JSON.parse(localStorage.getItem('users'))
   
   const email = useRef();
   const password = useRef();
 
   function handleClickLogin(e) {
-
-  
-
-
-
-
+    const emailUser = emailUser;
+    if(email === '') return
+    if(email != emailUser) return
+    
   }
   
 
@@ -34,15 +32,16 @@ localStorage.setItem('users', JSON.stringify(usersData))
                     <div className="first-input">
                       <h3>Username</h3>
                       <input type="text" placeholder="Username" ref={ email } className="name"/>
-                      <label></label>
                     </div>
 
                     <div className="second-input">
                       <h3>Password</h3>
                       <input type="password" placeholder="Password" ref={ password } className="name"/>
-                      <label></label>
                     </div>
 
+                    <label className='loginLabel'></label>
+
+                    
                     <div className="login-button">
                       <button onClick={handleClickLogin}>Login</button>
                     </div>
