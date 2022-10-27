@@ -1,4 +1,6 @@
 *, *::after, *::before {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 body{
@@ -8,4 +10,10 @@ body{
 .mainbody{
     display: flex;
     height: 100vh;
+}
+.pages{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Body from "./components/body/body";
+import Body from "./components/Body/body";
 import Head from "./components/Head/Header"
 
 

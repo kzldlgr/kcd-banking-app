@@ -1,10 +1,12 @@
-import React from 'react'
-import './buttons.css'
+import { Link } from 'react-router-dom';
+import './buttons.css';
 
-export default function buttons({children}) {
+export default function buttons({text, path, children}) {
+
   return (
-    <div className='navbtns'>
+    <Link className='navbtns' to={path}>
+      {text}
       {children}
-    </div>
+    </Link>
   )
 }

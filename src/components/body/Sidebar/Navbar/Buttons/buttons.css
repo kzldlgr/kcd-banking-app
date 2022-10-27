@@ -14,6 +14,17 @@
     font-family:'Bebas Neue';
     font-size: 18px;
     font-weight: 600;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: inherit;
+}
+.navbtns:hover{
+    background-color: #bffac8;
+}
+.navbtns:active{
+    background-color: #5b5e5b;
+    box-shadow: 0 1px rgb(156, 156, 156);
+    transform: translateY(4px);
 }
 .navbtns.logoutbtn{
     position: absolute;
