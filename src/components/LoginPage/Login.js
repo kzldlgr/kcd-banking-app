@@ -1,10 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
 import usersData from '../usersData';
+import { Link } from 'react-router-dom';
 import "./Login.css"
 
 function Login() {
 
-localStorage.setItem('users', JSON.stringify(usersData))
+  localStorage.setItem('users', JSON.stringify(usersData))
   
   
   const email = useRef();
@@ -13,7 +14,6 @@ localStorage.setItem('users', JSON.stringify(usersData))
   function handleClickLogin(e) {
 
   
-
 
 
 
@@ -43,8 +43,8 @@ localStorage.setItem('users', JSON.stringify(usersData))
                       <label></label>
                     </div>
 
-                    <div className="login-button">
-                      <button onClick={handleClickLogin}>Login</button>
+                    <div className='loginbtn'>
+                      <Link to='/Bankerfrostmain'>Login</Link>
                     </div>
 
                     <div className="third-input">
