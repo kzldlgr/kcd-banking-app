@@ -1,63 +1,64 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react';
 import usersData from '../usersData';
+import { Link } from 'react-router-dom';
 import "./Login.css"
 
 function Login() {
 
-localStorage.setItem('users', JSON.stringify(usersData))
-const emailUser = JSON.parse(localStorage.getItem('users'))
-  
-  const email = useRef();
-  const password = useRef();
+  localStorage.setItem('users', JSON.stringify(usersData));
+  const userLogin = JSON.parse(localStorage.getItem('users'));
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let userValid = false;
+
+
+  const validateUser = (e) => {
+    let test = userLogin.find(user => user.myemail == email && user.mypassword == password)
+    if (test == undefined) {
+      e.preventDefault();
+    }
+  }
 
   function handleClickLogin(e) {
-    const emailUser = emailUser;
-    if(email === '') return
-    if(email != emailUser) return
-    
+    validateUser(e);
   }
-  
-
-
 
   return (
-      <div className="main">
+    <div className="main">
 
-          <div className="sub-main">
+      <div className="sub-main">
 
-              <div className='login-form'>
+        <div className='login-form'>
 
-                <h1>Login to your account</h1>
+          <h1>Login to your account</h1>
 
-                    <div className="first-input">
-                      <h3>Username</h3>
-                      <input type="text" placeholder="Username" ref={ email } className="name"/>
-                    </div>
+          <form>
+            <div className="first-input">
+              <h3>Username</h3>
+              <input type="text" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="name" />
+            </div>
 
-                    <div className="second-input">
-                      <h3>Password</h3>
-                      <input type="password" placeholder="Password" ref={ password } className="name"/>
-                    </div>
+            <div className="second-input">
+              <h3>Password</h3>
+              <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="name" />
+            </div>
 
-                    <label className='loginLabel'></label>
+            <Link to="/Bankerfrostmain">
+              <button className='loginbtn' onClick={handleClickLogin}>Login</button>
+            </Link>
 
-                    
-                    <div className="login-button">
-                      <button onClick={handleClickLogin}>Login</button>
-                    </div>
-
-                    <div className="third-input">
-                      <p className="link">
-                      <a href="#">Register Now</a>
-                      <a href="#">Forgot password</a>
-                      </p>
-                </div>
-
-              </div>
-
-          </div>
+            <div className="third-input">
+              <p className="link">
+                <a href="#">Register Now</a>
+                <a href="#">Forgot password</a>
+              </p>
+            </div>
+          </form>
+        </div>
 
       </div>
+
+    </div>
   );
 }
 
