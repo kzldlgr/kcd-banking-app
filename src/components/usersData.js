@@ -1,5 +1,16 @@
 export default [
     { 
+        firstname: 'admin', 
+        lastname: 'user', 
+        myaddress: '', 
+        mymobileno: '', 
+        myemail: 'adminuser@email.com', 
+        mypassword: '12345678',
+        myhistory: [],
+        usertype: 'admin',
+        cardnum: '',
+    },
+    { 
         firstname: 'Daniel', 
         lastname: 'Calingo', 
         myaddress: 'Rizal', 
@@ -42,7 +53,7 @@ export default [
         myaddress: 'Quezon City', 
         mymobileno: '', 
         myemail: 'kazel@email.com', 
-        mypassword: '123245678',
+        mypassword: '12345678',
         myhistory: [   
             {
                 date: '10-26-2022',

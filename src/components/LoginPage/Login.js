@@ -1,27 +1,28 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UsersContext } from '../../context/UsersContext';
 import usersData from '../usersData';
-import { LoginContext } from '../../helper/context';
 import { Link } from 'react-router-dom';
 import "./Login.css"
 
 function Login() {
 
-  localStorage.setItem('users', JSON.stringify(usersData))
-    
-  const email = useRef();
-  const password = useRef();
-  const [loggedIn, setLoggedIn] = useContext(LoginContext);
+  localStorage.setItem('users', JSON.stringify(usersData));
+  const userLogin = JSON.parse(localStorage.getItem('users'));
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useContext(UsersContext);
+
+  const validateUser = (e) => {
+    let user = userLogin.find(user => user.myemail === email && user.mypassword === password)
+    if (user === undefined) {
+      e.preventDefault();
+      return
+    }
+    setLoggedIn(user);
+  }
 
   function handleClickLogin(e) {
-    // setLoggedIn(JSON.parse(localStorage.getItem('users')));
-    // const [checkEmail, setCheckEmail] = useState({});
-    // let checkUser = useremail.find(user => user.myemail == email.current.value && user.mypassword == password.current.value)
-    // setCheckEmail(checkUser)
-    // console.log([loggedIn])
-    // if (checkUser.myemail !== email.current.value && email.mypassword !== password.current.value) {
-    //   e.preventDefault()
-    // }
-   
+    validateUser(e);
   }
 
   return (
@@ -32,12 +33,12 @@ function Login() {
               
           <div className="first-input">
             <h3>Username</h3>
-            <input type="text" placeholder="Username" ref={ email } className="name"/>
+            <input type="text" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="name"/>
           </div>
           
           <div className="second-input">
             <h3>Password</h3>
-            <input type="password" placeholder="Password" ref={ password } className="name"/>
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="name"/>
           </div>
 
           <Link className='linkbutton' to='/Bankerfrostmain'>

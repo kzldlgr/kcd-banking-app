@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import Body from "./components/Body/body";
 import Head from "./components/Head/Header"
@@ -9,14 +9,12 @@ import Transaction from './components/Body/Pages/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw';
 import Transfer from './components/Body/Pages/Transfer';
 import Notfound from './components/Body/Pages/Pagenotfound';
-import { LoginContext } from './helper/context';
+import { UsersContextProvider } from './context/UsersContext';
 
 function App() {
-const [loggedIn, setLoggedIn] = useState([JSON.parse(localStorage.getItem('users'))])
 
   return (
-    <>
-    <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
+    <UsersContextProvider>
       <Head />
       <Routes>
         <Route path='/' element={<Login/>}/>
@@ -29,8 +27,7 @@ const [loggedIn, setLoggedIn] = useState([JSON.parse(localStorage.getItem('users
         </Route>
         <Route path='*' element={<Notfound/>}/>
       </Routes>
-    </LoginContext.Provider>
-    </>
+    </UsersContextProvider>
   );
 }
 
