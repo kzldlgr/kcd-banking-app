@@ -23,8 +23,8 @@
 }
 .navbtns:active{
     background-color: #5b5e5b;
-    box-shadow: 0 1px rgb(156, 156, 156);
-    transform: translateY(4px);
+    box-shadow: 0 1px rgb(156, 156, 156); 
+    transform: translateY(2px); 
 }
 .navbtns.logoutbtn{
     position: absolute;

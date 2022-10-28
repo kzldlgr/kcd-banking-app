@@ -1,3 +1,13 @@
-export default function Deposit(){
-    return <div className='pages'><h1>Deposit</h1></div>
+import React, {useContext} from "react"
+import { UsersContext } from "../../../context/UsersContext"
+
+export default function Deposit({children}){
+    const [loggedIn, setLoggedIn] = useContext(UsersContext)
+    console.log(loggedIn)
+    return (
+        <div className='pages'>
+            Deposit
+            {children}
+        </div>
+    )
 }
