@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import Body from "./components/Body/body";
 import Head from "./components/Head/Header"
@@ -8,21 +8,28 @@ import Deposit from './components/Body/Pages/Deposit';
 import Transaction from './components/Body/Pages/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw';
 import Transfer from './components/Body/Pages/Transfer';
+import Notfound from './components/Body/Pages/Pagenotfound';
+import { LoginContext } from './helper/context';
 
 function App() {
+const [loggedIn, setLoggedIn] = useState([JSON.parse(localStorage.getItem('users'))])
+
   return (
     <>
-    <Head />
-    <Routes>
-      <Route path='/Login' element={<Login/>}/>
-      <Route path='/Bankerfrostmain' element={<Body/>}>
-        <Route path='Home' element={<Home/>}/>
-        <Route path='Transaction' element={<Transaction/>}/>
-        <Route path='Withdraw' element={<Withdraw/>}/>
-        <Route path='Deposit' element={<Deposit/>}/>
-        <Route path='Transfer' element={<Transfer/>}/>
-      </Route>
-    </Routes>
+    <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
+      <Head />
+      <Routes>
+        <Route path='/' element={<Login/>}/>
+        <Route path='/Bankerfrostmain' element={<Body/>}>
+          <Route path='Home' element={<Home/>}/>
+          <Route path='Transaction' element={<Transaction/>}/>
+          <Route path='Withdraw' element={<Withdraw/>}/>
+          <Route path='Deposit' element={<Deposit/>}/>
+          <Route path='Transfer' element={<Transfer/>}/>
+        </Route>
+        <Route path='*' element={<Notfound/>}/>
+      </Routes>
+    </LoginContext.Provider>
     </>
   );
 }

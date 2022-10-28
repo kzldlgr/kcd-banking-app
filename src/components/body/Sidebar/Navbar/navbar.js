@@ -10,7 +10,7 @@ export default function navbar() {
         <Buttons text='Withdraw' path='/Bankerfrostmain/Withdraw'/>
         <Buttons text='Deposit' path='/Bankerfrostmain/Deposit'/>
         <Buttons text='Transfer' path='/Bankerfrostmain/Transfer'/>
-        <Buttons text='Logout' path='/Login'/>
+        <Buttons text='Logout' path='/'/>
     </div>
   )
 }

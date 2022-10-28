@@ -1,3 +1,3 @@
-export default function Deposit(){
-    return <div className='pages'><h1>Deposit</h1></div>
+export default function Deposit({children}){
+    return <div className='pages'>{children}</div>
 }

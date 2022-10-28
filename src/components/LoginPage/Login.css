@@ -34,6 +34,11 @@
     margin: auto;
 }
 
+.linkbutton{
+    align-self: center;
+    text-decoration: none;
+}
+
 .imgs {
     padding-top: 20px;
     justify-content: center;
@@ -75,7 +80,6 @@
     font-family: 'bebas';
     letter-spacing: 3px;
     opacity: 1;
-    text-decoration: none;
 }
 
 .link{
