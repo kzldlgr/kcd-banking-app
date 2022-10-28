@@ -5,7 +5,7 @@ import Head from "./components/Head/Header"
 import Login from "./components/LoginPage/Login"
 import Home from './components/body/Pages/Home';
 import Deposit from './components/body/Pages/Deposit';
-import Transaction from './components/body/Pages/Transaction';
+import Transaction from './components/body/Pages/Transaction/Transaction';
 import Withdraw from './components/body/Pages/Withdraw';
 import Transfer from './components/body/Pages/Transfer';
 import Notfound from './components/body/Pages/Pagenotfound';
