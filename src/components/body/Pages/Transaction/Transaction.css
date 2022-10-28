@@ -1,0 +1,19 @@
+.transaction {
+    width: 100%;
+}
+
+.transaction table {
+    width: 50%;
+    border-collapse: collapse;
+    height: 50%;
+    margin: 150px auto;
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+}
+
+.transaction table,
+.transaction th,
+.transaction td {
+    border: 1px solid black;
+   font-size: 21px;
+}
