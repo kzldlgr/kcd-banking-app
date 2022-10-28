@@ -13,8 +13,8 @@ function Login() {
 
 
   const validateUser = (e) => {
-    let test = userLogin.find(user => user.myemail == email && user.mypassword == password)
-    if (test == undefined) {
+    let user = userLogin.find(user => user.myemail == email && user.mypassword == password)
+    if (user == undefined) {
       e.preventDefault();
     }
   }
@@ -41,6 +41,10 @@ function Login() {
             <div className="second-input">
               <h3>Password</h3>
               <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="name" />
+            </div>
+
+            <div className="">
+                <h3>Invalid Username or Password</h3>
             </div>
 
             <Link to="/Bankerfrostmain">

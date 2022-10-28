@@ -86,3 +86,11 @@
     letter-spacing: 3px;
     margin-top: 15%;
 }
+
+.errorhandling{
+    color: red;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-weight: 0;
+}
