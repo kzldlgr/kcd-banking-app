@@ -3,10 +3,10 @@ import { UsersContext } from "../../../context/UsersContext"
 
 export default function Deposit({children}){
     const [loggedIn, setLoggedIn] = useContext(UsersContext)
-    console.log(loggedIn)
+    
     return (
         <div className='pages'>
-            Deposit
+            {`Hi ${loggedIn.firstname} ${loggedIn.lastname}, do you want to deposit?`}
             {children}
         </div>
     )
