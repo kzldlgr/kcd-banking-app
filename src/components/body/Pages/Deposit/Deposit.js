@@ -3,15 +3,26 @@ import { UsersContext } from "../../../../context/UsersContext"
 import './deposit.css'
 
 export default function Deposit({children}){
-    const [loggedIn] = useContext(UsersContext)
+    const [loggedIn, setLoggedIn] = useContext(UsersContext)
     const newDate = new Date()
     const [amount, setAmount] = useState([])
+    const [userHistory, setUserHistory] = useState([])
 
     const onHandleClick = (e) => {
-        if (amount === '') return
-        let deposit = loggedIn.myhistory;
-        // deposit.push({})
-        console.log(deposit, `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`)
+        if (amount === '' || amount.length === 0) return
+        let history = loggedIn.myhistory;
+        history.push({
+            date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+            description: 'deposit',
+            amount: amount
+        })
+        setUserHistory(history)
+        
+        console.log(history)
+
+
+        // setLoggedIn(loggedIn.myhistory = userHistory)
+        
     }
 
     return (

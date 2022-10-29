@@ -1,11 +1,11 @@
-import React, { useContext} from "react";
-import { UsersContext } from "../../context/UsersContext";
+import React from "react";
 import "./Header.css";
 import logo from "../../assets/images/logo3.png"
 
 
 const Header = () => {
-    const [loggedIn, setLoggedIn] = useContext(UsersContext)
+
+    const user = JSON.parse(sessionStorage.getItem('user'))
 
     return (
         <>
@@ -15,7 +15,7 @@ const Header = () => {
                     <h1>Bankerost</h1>
                 </div>
                 <div className="rightSide">
-                    <span>{`${loggedIn.firstname}`}</span>
+                    <span>{`${user.firstname}`}</span>
                     <p>Change Account</p>
                 </div>
             </div>
