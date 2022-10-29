@@ -1,15 +1,16 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
-import Body from "./components/body/body";
+import Body from "./components/Body/body";
 import Head from "./components/Head/Header"
 import Login from "./components/LoginPage/Login"
-import Home from './components/body/Pages/Home';
-import Deposit from './components/body/Pages/Deposit';
-import Transaction from './components/body/Pages/Transaction/Transaction';
-import Withdraw from './components/body/Pages/Withdraw';
-import Transfer from './components/body/Pages/Transfer';
-import Notfound from './components/body/Pages/Pagenotfound';
+import Home from './components/Body/Pages/Home';
+import Deposit from './components/Body/Pages/Deposit';
+import Transaction from './components/Body/Pages/Transaction/Transaction';
+import Withdraw from './components/Body/Pages/Withdraw';
+import Transfer from './components/Body/Pages/Transfer';
+import Notfound from './components/Body/Pages/Pagenotfound';
 import { UsersContextProvider } from './context/UsersContext';
+
 
 function App() {
 

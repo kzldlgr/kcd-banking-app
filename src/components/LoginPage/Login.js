@@ -19,7 +19,7 @@ function Login() {
       e.preventDefault();
       return
     }
-    setLoggedIn(user);
+    setLoggedIn(loggedIn);
   }
 
   function handleClickLogin(e) {
@@ -35,13 +35,12 @@ function Login() {
           <div className="first-input">
             <h3>Username</h3>
             <input type="text" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="name" />
-            {validUsername ? <div className="invalid">Username does not exist</div> : null}
+
           </div>
 
           <div className="second-input">
             <h3>Password</h3>
             <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="name" />
-            {/* {!username && <div className="invalid">Incorrect Password</div>} */}
           </div>
 
           <Link className='linkbutton' to='/Bankerfrostmain'>
