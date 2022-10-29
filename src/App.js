@@ -6,7 +6,7 @@ import Login from "./components/LoginPage/Login"
 import Home from './components/Body/Pages/Home';
 import Deposit from './components/Body/Pages/Deposit/Deposit';
 import Transaction from './components/Body/Pages/Transaction/Transaction';
-import Withdraw from './components/Body/Pages/Withdraw';
+import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
 import Transfer from './components/Body/Pages/Transfer';
 import Notfound from './components/Body/Pages/Pagenotfound';
 import { UsersContextProvider } from './context/UsersContext';
