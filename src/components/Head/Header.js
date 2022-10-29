@@ -1,25 +1,21 @@
-import React, { useContext } from "react";
-import { UsersContext } from "../../context/UsersContext";
+import React from "react";
 import "./Header.css";
 import logo from "../../assets/images/logo3.png"
 
 let show;
 
 const Header = () => {
-    const [, setLoggedIn] = useContext(UsersContext)
 
+    const user = JSON.parse(sessionStorage.getItem('user'));
     
-    if(loggedIn.length === 0){
+    if(user.length == 0){
         show = false;
-    }else{
-    show = true;
+        return
     }
+    show = true;
 
-    console.log(show)
-    console.log(loggedInUser)
-    
+
     return (
-        <>
             <div className="headerContainer">
                 <div className="leftSide">
                     <img src={logo}/>
@@ -27,11 +23,10 @@ const Header = () => {
                 </div>
                 <div className="rightSide">
                     {
-                            (show?<span>{`Hi, ${loggedInUser.firstname} ${loggedInUser.lastname}`}</span>: null)
-                    }
+                    show ? <span>Hi, {user.firstname} {user.lastname}</span> : null
+                }
                 </div>
             </div>
-        </>
     )
 }
 

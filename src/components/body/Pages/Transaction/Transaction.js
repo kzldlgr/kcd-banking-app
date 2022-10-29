@@ -8,7 +8,7 @@ export default function Transaction({ children }) {
 
     const [user, setUser] = useState(Data) // dummy data
     const [loggedIn, setLoggedIn] = useContext(UsersContext) 
-    let person = user.filter((name => { return name.firstname === 'Daniel' }))
+    let person = user.filter((name => { return name.firstname === loggedIn.firstname }))
     let history = person.map((history) => history.myhistory);
     
     // history[0].forEach((e) => {
@@ -16,7 +16,7 @@ export default function Transaction({ children }) {
     //     console.log(e.description)
     //     console.log(e.amount)
     // })
-console.log(loggedIn.firstname)
+    
     return (
         <div className='transaction'>
             <table>

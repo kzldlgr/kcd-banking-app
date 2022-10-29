@@ -4,9 +4,11 @@ import './buttons.css';
 export default function buttons({text, path, children}) {
 
   return (
-    <Link className='navbtns' to={path}>
+    <Link className='navbtnslink' to={path}>
+      <button className='navbtns'>
       {text}
       {children}
+      </button>
     </Link>
   )
 }

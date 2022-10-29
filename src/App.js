@@ -4,7 +4,7 @@ import Body from "./components/Body/body";
 import Head from "./components/Head/Header"
 import Login from "./components/LoginPage/Login"
 import Home from './components/Body/Pages/Home';
-import Deposit from './components/Body/Pages/Deposit';
+import Deposit from './components/Body/Pages/Deposit/Deposit';
 import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw';
 import Transfer from './components/Body/Pages/Transfer';

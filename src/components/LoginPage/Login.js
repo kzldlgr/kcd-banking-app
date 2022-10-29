@@ -1,18 +1,14 @@
-import React, { useState, useContext } from 'react';
-import { UsersContext } from '../../context/UsersContext';
-import usersData from '../usersData';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./Login.css"
 
 
 function Login() {
 
-  localStorage.setItem('users', JSON.stringify(usersData));
   const userLogin = JSON.parse(localStorage.getItem('users'));
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useContext(UsersContext);
 
   const validateUser = (e) => {
     let user = userLogin.find(user => user.myemail === email && user.mypassword === password)
@@ -20,8 +16,7 @@ function Login() {
       e.preventDefault();
       return
     }
-    setLoggedIn(user);
-    console.log(loggedIn)
+    sessionStorage.setItem('user', JSON.stringify(user));
   }
 
   function handleClickLogin(e) {
