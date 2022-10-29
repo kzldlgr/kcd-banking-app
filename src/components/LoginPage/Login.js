@@ -4,6 +4,7 @@ import usersData from '../usersData';
 import { Link } from 'react-router-dom';
 import "./Login.css"
 
+
 function Login() {
 
   localStorage.setItem('users', JSON.stringify(usersData));
@@ -13,8 +14,8 @@ function Login() {
   const [loggedIn, setLoggedIn] = useContext(UsersContext);
 
   const validateUser = (e) => {
-    let user = userLogin.find(user => user.myemail == email && user.mypassword == password)
-    if (user == undefined) {
+    let user = userLogin.find(user => user.myemail === email && user.mypassword === password)
+    if (user === undefined) {
       e.preventDefault();
       return
     }
@@ -30,21 +31,23 @@ function Login() {
       <div className="sub-main">
         <div className='login-form'>
           <h1>Login to your account</h1>
-              
+
           <div className="first-input">
             <h3>Username</h3>
-            <input type="text" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="name"/>
+            <input type="text" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="name" />
+            {validUsername ? <div className="invalid">Username does not exist</div> : null}
           </div>
-          
+
           <div className="second-input">
             <h3>Password</h3>
-            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="name"/>
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="name" />
+            {/* {!username && <div className="invalid">Incorrect Password</div>} */}
           </div>
 
           <Link className='linkbutton' to='/Bankerfrostmain'>
             <button className='loginbtn' onClick={handleClickLogin}>Login</button>
           </Link>
-          
+
           <div className="third-input">
             <p className="link">
               <a href="#">Register Now</a>

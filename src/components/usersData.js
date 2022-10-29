@@ -49,7 +49,7 @@ export default [
     },
     { 
         firstname: 'Kazel', 
-        lastname: 'Kazel', 
+        lastname: 'Deligero', 
         myaddress: 'Quezon City', 
         mymobileno: '', 
         myemail: 'kazel@email.com', 
