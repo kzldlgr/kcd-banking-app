@@ -15,7 +15,7 @@ const Header = () => {
                     <h1>Bankerost</h1>
                 </div>
                 <div className="rightSide">
-                    <span>{`${user.firstname}`}</span>
+                    {/* <span>{`${user.firstname}`}</span> */}
                     <p>Change Account</p>
                 </div>
             </div>

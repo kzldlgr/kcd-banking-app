@@ -1,34 +1,31 @@
-import React, {useContext, useState} from "react"
-import { UsersContext } from "../../../../context/UsersContext"
+import React, { useState } from "react"
 import './deposit.css'
 
 export default function Deposit({children}){
-    const [loggedIn, setLoggedIn] = useContext(UsersContext)
     const newDate = new Date()
     const [amount, setAmount] = useState([])
-    const [userHistory, setUserHistory] = useState([])
+    const user = JSON.parse(sessionStorage.getItem('user'))
+    const updateUser = JSON.parse(localStorage.getItem('users'))
 
     const onHandleClick = (e) => {
         if (amount === '' || amount.length === 0) return
-        let history = loggedIn.myhistory;
-        history.push({
-            date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-            description: 'deposit',
-            amount: amount
-        })
-        setUserHistory(history)
-        
-        console.log(history)
-
-
-        // setLoggedIn(loggedIn.myhistory = userHistory)
-        
+        updateUser.forEach(users => {
+            if (users.myemail === user.myemail) { 
+                users.myhistory.push({
+                    date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+                    description: 'deposit',
+                    amount: amount
+                })
+                localStorage.setItem('users', JSON.stringify(updateUser))
+                return
+            }
+        });
     }
 
     return (
         <> 
             <div className='pages'>
-                {`Hi ${loggedIn.firstname} ${loggedIn.lastname}, do you want to deposit?`}
+                {`Hi ${user.firstname} ${user.lastname}, do you want to deposit?`}
                 <div className="depositContainer">
                     <span>Amount</span>
                     <input type='text' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
