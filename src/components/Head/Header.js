@@ -3,19 +3,20 @@ import { UsersContext } from "../../context/UsersContext";
 import "./Header.css";
 import logo from "../../assets/images/logo3.png"
 
-// let show;
+let show;
 
 const Header = () => {
-    const [loggedIn, setLoggedIn] = useContext(UsersContext)
-    
-    // if(loggedIn.length === 0){
-    //     show = false;
-    // }else{
-    // show = true;
-    // }
+    const [, setLoggedIn] = useContext(UsersContext)
 
-    // console.log(show)
-    console.log(loggedIn)
+    
+    if(loggedIn.length === 0){
+        show = false;
+    }else{
+    show = true;
+    }
+
+    console.log(show)
+    console.log(loggedInUser)
     
     return (
         <>
@@ -25,8 +26,9 @@ const Header = () => {
                     <h1>Bankerost</h1>
                 </div>
                 <div className="rightSide">
-                            <span>{`Hi, ${loggedIn.firstname} ${loggedIn.lastname}`}</span>
-
+                    {
+                            (show?<span>{`Hi, ${loggedInUser.firstname} ${loggedInUser.lastname}`}</span>: null)
+                    }
                 </div>
             </div>
         </>

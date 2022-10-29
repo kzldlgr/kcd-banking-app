@@ -9,6 +9,7 @@ function Login() {
 
   localStorage.setItem('users', JSON.stringify(usersData));
   const userLogin = JSON.parse(localStorage.getItem('users'));
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useContext(UsersContext);
@@ -19,7 +20,8 @@ function Login() {
       e.preventDefault();
       return
     }
-    setLoggedIn(loggedIn);
+    setLoggedIn(user);
+    console.log(loggedIn)
   }
 
   function handleClickLogin(e) {
