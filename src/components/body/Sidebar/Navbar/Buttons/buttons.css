@@ -15,8 +15,6 @@
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.1em;
-    text-decoration: none;
-    color: inherit;
 }
 .navbtns:hover{
     background-color: #bffac8;
@@ -29,4 +27,8 @@
 .navbtns.logoutbtn{
     position: absolute;
     bottom: 10px;
+}
+.navbtnslink{
+    text-decoration: none;
+    color: inherit;
 }
