@@ -18,7 +18,7 @@ function App() {
       <Head />
       <Routes>
         <Route path='/' element={<Login/>}/>
-        <Route path='/Bankerfrostmain' element={<Body/>}>
+        <Route path='/Bankerostmain' element={<Body/>}>
           <Route path='Home' element={<Home/>}/>
           <Route path='Transaction' element={<Transaction/>}/>
           <Route path='Withdraw' element={<Withdraw/>}/>

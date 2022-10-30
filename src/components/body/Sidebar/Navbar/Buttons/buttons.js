@@ -1,11 +1,12 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './buttons.css';
 
-export default function buttons({text, path, children}) {
+export default function Buttons({text, path, onMouseClick, children}) {
 
   return (
     <Link className='navbtnslink' to={path}>
-      <button className='navbtns'>
+      <button className='navbtns' onClick={onMouseClick}>
       {text}
       {children}
       </button>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Login.css"
 
 function Login() {
-
+  const navigate = useNavigate();
   const userLogin = JSON.parse(localStorage.getItem('users'));
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +15,7 @@ function Login() {
       return
     }
     sessionStorage.setItem('user', JSON.stringify(user));
+    navigate('/Bankerostmain', {replace: true})
   }
 
   function handleClickLogin(e) {
@@ -37,7 +38,7 @@ function Login() {
             <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="name"/>
           </div>
 
-          <Link className='linkbutton' to='/Bankerfrostmain'>
+          <Link className='linkbutton' to='/Bankerostmain'>
             <button className='loginbtn' onClick={handleClickLogin}>Login</button>
           </Link>
           
