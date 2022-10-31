@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import Body from "./components/Body/body";
 import Head from "./components/Head/Header"
 import Login from "./components/LoginPage/Login"
-import Home from './components/Body/Pages/Home';
 import Deposit from './components/Body/Pages/Deposit/Deposit';
 import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
@@ -19,7 +18,6 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/Bankerostmain' element={<Body/>}>
-          <Route path='Home' element={<Home/>}/>
           <Route path='Transaction' element={<Transaction/>}/>
           <Route path='Withdraw' element={<Withdraw/>}/>
           <Route path='Deposit' element={<Deposit/>}/>

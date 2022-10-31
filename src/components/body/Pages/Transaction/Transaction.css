@@ -1,11 +1,12 @@
 .transaction {
     width: 100%;
+    padding: 20px;
 }
 
 .transaction table {
-    margin: 150px auto;
-    width: 60%;
-    height: 600px;
+    /* margin: 150px auto; */
+    width: 70%;
+    /* height: 600px; */
     text-align: center;
     font-family: 'Bebas Neue', cursive;
     border-collapse: collapse;

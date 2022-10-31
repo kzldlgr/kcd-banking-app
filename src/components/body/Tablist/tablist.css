@@ -1,0 +1,6 @@
+.tablist{
+    display: inline-flex;
+    gap: 15px;
+    margin-left: 20px;
+    padding: 10px;
+}

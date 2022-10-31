@@ -7,18 +7,20 @@ export default function Navbar() {
 
   let navigate = useNavigate();
 
-  // const onHandleClick = () => {
-  //   navigate('/', {replace: true})
-  // }
-
   return (
     <div className='navbar'>
-        <Buttons text='Home' path='/Bankerostmain/Home'/>
-        <Buttons text='Transaction' path='/Bankerostmain/Transaction'/>
-        <Buttons text='Withdraw' path='/Bankerostmain/Withdraw'/>
-        <Buttons text='Deposit' path='/Bankerostmain/Deposit'/>
-        <Buttons text='Transfer' path='/Bankerostmain/Transfer'/>
-        <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})}}/>
+        <div className='amountbalance_container'>
+          <p className='balance_title'>Available Balance</p>
+          <p  className='balance_amount'><span>P 128,000.00</span></p>
+        </div>
+        <div className='navbtns_container'>
+          <Buttons text='Deposit' path='/Bankerostmain/Deposit'/>
+          <Buttons text='Withdraw' path='/Bankerostmain/Withdraw'/>
+          <Buttons text='Send Money' path='/Bankerostmain/Transfer'/>
+          <Buttons text='Friends' path='/Bankerostmain/Transfer'/>
+          <Buttons text='Transaction' path='/Bankerostmain/Transaction'/>  
+          <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})}}/>
+        </div>
     </div>
   )
 }

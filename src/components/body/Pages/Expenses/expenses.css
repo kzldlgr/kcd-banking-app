@@ -1,0 +1,17 @@
+.expenses{
+    padding: 20px;
+}
+.chart_container{
+    display: flex;
+    gap:  20px;
+    padding: 10px;
+}
+.piechart{
+    height: 150px;
+    width: 150px;
+    background-color: burlywood;
+    border-radius: 50%;
+}
+.chart_guide{
+    flex-grow: 1;
+}
