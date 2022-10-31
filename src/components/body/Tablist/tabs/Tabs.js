@@ -4,8 +4,10 @@ import './tabs.css'
 
 export default function Tabs({text, path}) {
   return (
-    <div>
-        <NavLink className='tabs' to={path}>{text}</NavLink>
-    </div>
+    <NavLink to={path}>
+        <button className='tabs'>
+            {text}
+        </button>
+    </NavLink>
   )
 }

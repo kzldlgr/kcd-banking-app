@@ -1,0 +1,15 @@
+
+.tabs{
+    position: relative;
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+}
+.active{
+    position: relative;
+    background-color: teal;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}

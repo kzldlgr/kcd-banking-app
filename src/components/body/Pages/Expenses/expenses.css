@@ -13,5 +13,11 @@
     border-radius: 50%;
 }
 .chart_guide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     flex-grow: 1;
+}
+.chart_guide p{
+    margin-left: 10px;
 }
