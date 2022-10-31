@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react";
+import { UsersContext } from '../../../../context/UsersContext';
 import './deposit.css'
 
 export default function Deposit({children}){
     const newDate = new Date()
     const [amount, setAmount] = useState([])
+    const [users, setUsers] = useContext(UsersContext);
     const user = JSON.parse(sessionStorage.getItem('user'))
     const updateUser = JSON.parse(localStorage.getItem('users'))
 
@@ -16,7 +18,10 @@ export default function Deposit({children}){
                     description: 'deposit',
                     amount: amount
                 })
+                users.balance = Number(users.balance) + Number(amount);
+                console.log('Successfully Deposit')
                 localStorage.setItem('users', JSON.stringify(updateUser))
+                setUsers(updateUser)
                 return
             }
         });

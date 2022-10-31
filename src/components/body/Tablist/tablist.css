@@ -7,4 +7,5 @@
     width: 80%;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    user-select: none;
 }

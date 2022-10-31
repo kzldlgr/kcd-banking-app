@@ -27,8 +27,8 @@ export default function Transaction({ children }) {
                 </thead>
 
                 <tbody>
-                    {history.map((e) => (
-                        <tr>
+                    {history.map((e, index) => (
+                        <tr key={index}>
                             <td>{e.date}</td>
                             <td>{e.description}</td>
                             <td>{e.amount}</td>

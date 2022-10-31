@@ -1,9 +1,10 @@
-.transaction {
-    width: 100%;
+.searchpage{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     padding: 20px;
 }
-
-.transaction table {
+.userlist table {
     width: 70%;
     text-align: center;
     font-family: 'Bebas Neue', cursive;
@@ -13,25 +14,18 @@
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(32, 32, 32, .3);
 }
-
-.transaction th {
+.userlist th {
     background-color: #008080;
     color: #fafafa;
     letter-spacing: 2px;
     font-size: 21px;
     text-transform: uppercase;
 }
-
-.transaction th, .transaction th {
-    padding: 10px 15px;
-}
-
-.transaction table,
-.transaction td {
+.userlist table,
+.userlist td {
     border-bottom: 1px solid black;
     font-size: 21px;
 } 
-
-.transaction tr:nth-child(even){
+.userlist tr:nth-child(even){
     background-color: #f1f1f1;
 }

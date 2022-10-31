@@ -11,13 +11,17 @@ export default function Withdraw({children}){
         if (amount === '' || amount.length === 0) return
         updateUser.forEach(users => {
             if (users.myemail === user.myemail) { 
-                users.myhistory.push({
-                    date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-                    description: 'withdraw',
-                    amount: `-${amount}`
-                })
-                localStorage.setItem('users', JSON.stringify(updateUser))
-                return
+                if (users.balance >= amount) {
+                    console.log('Withdraw Successful') 
+                    users.myhistory.push({
+                        date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+                        description: 'withdraw',
+                        amount: amount,
+                    })
+                    users.balance -= amount
+                    localStorage.setItem('users', JSON.stringify(updateUser))
+                    return
+                } return console.log('Not Enough Cash')
             }
         });
     }

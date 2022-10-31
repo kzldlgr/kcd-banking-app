@@ -44,6 +44,7 @@ export default [
                 amount: '8000'
             }
         ],
+        balance: '9000',
         usertype: 'user',
         cardnum: '',
     },
@@ -81,6 +82,7 @@ export default [
                 amount: '8000'
             }
         ],
+        balance: '22000',
         usertype: 'user',
         cardnum: '',
     },
@@ -118,6 +120,7 @@ export default [
                 amount: '8000'
             }
         ],
+        balance: '1222000',
         usertype: 'admin',
         cardnum: '',
     },
@@ -155,6 +158,7 @@ export default [
                 amount: '15000'
             }
         ],
+        balance: '955000',
         usertype: 'user',
         cardnum: '',
     }
