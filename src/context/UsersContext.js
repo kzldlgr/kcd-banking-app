@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import usersDemoData from '../components/usersData'
 
-export const UsersContext = createContext();
+let usersData = JSON.parse(localStorage.getItem('users'));
+export let UsersContext = createContext({});
 
 export const UsersContextProvider = ({children}) => {
 
@@ -10,7 +11,7 @@ export const UsersContextProvider = ({children}) => {
     );
 
     useEffect(() => {
-        setUsers(localStorage.getItem('users'))
+        setUsers(usersData)
     }, [users])
 
     return (

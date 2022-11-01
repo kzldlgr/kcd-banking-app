@@ -1,28 +1,29 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react';
+import {UsersContext} from '../../../../context/UsersContext';
+import {UserBalanceContext} from '../../../../context/UserBalance';
 import Userlist from './Userlist/Userlist';
 import './search.css';
 
 export default function Search() {
 
-    const users = JSON.parse(localStorage.getItem('users'));
+    const [users] = useContext(UsersContext);
+    const [setUserBalance] = useContext(UserBalanceContext);
     const [names, setNames] = useState([]);
-    const [inputList, setInputList] = useState([])
-    let searchUser;
+    const [inputList, setInputList] = useState([]);
+    let searchUser, selectedUser;
 
     useEffect(() => {
-      let namesToLowerCase = names.toLowerCase()
+      let namesToLowerCase = names.toString().toLowerCase()
       searchUser = users.filter((user) => user.firstname.toLowerCase() === namesToLowerCase || 
       user.lastname.toLowerCase() === namesToLowerCase || user.myaddress.toLowerCase() === namesToLowerCase)
       displayUsers()
     }, [names])
-    
-    const handleUserClick = (e) => {
-     console.log('user clicked') 
-    }
 
-    // const handleClick = (e) => {
-    //   displayUsers()
-    // }
+    const handleUserClick = (e) => {
+      selectedUser = e.target.parentElement.children;
+      console.log(selectedUser[2].innerText)
+      // setBalance(selectedUser[2].innerText)
+    }
 
     const displayUsers = () => {
       if (searchUser === undefined || searchUser.length === 0) {
@@ -41,7 +42,6 @@ export default function Search() {
       <div className='searchbar'>
         <span>Search:</span>
         <input type='text' className='search_input' onChange={e => setNames(e.target.value)}></input>
-        {/* <button onClick={handleClick}>OK</button> */}
       </div>
       <div className='userlist'>
         <div className='userlistview'>

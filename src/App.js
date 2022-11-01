@@ -9,11 +9,13 @@ import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
 import Transfer from './components/Body/Pages/Transfer';
 import Notfound from './components/Body/Pages/Pagenotfound';
 import { UsersContextProvider } from './context/UsersContext';
+import { UserBalanceContextProvider } from "./context/UserBalance";
 
 function App() {
 
   return (
     <UsersContextProvider>
+      <UserBalanceContextProvider>
       <Head />
       <Routes>
         <Route path='/' element={<Login/>}/>
@@ -25,6 +27,7 @@ function App() {
         </Route>
         <Route path='*' element={<Notfound/>}/>
       </Routes>
+      </UserBalanceContextProvider>
     </UsersContextProvider>
   );
 }
