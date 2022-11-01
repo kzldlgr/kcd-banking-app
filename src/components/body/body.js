@@ -12,7 +12,7 @@ export default function body() {
 
   const user = JSON.parse(sessionStorage.getItem('user'));
 
-  if (user.firstname !== 'admin') {
+  if (user.usertype !== 'admin') {
     return (
       <div className='mainbody'>
           <Sidebar/>
