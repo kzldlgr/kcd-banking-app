@@ -10,15 +10,30 @@ export default function Search() {
     let searchUser;
 
     useEffect(() => {
-      searchUser = users.filter((user) => user.firstname.toLowerCase() === names || user.lastname.toLowerCase() === names)
+      let namesToLowerCase = names.toLowerCase()
+      searchUser = users.filter((user) => user.firstname.toLowerCase() === namesToLowerCase || 
+      user.lastname.toLowerCase() === namesToLowerCase || user.myaddress.toLowerCase() === namesToLowerCase)
+      displayUsers()
     }, [names])
     
-    const handleClick = (e) => {
-      if (searchUser === undefined) return
-      
-      setInputList(searchUser.map((user, index) => {
-        return <Userlist userinfo={user} key={index}/>
-      }))
+    const handleUserClick = (e) => {
+     console.log('user clicked') 
+    }
+
+    // const handleClick = (e) => {
+    //   displayUsers()
+    // }
+
+    const displayUsers = () => {
+      if (searchUser === undefined || searchUser.length === 0) {
+        setInputList(users.map((user, index) => {
+          return <Userlist userinfo={user} handleUserClick={handleUserClick} key={index}/>
+        }))
+      } else {
+        setInputList(searchUser.map((user, index) => {
+          return <Userlist userinfo={user} handleUserClick={handleUserClick} key={index}/>
+        }))
+      }
     }
 
     return (
@@ -26,7 +41,7 @@ export default function Search() {
       <div className='searchbar'>
         <span>Search:</span>
         <input type='text' className='search_input' onChange={e => setNames(e.target.value)}></input>
-        <button onClick={handleClick}>OK</button>
+        {/* <button onClick={handleClick}>OK</button> */}
       </div>
       <div className='userlist'>
         <div className='userlistview'>
@@ -41,14 +56,6 @@ export default function Search() {
 
               <tbody>
                 {inputList}
-                  {/* {users.map((user, index) => (
-                  <tr key={index}>
-                      <td>{user.firstname} {user.lastname}</td>
-                      <td>{user.myaddress}</td>
-                      <td>{user.balance}</td>
-                  </tr>
-                  ))} */}
-                  
               </tbody>
           </table>
         </div>

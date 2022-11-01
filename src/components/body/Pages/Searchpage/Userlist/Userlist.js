@@ -1,11 +1,14 @@
 import React from 'react'
 
-export default function Userlist({userinfo, id}) {
+export default function Userlist({userinfo, handleUserClick}) {
+
+    let userBalance = Number(userinfo.balance);
+
   return (
-    <tr>
+    <tr className='userClicked' onClick={handleUserClick}>
         <td>{userinfo.firstname} {userinfo.lastname}</td>
         <td>{userinfo.myaddress}</td>
-        <td>{userinfo.balance}</td>
+        <td>{userBalance.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
     </tr>
   )
 }

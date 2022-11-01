@@ -18,7 +18,7 @@ export default function Withdraw({children}){
                         description: 'withdraw',
                         amount: amount,
                     })
-                    users.balance -= amount
+                    users.balance -= Number(amount)
                     localStorage.setItem('users', JSON.stringify(updateUser))
                     return
                 } return console.log('Not Enough Cash')

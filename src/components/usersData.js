@@ -655,6 +655,44 @@ export default [
         balance: '955000',
         usertype: 'user',
         cardnum: '',
+    },
+    { 
+        firstname: 'Daniel', 
+        lastname: 'Umahon', 
+        myaddress: 'Laguna', 
+        mymobileno: '', 
+        myemail: 'danielumahon@email.com', 
+        mypassword: '12345678',
+        myhistory: [
+            {
+                date: '10-23-2022',
+                description: 'deposit',
+                amount: '1000000'
+            },
+            {
+                date: '10-27-2022',
+                description: 'withdraw',
+                amount: '50000'
+            },
+            {
+                date: '10-27-2022',
+                description: 'deposit',
+                amount: '10000'
+            },
+            {
+                date: '10-27-2022',
+                description: 'deposit',
+                amount: '10000'
+            },
+            {
+                date: '10-28-2022',
+                description: 'withdraw',
+                amount: '15000'
+            }
+        ],
+        balance: '955000',
+        usertype: 'user',
+        cardnum: '',
     }
     
 ]
