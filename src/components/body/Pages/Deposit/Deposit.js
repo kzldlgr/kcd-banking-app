@@ -18,7 +18,7 @@ export default function Deposit(){
 
         if (users.length !== undefined) {
             currentUser = users.find(client => client.myemail === user.myemail)
-            setBalanceOutput(Number(currentUser.balance) + + Number(amount))
+            setBalanceOutput(Number(currentUser.balance) + Number(amount))
         }
     }, [amount])
     

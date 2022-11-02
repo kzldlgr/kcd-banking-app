@@ -1,33 +1,42 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import { UsersContext } from "../../../../context/UsersContext";
+import { UserBalanceContext } from "../../../../context/UserBalance";
 
 export default function Withdraw({children}){
     const newDate = new Date()
+    const [users, setUsers] = useContext(UsersContext)
+    const [userBalance, setUserBalance] = useContext(UserBalanceContext)
     const [amount, setAmount] = useState([])
-    const [balance, setBalance] = useState([])
+    const [balanceOutput, setBalanceOutput] = useState([])
     const user = JSON.parse(sessionStorage.getItem('user'))
-    const updateUser = JSON.parse(localStorage.getItem('users'))
 
-    let userBalance;
+    let currentUser;
 
-    useEffect(() => {
-        userBalance = updateUser.find(useremail => useremail.myemail == user.myemail)
-        setBalance(Number(userBalance.balance) - Number(amount))
+    useEffect(() => {      
+        if (users === undefined || users.length === 0) return
+
+        if (users.length !== undefined) {
+            currentUser = users.find(client => client.myemail === user.myemail)
+            setBalanceOutput(Number(currentUser.balance) - Number(amount))
+        }
     }, [amount])
 
     const onHandleClick = (e) => {
-
         if (amount === '' || amount.length === 0) return
-        updateUser.forEach(users => {
-            if (users.myemail === user.myemail) { 
-                if (users.balance >= amount) {
+        users.forEach(client => {
+            if (client.myemail === user.myemail) { 
+                if (client.balance >= amount) {
                     console.log('Withdraw Successful') 
-                    users.myhistory.push({
+                    client.myhistory.push({
                         date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                         description: 'withdraw',
                         amount: amount,
                     })
-                    users.balance -= Number(amount)
-                    localStorage.setItem('users', JSON.stringify(updateUser))
+                    client.balance -= Number(amount)
+                    localStorage.setItem('users', JSON.stringify(users))
+                    setUsers(client)
+                    setUserBalance(balanceOutput)
+                    setAmount('')
                     return
                 } return console.log('Not Enough Cash')
             }
@@ -41,7 +50,7 @@ export default function Withdraw({children}){
                 <div className="depositContainer">
                     <span>Amount</span>
                     <input type='text' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
-                    <p>{balance.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
+                    <p>{balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
                     <button onClick={onHandleClick}>Confirm</button> 
                 </div>
                 {children}
