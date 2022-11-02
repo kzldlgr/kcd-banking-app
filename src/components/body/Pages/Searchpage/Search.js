@@ -7,7 +7,7 @@ import './search.css';
 export default function Search() {
 
     const [users] = useContext(UsersContext);
-    const [setUserBalance] = useContext(UserBalanceContext);
+    const [userBalance, setUserBalance] = useContext(UserBalanceContext);
     const [names, setNames] = useState([]);
     const [inputList, setInputList] = useState([]);
     let searchUser, selectedUser;
@@ -21,8 +21,7 @@ export default function Search() {
 
     const handleUserClick = (e) => {
       selectedUser = e.target.parentElement.children;
-      console.log(selectedUser[2].innerText)
-      // setBalance(selectedUser[2].innerText)
+      setUserBalance(selectedUser[2].innerText)
     }
 
     const displayUsers = () => {

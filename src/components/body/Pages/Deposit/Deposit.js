@@ -1,35 +1,41 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UsersContext } from '../../../../context/UsersContext';
+import { UserBalanceContext } from "../../../../context/UserBalance";
 import './deposit.css'
 
 export default function Deposit(){
     const newDate = new Date()
     const [amount, setAmount] = useState([])
-    const [balance, setBalance] = useState([])
+    const [balanceOutput, setBalanceOutput] = useState([])
+    const [userBalance, setUserBalance] = useContext(UserBalanceContext)
     const [users, setUsers] = useContext(UsersContext);
     const user = JSON.parse(sessionStorage.getItem('user'))
-    const updateUser = JSON.parse(localStorage.getItem('users'))
 
-    let userBalance;
+    let currentUser;
 
-    useEffect(() => {
-        userBalance = updateUser.find(useremail => useremail.myemail == user.myemail)
-        setBalance(Number(userBalance.balance) + Number(amount))
+    useEffect(() => {      
+        if (users === undefined || users.length === 0) return
+
+        if (users.length !== undefined) {
+            currentUser = users.find(client => client.myemail === user.myemail)
+            setBalanceOutput(Number(currentUser.balance) + + Number(amount))
+        }
     }, [amount])
     
     const onHandleClick = (e) => {
         if (amount === '' || amount.length === 0) return
-        updateUser.forEach(users => {
-            if (users.myemail === user.myemail) { 
-                users.myhistory.push({
+        users.forEach(client => {
+            if (client.myemail === user.myemail) { 
+                client.myhistory.push({
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                     description: 'deposit',
                     amount: amount
                 })
-                users.balance = Number(users.balance) + Number(amount);
+                client.balance = Number(client.balance) + Number(amount);
                 console.log('Successfully Deposit')
-                localStorage.setItem('users', JSON.stringify(updateUser))
-                setUsers(updateUser)
+                localStorage.setItem('users', JSON.stringify(users))
+                setUsers(client)
+                setUserBalance(balanceOutput)
                 setAmount('')
                 return
             }
@@ -42,7 +48,7 @@ export default function Deposit(){
             <div className="depositContainer">
                 <span>Amount</span>
                 <input type='text' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
-                <p>{balance.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
+                <p>{balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
                 <button onClick={onHandleClick}>Confirm</button> 
             </div>
             

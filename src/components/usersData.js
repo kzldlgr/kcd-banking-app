@@ -121,7 +121,7 @@ export default [
             }
         ],
         balance: '1222000',
-        usertype: 'admin',
+        usertype: 'user',
         cardnum: '',
     },
     { 
