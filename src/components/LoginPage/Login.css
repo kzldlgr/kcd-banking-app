@@ -23,7 +23,7 @@
     letter-spacing: 3px;
     height: 550px;
     width: 500px;
-    box-shadow: 5px 6px 7px 6px rgb(207, 207, 207);
+    box-shadow: 5px 6px 7px 6px rgb(139, 132, 132);
     border-radius: 60px; 
     background-color: #f0fef2;
 }
@@ -80,6 +80,7 @@
     font-family: 'bebas';
     letter-spacing: 3px;
     opacity: 1;
+    margin-top: 30px;
 }
 
 .link{

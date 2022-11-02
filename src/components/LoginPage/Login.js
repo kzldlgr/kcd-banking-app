@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import "./Login.css"
 
 
 function Login() {
 
   const userLogin = JSON.parse(localStorage.getItem('users'));
-  
+
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,7 +19,8 @@ function Login() {
       e.preventDefault();
       return
     }
-    sessionStorage.setItem('user', JSON.stringify(user));
+    const userAccount = { 'firstname': user.firstname, 'lastname': user.lastname, 'myemail': user.myemail }
+    sessionStorage.setItem('user', JSON.stringify(userAccount));
   }
 
   function handleClickLogin(e) {

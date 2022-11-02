@@ -1,22 +1,20 @@
-import Data from "../../../usersData"
+import React from "react"
 import './Transaction.css'
-import React, { useState, useContext } from "react"
-import { UsersContext } from "../../../../context/UsersContext";
 
+let history
 
 export default function Transaction({ children }) {
 
-    const [user, setUser] = useState(Data) // dummy data
-    const [loggedIn, setLoggedIn] = useContext(UsersContext) 
-    let person = user.filter((name => { return name.firstname === loggedIn.firstname }))
-    let history = person.map((history) => history.myhistory);
+    const currentUser = JSON.parse(sessionStorage.getItem('user'))
+    const users = JSON.parse(localStorage.getItem('users'))
     
-    // history[0].forEach((e) => {
-    //     console.log(e.date)
-    //     console.log(e.description)
-    //     console.log(e.amount)
-    // })
-    
+    users.forEach(client => {
+        if (client.myemail === currentUser.myemail) {
+            history = client.myhistory;
+            return
+        }
+    });
+
     return (
         <div className='transaction'>
             <table>
@@ -29,7 +27,7 @@ export default function Transaction({ children }) {
                 </thead>
 
                 <tbody>
-                    {history[0].map((e) => (
+                    {history.map((e) => (
                         <tr>
                             <td>{e.date}</td>
                             <td>{e.description}</td>
@@ -41,7 +39,5 @@ export default function Transaction({ children }) {
             </table>
         </div>
     )
-
-
 }
 
