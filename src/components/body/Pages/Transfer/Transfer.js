@@ -28,13 +28,13 @@ export default function Friends() {
     }
   }
 
-  const transferSender = (userdata, sender, data) => {
+  const transferSender = (userdata, receiver, data) => {
     if (userdata.accountnum === currentUser.accountnum) {
       userdata.balance = Number(userdata.balance) - Number(data.amount)
       userdata.transfer.push(data)
       userdata.myhistory.push({
         date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-        description: `You transfered to ${sender.firstname} ${sender.lastname}`,
+        description: `You transfered to ${receiver.firstname} ${receiver.lastname}`,
         type: 'transfer',
         category: '',
         amount: data.amount
@@ -81,7 +81,7 @@ export default function Friends() {
         
         <div className='transferinput'>
           <span>Note</span>
-          <input {...register('ote')} />
+          <input {...register('note')} />
         </div>
         <input type='submit' value='Continue'/>
       </form>
