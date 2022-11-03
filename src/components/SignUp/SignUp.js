@@ -20,7 +20,7 @@ function SignUp() {
 
   const onSubmit = data => {
     let lastAccount = users[users.length - 1]
-    setDetails({ ...data, usertype: 'user', myhistory: [], cardnum: Date.now(), transfer: [], accountnum: Number(lastAccount.accountnum) + 1 })
+    setDetails({ ...data, usertype: 'user', myhistory: [], cardnum: Date.now(), transfer: [], accountnum: Number(lastAccount.accountnum) + 1, balance: 0 })
     
   }
 

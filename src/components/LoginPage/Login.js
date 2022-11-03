@@ -12,15 +12,15 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const validateUser = (e) => {
-    console.log(users)
     let user = users.find(user => user.myemail === email && user.mypassword === password)
     if (user === undefined) {
       e.preventDefault();
       return
+    } else{
+      sessionStorage.setItem('user', JSON.stringify(user));
+      navigate('/Bankerostmain', {replace: true})
     }
-
-    sessionStorage.setItem('user', JSON.stringify(user));
-    navigate('/Bankerostmain', {replace: true})
+    
   }
 
   function handleClickLogin(e) {
