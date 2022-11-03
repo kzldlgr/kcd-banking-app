@@ -8,8 +8,11 @@ import Transfer from "./components/Body/Pages/Transfer/Transfer";
 import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
 import Notfound from './components/Body/Pages/Pagenotfound';
+import AddClient from './components/Body/Pages/AddClient/AddClient'
+import SignUp from "./components/SignUp/SignUp";
 import { UsersContextProvider } from './context/UsersContext';
 import { UserBalanceContextProvider } from "./context/UserBalance";
+
 
 function App() {
 
@@ -22,12 +25,14 @@ function App() {
       <Head />
       <Routes>
         <Route path='/' element={<Login/>}/>
+        <Route path='/SignUp' element={<SignUp/>}/>
         { loggedUser !== undefined ?
         <Route path='/Bankerostmain' element={<Body/>}>
           <Route path='Transaction' element={<Transaction/>}/>
           <Route path='Withdraw' element={<Withdraw/>}/>
           <Route path='Deposit' element={<Deposit/>}/>
           <Route path='Transfer' element={<Transfer/>}/>
+          <Route path='AddClient' element={<AddClient/>}/>
         </Route>
         : []
         }

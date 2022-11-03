@@ -9,6 +9,8 @@ export default function Userlist({userinfo, handleUserClick}) {
         <td>{userinfo.firstname} {userinfo.lastname}</td>
         <td>{userinfo.myaddress}</td>
         <td>{userBalance.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
+        <td><button>kzl</button></td>
+
     </tr>
   )
 }

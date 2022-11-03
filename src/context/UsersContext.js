@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import usersDemoData from '../components/usersData'
 
-// let usersData = JSON.parse(localStorage.getItem('users'));
 export let UsersContext = createContext({});
 
 export const UsersContextProvider = ({children}) => {

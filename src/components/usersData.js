@@ -1,12 +1,15 @@
 export default [
-    { 
+    {   
+        accountnum: '80804039',
         firstname: 'admin', 
         lastname: 'user', 
-        myaddress: '', 
+        myaddress: 'Rizal', 
         mymobileno: '', 
         myemail: 'adminuser@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [],
+        balance: '12000',
         usertype: 'admin',
         cardnum: '',
     },

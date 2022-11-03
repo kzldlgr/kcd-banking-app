@@ -18,11 +18,11 @@ export default function Tablist({userlevel}) {
     return (
       <div className='tablist'>
         <Tabs text='Transaction' path='./Transaction'/>
-        <Tabs text='Client' path='./Client'/>
+        <Tabs text='Transfer'path='./Transfer'/>
         <Tabs text='Deposit' path='./Deposit'/>
         <Tabs text='Withdraw' path='./Withdraw'/>
+        <Tabs text='Add Client' path='./AddClient'/>
         <Tabs text='Employee' path='./Employee'/>
-        <Tabs text='Transfer'path='./Transfer'/>
       </div>
     )
   }

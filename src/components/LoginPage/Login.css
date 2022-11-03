@@ -23,10 +23,11 @@
     letter-spacing: 3px;
     height: 550px;
     width: 500px;
-    box-shadow: 5px 6px 7px 6px rgb(207, 207, 207);
+    box-shadow: 5px 6px 7px 6px rgb(139, 132, 132);
     border-radius: 60px; 
     background-color: #f0fef2;
 }
+
 .login-form{
     display: flex;
     flex-direction: column;
@@ -56,14 +57,22 @@
     padding: 14px 0 0 25px;
 }
 
-.name{
-    padding-left: 20px;
-    font-size: 15px;
-    width: 350px;
-    height: 50px;
-    border-radius: 5px;
-    background-color: #fff;
-}
+
+.loginInput[type=email], .loginInput[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 1px solid black;
+    background: white;
+  }
+
+  .loginInput[type=email]:focus, .loginInput[type=password]:focus {
+    background-color: #ddd;
+    border: 1px solid white;
+  }
+  
+
 
 .loginbtn{
     display: flex;
@@ -79,6 +88,11 @@
     border: none;
     font-family: 'bebas';
     letter-spacing: 3px;
+    opacity: .9;
+    margin-top: 30px;
+}
+
+.loginbtn:hover{
     opacity: 1;
 }
 
@@ -89,4 +103,12 @@
     font-weight: 400;
     letter-spacing: 3px;
     margin-top: 15%;
+}
+
+.errorhandling{
+    color: red;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-weight: 0;
 }
