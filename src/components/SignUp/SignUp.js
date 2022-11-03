@@ -13,17 +13,20 @@ function SignUp() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
+
+
   useEffect(() => {
     if (details === undefined || details.length === 0) return
     setUsers(account => { account.push(details) })
     localStorage.setItem('users', JSON.stringify(users));
     console.log("Succesfully add new client")
+    console.log(users)
   }, [details])
 
-
-
   const onSubmit = data => {
-    setDetails({ ...data, usertype: 'user', myhistory: [], cardnum: Date.now() })
+    let lastAccount = users[users.length - 1]
+    setDetails({ ...data, usertype: 'user', myhistory: [], cardnum: Date.now(), transfer: [], accountnum: Number(lastAccount.accountnum) + 1 })
+    
   }
 
   return (
@@ -34,13 +37,13 @@ function SignUp() {
           <p>Please fill in this form to create an account.</p>
           <hr></hr>
           <label>First Name:</label>
-          <input className='inputBox' {...register("firstName")} type="text" placeholder='Enter your First Name' />
+          <input className='inputBox' {...register("firstname")} type="text" placeholder='Enter your First Name' />
           <label>Last Name:</label>
-          <input className='inputBox' {...register("lastName")} type="text" placeholder='Enter your Last Name' />
+          <input className='inputBox' {...register("lastname")} type="text" placeholder='Enter your Last Name' />
           <label>Addres:</label>
           <input className='inputBox' {...register("address")} type="text" placeholder='Enter your current Address' />
           <label>Mobile No.:</label>
-          <input className='inputBox' {...register("mobileNo")} type="number" placeholder='Enter your Mobile No.' />
+          <input className='inputBox' {...register("mobileno")} type="number" placeholder='Enter your Mobile No.' />
           <label>Email:</label>
           <input className='inputBox' {...register("email")} type="email" placeholder='Enter your Email' />
           <label>Password:</label>

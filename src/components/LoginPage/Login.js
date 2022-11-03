@@ -12,6 +12,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const validateUser = (e) => {
+    console.log(users)
     let user = users.find(user => user.myemail === email && user.mypassword === password)
     if (user === undefined) {
       e.preventDefault();

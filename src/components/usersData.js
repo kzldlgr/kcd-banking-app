@@ -8,7 +8,7 @@ export default [
         mypassword: '12345678',
         myhistory: [],
         usertype: 'admin',
-        cardnum: '1234567890',
+        cardnum: '',
     },
     {   
         accountnum: '80804040',
@@ -58,7 +58,7 @@ export default [
         ],
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332660',
+        cardnum: '',
     },
     {   
         accountnum: '80804041',
@@ -67,44 +67,6 @@ export default [
         myaddress: 'Quezon City', 
         mymobileno: '', 
         myemail: 'kazel@email.com', 
-        mypassword: '12345678',
-        myhistory: [   
-            {
-                date: '10-26-2022',
-                description: 'deposit',
-                amount: '15000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '1000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '4000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '8000'
-            }
-        ],
-        balance: '22000',
-        usertype: 'user',
-        cardnum: '1667418332661',
-    },
-    { 
-        firstname: 'Ceejay', 
-        lastname: 'Mapagmahal', 
-        myaddress: 'New Dazma', 
-        mymobileno: '', 
-        myemail: 'ceejay@email.com', 
         mypassword: '12345678',
         transfer: [],
         myhistory: [
@@ -146,7 +108,7 @@ export default [
         ],
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332662',
+        cardnum: '',
     },
     {   
         accountnum: '80804042',
@@ -196,161 +158,8 @@ export default [
         ],
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332663',
+        cardnum: '',
     },
-    { 
-        firstname: 'Mark', 
-        lastname: 'Kabanatuan', 
-        myaddress: 'Iloilo', 
-        mymobileno: '', 
-        myemail: 'mark@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '35000'
-            }
-        ],
-        balance: '925000',
-        usertype: 'user',
-        cardnum: '1667418332664',
-    },
-    { 
-        firstname: 'Paul', 
-        lastname: 'Pomelo', 
-        myaddress: 'Cavite', 
-        mymobileno: '', 
-        myemail: 'paul@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332665',
-    },
-    { 
-        firstname: 'David', 
-        lastname: 'Malakasan', 
-        myaddress: 'Laguna', 
-        mymobileno: '', 
-        myemail: 'david@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332666',
-    },
-    { 
-        firstname: 'Cristina', 
-        lastname: 'Aguila', 
-        myaddress: 'Manila', 
-        mymobileno: '', 
-        myemail: 'cristina@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332667',
-    },
-    { 
     {   
         accountnum: '80804043',
         firstname: 'Katrina', 
@@ -399,7 +208,7 @@ export default [
         ],
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332668',
+        cardnum: '',
     },
     {   
         accountnum: '80804044',
@@ -449,7 +258,7 @@ export default [
         ],
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332669',
+        cardnum: '',
     },
     {   
         accountnum: '80804045',
@@ -549,7 +358,7 @@ export default [
         ],
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332670',
+        cardnum: '',
     },
     {   
         accountnum: '80804047',
@@ -649,7 +458,7 @@ export default [
         ],
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332671',
+        cardnum: '',
     },
     {   
         accountnum: '80804049',
@@ -697,237 +506,8 @@ export default [
                 amount: '10000'
             }
         ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332672',
-    },
-    { 
-        firstname: 'Francis', 
-        lastname: 'Kapatiran', 
-        myaddress: 'Ilocos', 
-        mymobileno: '', 
-        myemail: 'francisa@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332673',
-    },
-    { 
-        firstname: 'Hazel', 
-        lastname: 'Disumano', 
-        myaddress: 'Marikina', 
-        mymobileno: '', 
-        myemail: 'hazela@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332674',
-    },
-    { 
-        firstname: 'Yam', 
-        lastname: 'Masikat', 
-        myaddress: 'Marikina', 
-        mymobileno: '', 
-        myemail: 'yam@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332675',
-    },
-    { 
-        firstname: 'Daniel', 
-        lastname: 'Makahabag', 
-        myaddress: 'Marikina', 
-        mymobileno: '', 
-        myemail: 'danielmakahabag@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332676',
-    },
-    { 
-        firstname: 'Daniel', 
-        lastname: 'Umahon', 
-        myaddress: 'Laguna', 
-        mymobileno: '', 
-        myemail: 'danielumahon@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
-        usertype: 'user',
-        cardnum: '1667418332677',
-    },
-    { 
-        firstname: 'Miguel', 
-        lastname: 'Sampalukan', 
-        myaddress: 'Makati', 
-        mymobileno: '', 
-        myemail: 'miguel@email.com', 
-        mypassword: '12345678',
-        myhistory: [
-            {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
-            }
-        ],
-        balance: '955000',
         balance: '12000',
         usertype: 'user',
-        cardnum: '1667418332678',
+        cardnum: '',
     }
 ]

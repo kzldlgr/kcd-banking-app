@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import usersDemoData from '../components/usersData'
 
-let usersData = JSON.parse(localStorage.getItem('users'));
+
 export let UsersContext = createContext({});
 
 export const UsersContextProvider = ({children}) => {
@@ -11,8 +11,8 @@ export const UsersContextProvider = ({children}) => {
     );
 
     useEffect(() => {
-        setUsers(usersData)
-    }, [users])
+        setUsers(JSON.parse(localStorage.getItem('users')))
+    }, [])
 
     return (
         <UsersContext.Provider value={[users, setUsers]}>
