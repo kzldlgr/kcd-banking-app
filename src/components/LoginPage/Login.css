@@ -27,6 +27,7 @@
     border-radius: 60px; 
     background-color: #f0fef2;
 }
+
 .login-form{
     display: flex;
     flex-direction: column;
@@ -56,14 +57,22 @@
     padding: 14px 0 0 25px;
 }
 
-.name{
-    padding-left: 20px;
-    font-size: 15px;
-    width: 350px;
-    height: 50px;
-    border-radius: 5px;
-    background-color: #fff;
-}
+
+.loginInput[type=email], .loginInput[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 1px solid black;
+    background: white;
+  }
+
+  .loginInput[type=email]:focus, .loginInput[type=password]:focus {
+    background-color: #ddd;
+    border: 1px solid white;
+  }
+  
+
 
 .loginbtn{
     display: flex;
@@ -79,8 +88,12 @@
     border: none;
     font-family: 'bebas';
     letter-spacing: 3px;
-    opacity: 1;
+    opacity: .9;
     margin-top: 30px;
+}
+
+.loginbtn:hover{
+    opacity: 1;
 }
 
 .link{

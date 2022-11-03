@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Bebas';
+    src: url(/src/assets/fonts/BebasNeue-Regular.ttf);
+}
+
+body {
+    background-color: #f0fef2;
+    font-family: 'Bebas';
+}
+
+.mainSignUp {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+
+.subMain {
+    display: grid;
+    padding: 10px;
+    width: 100%;
+    background-color: teal;
+}
+
+.cancelbtn,
+.signupbtn {
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border: 1px solid black;
+}
+
+.signupbtn:hover,
+.cancelbtn:hover {
+    opacity: 1;
+}
+
+
+.cancelbtn,
+.signupbtn {
+    float: left;
+    width: 50%;
+}
+
+.clearfix{
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputBox[type=text],
+.inputBox[type=password],
+.inputBox[type=number],
+.inputBox[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 1px solid black;
+    background: white;
+}
+
+.inputBox[type=text]:focus,
+.inputBox[type=password]:focus,
+.inputBox[type=number]:focus,
+.inputBox[type=email]:focus {
+    background-color: #ddd; 
+    border: 1px solid white;
+}

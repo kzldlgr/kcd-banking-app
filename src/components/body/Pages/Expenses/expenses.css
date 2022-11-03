@@ -1,0 +1,20 @@
+.expenses{
+    padding: 20px;
+}
+.chart_container{
+    display: flex;
+    gap:  100px;
+    padding: 10px;
+}
+.piechart{
+    height: 200px;
+    width: 200px;
+    background-color: burlywood;
+    border-radius: 50%;
+}
+.chart_guide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+}

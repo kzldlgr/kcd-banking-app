@@ -1,19 +1,28 @@
-import React from "react"
-import './Transaction.css'
-
-let history
+import React, { useContext, useEffect, useState } from "react";
+import { UsersContext } from "../../../../context/UsersContext";
+import './Transaction.css';
 
 export default function Transaction({ children }) {
 
-    const currentUser = JSON.parse(sessionStorage.getItem('user'))
-    const users = JSON.parse(localStorage.getItem('users'))
+    const [users, setUsers] = useContext(UsersContext);
+    const [transaction, setTransaction] = useState([]);
+    const currentUser = JSON.parse(sessionStorage.getItem('user'));
     
-    users.forEach(client => {
-        if (client.myemail === currentUser.myemail) {
-            history = client.myhistory;
-            return
-        }
-    });
+    useEffect(() => {
+        users.forEach(client => {
+            if (client.myemail === currentUser.myemail) {
+                
+                setTransaction(client.myhistory.map((e, index) => (
+                    <tr key={index}>
+                        <td>{e.date}</td>
+                        <td>{e.description}</td>
+                        <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
+                    </tr>
+                )))
+                return
+            }
+        });
+    },[users])
 
     return (
         <div className='transaction'>
@@ -27,14 +36,7 @@ export default function Transaction({ children }) {
                 </thead>
 
                 <tbody>
-                    {history.map((e) => (
-                        <tr>
-                            <td>{e.date}</td>
-                            <td>{e.description}</td>
-                            <td>{e.amount}</td>
-                        </tr>
-                    ))
-                    }
+                    {transaction}
                 </tbody>
             </table>
         </div>

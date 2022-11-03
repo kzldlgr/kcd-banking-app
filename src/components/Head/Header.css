@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: 'Bebas Neue', cursive;
+    box-shadow: 0 2px 5px rgba(32, 32, 32, .3);
 }
 
 .leftSide {

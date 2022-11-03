@@ -1,0 +1,41 @@
+.searchpage{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    user-select: none;
+}
+.userlistview{
+    height: 180px;
+    width: 70%;
+    position: relative;
+    overflow: scroll;
+}
+.userlist table {
+    width: 100%;
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 2px 5px rgba(32, 32, 32, .3);
+}
+.userlist th {
+    background-color: #008080;
+    color: #fafafa;
+    letter-spacing: 2px;
+    font-size: 20px;
+    text-transform: uppercase;
+    z-index: -1;
+}
+.userlist table,
+.userlist td {
+    border-bottom: 1px solid black;
+    font-size: 18px;
+} 
+.userClicked {
+    cursor: pointer;
+}
+.userClicked:hover{
+    background-color: rgb(0, 128, 128,.3);
+}
