@@ -10,7 +10,7 @@ export default function Tablist({userlevel}) {
         <Tabs text='Transaction' path='./Transaction'/>
         <Tabs text='Deposit' path='./Deposit'/>
         <Tabs text='Withdraw' path='./Withdraw'/>
-        <Tabs text='Friend List' path='./Friends'/>
+        <Tabs text='Transfer' path='./Transfer'/>
         <Tabs text='Expenses' path='./Expenses'/>
       </div>
     )

@@ -27,11 +27,15 @@ export default function Search() {
     const displayUsers = () => {
       if (searchUser === undefined || searchUser.length === 0) {
         setInputList(users.map((user, index) => {
-          return <Userlist userinfo={user} handleUserClick={handleUserClick} key={index}/>
+          if (user.usertype !== 'admin'){
+            return <Userlist userinfo={user} handleUserClick={handleUserClick} key={index}/>
+          }
         }))
       } else {
         setInputList(searchUser.map((user, index) => {
-          return <Userlist userinfo={user} handleUserClick={handleUserClick} key={index}/>
+          if (user.usertype !== 'admin'){
+            return <Userlist userinfo={user} handleUserClick={handleUserClick} key={index}/>
+          }
         }))
       }
     }
