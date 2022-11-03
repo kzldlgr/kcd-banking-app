@@ -12,11 +12,13 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const validateUser = (e) => {
-    let user = users.find(user => user.myemail === email && user.mypassword === password)
-    if (user === undefined) {
+    
+    if (users === undefined) {
+      console.log('users context is undefined')
       e.preventDefault();
       return
     } else{
+      let user = users.find(user => user.myemail === email && user.mypassword === password)
       sessionStorage.setItem('user', JSON.stringify(user));
       navigate('/Bankerostmain', {replace: true})
     }
