@@ -10,45 +10,58 @@ export default [
         usertype: 'admin',
         cardnum: '1234567890',
     },
-    { 
+    {   
+        accountnum: '80804040',
         firstname: 'Daniel', 
         lastname: 'Calingo', 
         myaddress: 'Rizal', 
         mymobileno: '', 
         myemail: 'daniel@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
                 date: '10-25-2022',
-                description: 'deposit',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
                 amount: '5000'
             },
             {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '7000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '1000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '4000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
                 amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'withdraw',
+                type: 'withdraw',
+                category: '',
+                amount: '10000'
             }
         ],
-        balance: '9000',
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332660',
     },
-    { 
+    {   
+        accountnum: '80804041',
         firstname: 'Kazel', 
         lastname: 'Deligero', 
         myaddress: 'Quezon City', 
@@ -93,72 +106,95 @@ export default [
         mymobileno: '', 
         myemail: 'ceejay@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'withdraw',
-                amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '200000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
                 amount: '40000'
             },
             {
-                date: '10-28-2022',
-                description: 'withdraw',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
                 amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'withdraw',
+                type: 'withdraw',
+                category: '',
+                amount: '10000'
             }
         ],
-        balance: '1222000',
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332662',
     },
-    { 
-        firstname: 'John', 
-        lastname: 'Kababata', 
+    {   
+        accountnum: '80804042',
+        firstname: 'Ceejay', 
+        lastname: 'Mapagmahal', 
         myaddress: 'Manila', 
         mymobileno: '', 
-        myemail: 'john@email.com', 
+        myemail: 'ceejayl@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
             },
             {
-                date: '10-27-2022',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
                 description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
+                type: 'withdraw',
+                category: '',
                 amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
             }
         ],
-        balance: '955000',
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332663',
     },
@@ -315,189 +351,350 @@ export default [
         cardnum: '1667418332667',
     },
     { 
+    {   
+        accountnum: '80804043',
         firstname: 'Katrina', 
-        lastname: 'Tayuman', 
-        myaddress: 'Manila', 
+        lastname: 'Bayani', 
+        myaddress: 'Laguna', 
         mymobileno: '', 
         myemail: 'katrina@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
             },
             {
-                date: '10-27-2022',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
                 description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
+                type: 'withdraw',
+                category: '',
                 amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
             }
         ],
-        balance: '955000',
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332668',
     },
-    { 
-        firstname: 'Timothy', 
-        lastname: 'Bayaw', 
-        myaddress: 'Cubao', 
+    {   
+        accountnum: '80804044',
+        firstname: 'Daniel', 
+        lastname: 'Balagtas', 
+        myaddress: 'Marikina', 
         mymobileno: '', 
-        myemail: 'timothy@email.com', 
+        myemail: 'danielbalagtas@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
             },
             {
-                date: '10-27-2022',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
                 description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
+                type: 'withdraw',
+                category: '',
                 amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
             }
         ],
-        balance: '955000',
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332669',
     },
-    { 
-        firstname: 'Anna', 
-        lastname: 'Capua', 
-        myaddress: 'Manila', 
+    {   
+        accountnum: '80804045',
+        firstname: 'Marijane', 
+        lastname: 'Ocampo', 
+        myaddress: 'Makati', 
         mymobileno: '', 
-        myemail: 'anna@email.com', 
+        myemail: 'marijane@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
             },
             {
-                date: '10-27-2022',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
                 description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
+                type: 'withdraw',
+                category: '',
                 amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
             }
         ],
-        balance: '955000',
+        balance: '12000',
+        usertype: 'user',
+        cardnum: '',
+    },
+    {   
+        accountnum: '80804046',
+        firstname: 'Sheila', 
+        lastname: 'Kababayan', 
+        myaddress: 'Manila', 
+        mymobileno: '', 
+        myemail: 'sheila@email.com', 
+        mypassword: '12345678',
+        transfer: [],
+        myhistory: [
+            {
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'withdraw',
+                type: 'withdraw',
+                category: '',
+                amount: '10000'
+            }
+        ],
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332670',
     },
-    { 
+    {   
+        accountnum: '80804047',
+        firstname: 'Alfredo', 
+        lastname: 'Matikas', 
+        myaddress: 'Laguna', 
+        mymobileno: '', 
+        myemail: 'alfredo@email.com', 
+        mypassword: '12345678',
+        transfer: [],
+        myhistory: [
+            {
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'withdraw',
+                type: 'withdraw',
+                category: '',
+                amount: '10000'
+            }
+        ],
+        balance: '12000',
+        usertype: 'user',
+        cardnum: '',
+    },
+    {   
+        accountnum: '80804048',
         firstname: 'Micheal', 
-        lastname: 'Kotobato', 
-        myaddress: 'Manila', 
+        lastname: 'Paquiao', 
+        myaddress: 'Batangas', 
         mymobileno: '', 
         myemail: 'micheal@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
             },
             {
-                date: '10-27-2022',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
                 description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
+                type: 'withdraw',
+                category: '',
                 amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
             }
         ],
-        balance: '955000',
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332671',
     },
-    { 
-        firstname: 'Michaella', 
-        lastname: 'Kababata', 
+    {   
+        accountnum: '80804049',
+        firstname: 'Vincent', 
+        lastname: 'Kayabyab', 
         myaddress: 'Manila', 
         mymobileno: '', 
-        myemail: 'michaella@email.com', 
+        myemail: 'vincent@email.com', 
         mypassword: '12345678',
+        transfer: [],
         myhistory: [
             {
-                date: '10-23-2022',
-                description: 'deposit',
-                amount: '1000000'
+                date: '10-25-2022',
+                description: 'initial deposit',
+                type: 'deposit',
+                category: '',
+                amount: '40000'
             },
             {
-                date: '10-27-2022',
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'housing',
+                amount: '8000'
+            },
+            {
+                date: '10-25-2022',
+                description: 'rent',
+                type: 'expense',
+                category: 'Food',
+                amount: '5000'
+            },
+            {
+                date: '10-25-2022',
                 description: 'withdraw',
-                amount: '50000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
+                type: 'withdraw',
+                category: '',
                 amount: '10000'
-            },
-            {
-                date: '10-27-2022',
-                description: 'deposit',
-                amount: '10000'
-            },
-            {
-                date: '10-28-2022',
-                description: 'withdraw',
-                amount: '15000'
             }
         ],
         balance: '955000',
@@ -729,6 +926,7 @@ export default [
             }
         ],
         balance: '955000',
+        balance: '12000',
         usertype: 'user',
         cardnum: '1667418332678',
     }

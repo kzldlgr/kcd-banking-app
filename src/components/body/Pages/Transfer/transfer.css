@@ -1,0 +1,21 @@
+.formtransfer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-self: flex-start;
+    width: 400px;
+    padding: 20px;
+}
+.transferinput{
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    width: 200px;
+    gap: 30px;
+}
+.transferinput span{
+    width: 150px;
+}
+.transferinput input{
+    width: 200px;
+}

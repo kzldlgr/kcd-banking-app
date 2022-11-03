@@ -13,19 +13,18 @@ export default function Navbar({userlevel}) {
   const loginUser = JSON.parse(sessionStorage.getItem('user'));
 
   let usermatch; 
-
+  
   useEffect(() => {
     if (users === undefined || users.length === 0) return
-      if (userBalance.length === 0) setUserBalance('0.00')
-      
-      if (users.length === undefined) {
-        setUserBalance(Number(users.mybalance))
-      } else {
-        usermatch = users.find(user => user.myemail === loginUser.myemail)
-        if (usermatch !== undefined && usermatch.usertype !== 'admin') {
-          setUserBalance(Number(usermatch.balance))
-        } 
-      }
+
+    if (users.length === undefined) {
+      setUserBalance(Number(users.mybalance))
+    } else {
+      usermatch = users.find(user => user.myemail === loginUser.myemail)
+      if (usermatch !== undefined && usermatch.usertype !== 'admin') {
+        setUserBalance(Number(usermatch.balance))
+      } 
+    }
   },[users])
   
   if (userlevel !== 'admin'){
@@ -59,6 +58,7 @@ export default function Navbar({userlevel}) {
           <p>Address:</p>
           <p>Card Number:</p>
         </div>
+        <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})}}/>
       </div>
     )
   }
