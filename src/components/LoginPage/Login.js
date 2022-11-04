@@ -8,13 +8,15 @@ import "./Login.css"
 function Login() {
   const [users, setUsers] = useContext(UsersContext);
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = data => {
-
-    let user = users.find(user => user.myemail === data.myemail && user.mypassword === data.mypassword);
+  function validateUser(e) {
+    console.log(users);
+    let user = users.find(user => user.myemail === email && user.mypassword === password);
     if (user === undefined) {
+      e.preventDefault();
       return;
     }
     // setUsers(JSON.parse(localStorage.getItem('users')))
@@ -22,34 +24,38 @@ function Login() {
     navigate('/Bankerostmain', { replace: true });
   }
 
-return (
-  <div className="main">
-    <div className="sub-main">
-      <div className='login-form'>
-        <h1>Login to your account</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+  function handleClickLogin(e) {
+    validateUser(e);
+  }
+
+  return (
+    <div className="main">
+      <div className="sub-main">
+        <div className='login-form'>
+          <h1>Login to your account</h1>
+
           <div className="first-input">
             <h3>Username</h3>
-            <input type="email" placeholder="Username" {...register("myemail")} className="loginInput" />
+            <input type="email" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="loginInput" />
           </div>
 
           <div className="second-input">
             <h3>Password</h3>
-            <input type="password" placeholder="Password" {...register("mypassword")} className="loginInput" />
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="loginInput" />
           </div>
-          {/* <Link className='linkbutton' to='/Bankerostmain/Transaction'> */}
-          <button className='loginbtn' >Login</button>
-          {/* </Link> */}
+
+          <Link className='linkbutton' to='/Bankerostmain/Transaction'>
+            <button className='loginbtn' onClick={handleClickLogin}>Login</button>
+          </Link>
 
           <div className="third-input">
             <Link to='/SignUp'>Register Now</Link> |
             <Link to='/ForgotPassword'>Forgot Password</Link>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Login;

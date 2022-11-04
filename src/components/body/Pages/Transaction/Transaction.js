@@ -9,7 +9,10 @@ export default function Transaction({ children }) {
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     
     useEffect(() => {
-        users.forEach(client => {
+        console.log(users)
+        if (users === undefined) return
+    
+        Array.from(users).forEach(client => {
             if (client.myemail === currentUser.myemail) {
                 
                 setTransaction(client.myhistory.map((e, index) => (
@@ -19,9 +22,9 @@ export default function Transaction({ children }) {
                         <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
                     </tr>
                 )))
-                return
             }
-        });
+        });    
+
     },[users])
 
     return (

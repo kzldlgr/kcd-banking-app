@@ -13,8 +13,9 @@ export default function Search() {
     let searchUser, selectedUser;
 
     useEffect(() => {
+      if (users === undefined) return
       let namesToLowerCase = names.toString().toLowerCase()
-      searchUser = users.filter((user) => user.firstname.toLowerCase() === namesToLowerCase || 
+      searchUser = users.filter(user => user.firstname.toLowerCase() === namesToLowerCase || 
       user.lastname.toLowerCase() === namesToLowerCase || user.myaddress.toLowerCase() === namesToLowerCase)
       displayUsers()
     }, [names])

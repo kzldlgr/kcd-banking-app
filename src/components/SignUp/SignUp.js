@@ -4,29 +4,24 @@ import { Link } from 'react-router-dom';
 import { UsersContext } from '../../context/UsersContext';
 import "./SignUp.css"
 
-
-
 function SignUp() {
   const [details, setDetails] = useState([]);
   const current = new Date();
   const [users, setUsers] = useContext(UsersContext);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
-
-
+  let lastAccount;
 
   useEffect(() => {
     if (details === undefined || details.length === 0) return
-    setUsers(account => { account.push(details) })
+    lastAccount = users[users.length - 1]
+    setUsers(account => [...account, {...details, accountnum: Number(lastAccount.accountnum) + 1}])
     localStorage.setItem('users', JSON.stringify(users));
     console.log("Succesfully add new client")
-    console.log(users)
-  }, [details])
+  },[details])
 
   const onSubmit = data => {
-    let lastAccount = users[users.length - 1]
-    setDetails({ ...data, usertype: 'user', myhistory: [], cardnum: Date.now(), transfer: [], accountnum: Number(lastAccount.accountnum) + 1 })
-    
+    setDetails({ ...data, usertype: 'user', myhistory: [], cardnum: Date.now(), transfer: [], balance: 0 });
   }
 
   return (

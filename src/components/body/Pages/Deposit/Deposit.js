@@ -34,7 +34,7 @@ export default function Deposit(){
                 client.balance = Number(client.balance) + Number(amount);
                 console.log('Successfully Deposit')
                 localStorage.setItem('users', JSON.stringify(users))
-                setUsers(client)
+                setUsers(users)
                 setUserBalance(balanceOutput)
                 setAmount('')
                 return

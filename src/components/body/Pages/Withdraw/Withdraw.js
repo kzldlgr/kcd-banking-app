@@ -34,7 +34,7 @@ export default function Withdraw({children}){
                     })
                     client.balance -= Number(amount)
                     localStorage.setItem('users', JSON.stringify(users))
-                    setUsers(client)
+                    setUsers(users)
                     setUserBalance(balanceOutput)
                     setAmount('')
                     return
