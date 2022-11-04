@@ -9,7 +9,7 @@ export default function Transaction({ children }) {
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     
     useEffect(() => {
-        console.log(users)
+
         if (users === undefined) return
     
         Array.from(users).forEach(client => {

@@ -4,9 +4,9 @@ import { UsersContext } from '../../../../context/UsersContext';
 import { UserBalanceContext } from '../../../../context/UserBalance';
 import './transfer.css';
 
-export default function Friends() {
+export default function Transfer() {
 
-  const {register, handleSubmit, watch} = useForm();
+  const {register, handleSubmit} = useForm();
   const [users, setUsers] = useContext(UsersContext);
   const [userBalance, setUserBalance] = useContext(UserBalanceContext);
   const currentUser = JSON.parse(sessionStorage.getItem('user'));
@@ -39,8 +39,8 @@ export default function Friends() {
         category: '',
         amount: data.amount
       })
+      setUserBalance(userdata.balance)
     }
-    setUserBalance(userdata.balance)
   }
 
   return (
@@ -49,14 +49,16 @@ export default function Friends() {
 
         transferTo = users.find(user => user.accountnum === data.accountnum);
         transferTo === undefined ? console.log('no user found') 
-        : 
+        : userBalance >= data.amount ?
           users.forEach(user => {
-            
             transferReceiver(user, transferTo, data)
             transferSender(user, transferTo, data)
-
-            setUsers(localStorage.setItem('users', JSON.stringify(users)))
-          });
+            localStorage.setItem('users', JSON.stringify(users))
+            setUsers(users)
+            console.log('Successfully Transfer the amount')
+          })
+          :
+            console.log('insufficient funds')
 
       })} className='formtransfer'>
         <div className='transferinput'>
@@ -81,7 +83,7 @@ export default function Friends() {
         
         <div className='transferinput'>
           <span>Note</span>
-          <input {...register('note')} />
+          <textarea {...register('note')}/>
         </div>
         <input type='submit' value='Continue'/>
       </form>

@@ -119,7 +119,7 @@ export default [
         lastname: 'Mapagmahal', 
         myaddress: 'Manila', 
         mymobileno: '', 
-        myemail: 'ceejayl@email.com', 
+        myemail: 'ceejay@email.com', 
         mypassword: '12345678',
         transfer: [],
         myhistory: [
