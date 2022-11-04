@@ -41,13 +41,13 @@ function SignUp() {
           <label>Last Name:</label>
           <input className='inputBox' {...register("lastname")} type="text" placeholder='Enter your Last Name' />
           <label>Addres:</label>
-          <input className='inputBox' {...register("address")} type="text" placeholder='Enter your current Address' />
+          <input className='inputBox' {...register("myaddress")} type="text" placeholder='Enter your current Address' />
           <label>Mobile No.:</label>
-          <input className='inputBox' {...register("mobileno")} type="number" placeholder='Enter your Mobile No.' />
+          <input className='inputBox' {...register("mymobileno")} type="number" placeholder='Enter your Mobile No.' />
           <label>Email:</label>
-          <input className='inputBox' {...register("email")} type="email" placeholder='Enter your Email' />
+          <input className='inputBox' {...register("myemail")} type="email" placeholder='Enter your Email' />
           <label>Password:</label>
-          <input className='inputBox' {...register("password")} type="password" placeholder='Enter your Password' />
+          <input className='inputBox' {...register("mypassword")} type="password" placeholder='Enter your Password' />
           <p>By creating an account you agree to our <Link to='/SignUp' >Terms & Privacy</Link>.</p>
             <button className='signupbtn' type="submit">Sign Up</button>
             <Link to="/" >
