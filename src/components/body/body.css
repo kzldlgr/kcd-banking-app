@@ -10,7 +10,7 @@ body{
 .mainbody{
     display: flex;
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
     padding: 20px;
     gap: 20px;
 }

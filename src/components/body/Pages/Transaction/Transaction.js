@@ -26,7 +26,7 @@ export default function Transaction({ children }) {
         });    
 
     },[users])
-
+    // console.log(users, 'hello')
     return (
         <div className='transaction'>
             <table>

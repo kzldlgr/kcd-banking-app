@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom';
-import Body from "./components/Body/body";
+import Body from "./components/body/body";
 import Head from "./components/Head/Header"
 import Login from "./components/LoginPage/Login"
-import Deposit from './components/Body/Pages/Deposit/Deposit';
-import Transfer from "./components/Body/Pages/Transfer/Transfer";
-import Transaction from './components/Body/Pages/Transaction/Transaction';
-import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
-import Notfound from './components/Body/Pages/Pagenotfound';
-import AddClient from './components/Body/Pages/AddClient/AddClient'
+import Deposit from './components/body/Pages/Deposit/Deposit';
+import Transfer from "./components/body/Pages/Transfer/Transfer";
+import Transaction from './components/body/Pages/Transaction/Transaction';
+import Withdraw from './components/body/Pages/Withdraw/Withdraw';
+import Notfound from './components/body/Pages/Pagenotfound';
+import AddClient from './components/body/Pages/AddClient/AddClient'
 import SignUp from "./components/SignUp/SignUp";
 import { UsersContextProvider } from './context/UsersContext';
 import { UserBalanceContextProvider } from "./context/UserBalance";
+import ManageUser from "./components/body/Pages/ManageUser/ManageUser";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path='Deposit' element={<Deposit/>}/>
           <Route path='Transfer' element={<Transfer/>}/>
           <Route path='AddClient' element={<AddClient/>}/>
+          <Route path='ManageUser' element={<ManageUser/>}/>
         </Route>
         : []
         }
