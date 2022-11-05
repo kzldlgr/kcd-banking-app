@@ -30,9 +30,6 @@ export default function body() {
         <Sidebar userlevel='admin'/>
         <Dashboard>
           <Searchpage/>
-          <hr className='dashboard_divider'></hr>
-          <Tablist userlevel='admin'/>
-          <Outlet/>
         </Dashboard>
       </div>
     )

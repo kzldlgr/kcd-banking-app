@@ -4,7 +4,7 @@ import './Transaction.css';
 
 export default function Transaction({ children }) {
 
-    const [users, setUsers] = useContext(UsersContext);
+    const {users, setUsers} = useContext(UsersContext);
     const [transaction, setTransaction] = useState([]);
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     

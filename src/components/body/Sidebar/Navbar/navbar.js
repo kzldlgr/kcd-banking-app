@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserBalanceContext } from '../../../../context/UserBalance';
+// import { UserBalanceContext } from '../../../../context/UserBalance';
 import { UsersContext } from '../../../../context/UsersContext';
 import Buttons from './Buttons/buttons';
 import './navbar.css';
@@ -8,8 +8,8 @@ import './navbar.css';
 export default function Navbar({userlevel}) {
 
   let navigate = useNavigate();
-  const [users] = useContext(UsersContext);
-  const [userBalance, setUserBalance] = useContext(UserBalanceContext);
+  const {users, userBalance,setUserBalance} = useContext(UsersContext);
+  // const [userBalance, setUserBalance] = useContext(UserBalanceContext);
   const loginUser = JSON.parse(sessionStorage.getItem('user'));
 
   let usermatch; 

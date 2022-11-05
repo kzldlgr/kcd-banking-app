@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from "react"
 import { UsersContext } from "../../../../context/UsersContext";
-import { UserBalanceContext } from "../../../../context/UserBalance";
 
 export default function Withdraw({children}){
     const newDate = new Date()
-    const [users, setUsers] = useContext(UsersContext)
-    const [userBalance, setUserBalance] = useContext(UserBalanceContext)
+    const {users, setUsers, userBalance, setUserBalance} = useContext(UsersContext)
     const [amount, setAmount] = useState([])
     const [balanceOutput, setBalanceOutput] = useState([])
     const user = JSON.parse(sessionStorage.getItem('user'))
