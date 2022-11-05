@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { UserBalanceContext } from '../../../../context/UserBalance';
 import { UsersContext } from '../../../../context/UsersContext';
 import Buttons from './Buttons/buttons';
 import './navbar.css';
@@ -8,8 +7,7 @@ import './navbar.css';
 export default function Navbar({userlevel}) {
 
   let navigate = useNavigate();
-  const {users, userBalance,setUserBalance} = useContext(UsersContext);
-  // const [userBalance, setUserBalance] = useContext(UserBalanceContext);
+  const {users, userBalance,setUserBalance,userInfo} = useContext(UsersContext);
   const loginUser = JSON.parse(sessionStorage.getItem('user'));
 
   let usermatch; 
@@ -36,7 +34,6 @@ export default function Navbar({userlevel}) {
             <Buttons text='Deposit' path='/Bankerostmain/Deposit'/>
             <Buttons text='Withdraw' path='/Bankerostmain/Withdraw'/>
             <Buttons text='Send Money' path='/Bankerostmain/Transfer'/>
-            <Buttons text='Friends' path='/Bankerostmain/Transfer'/>
             <Buttons text='Transaction' path='/Bankerostmain/Transaction'/>  
             <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true}) 
             sessionStorage.setItem('user', JSON.stringify({}))}}/>
@@ -51,11 +48,11 @@ export default function Navbar({userlevel}) {
           <p  className='balance_amount'><span>{userBalance}</span></p>
         </div>
         <div className='userinfo_container'>
-          <p>Name:</p>
-          <p>Email:</p>
-          <p>Mobile No:</p>
-          <p>Address:</p>
-          <p>Card Number:</p>
+          <p>Name: {userInfo.firstname} {userInfo.lastname}</p>
+          <p>Email: {userInfo.myemail}</p>
+          <p>Mobile No: {userInfo.mymobileno}</p>
+          <p>Address: {userInfo.myaddress}</p>
+          <p>Card Number: {userInfo.myaddress}</p>
         </div>
         <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})
         sessionStorage.setItem('user', JSON.stringify({}))}}/>

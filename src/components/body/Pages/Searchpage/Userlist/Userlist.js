@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function Userlist({userinfo, handleUserClick}) {
+export default function Userlist({userinfo, handleUserClick, index}) {
 
     let userBalance = Number(userinfo.balance);
 
   return (
-    <div className='usercontainer' onClick={handleUserClick}>
+    <div id={index} className='usercontainer' onClick={handleUserClick}>
       <span>{userinfo.accountnum}</span>
       <span>{userinfo.firstname}</span>
       <span>{userinfo.lastname}</span>

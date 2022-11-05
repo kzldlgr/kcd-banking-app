@@ -67,7 +67,7 @@ export default function Transfer() {
         
         <div className='transferinput'>
           <span>Account Number</span>
-          <input  {...register('accountnum')}/>
+          <input {...register('accountnum')}/>
         </div>
         
         <div className='transferinput'>

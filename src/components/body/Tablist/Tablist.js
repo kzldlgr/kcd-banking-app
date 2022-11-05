@@ -3,7 +3,7 @@ import Tabs from './tabs/Tabs';
 import './tablist.css'
 
 export default function Tablist({userlevel}) {
-  
+
   if (userlevel !== 'admin'){
     return (
       <div className='tablist'>

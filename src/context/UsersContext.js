@@ -11,6 +11,8 @@ export const UsersContextProvider = ({children}) => {
         
     const [userBalance, setUserBalance] = useState('0.00');
 
+    const [userInfo, setUserInfo] = useState([])
+
     useEffect(() => {
         setUsers(JSON.parse(localStorage.getItem('users')))
     }, [])
@@ -20,7 +22,7 @@ export const UsersContextProvider = ({children}) => {
     }, [users])
 
     return (
-        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance}}>
+        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo}}>
             {children}
         </UsersContext.Provider>
     )
