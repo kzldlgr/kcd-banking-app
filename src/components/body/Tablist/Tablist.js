@@ -3,7 +3,7 @@ import Tabs from './tabs/Tabs';
 import './tablist.css'
 
 export default function Tablist({userlevel}) {
-  
+
   if (userlevel !== 'admin'){
     return (
       <div className='tablist'>
@@ -17,6 +17,7 @@ export default function Tablist({userlevel}) {
   } else {
     return (
       <div className='tablist'>
+        <Tabs text='ManageUser' path='./ManageUser'/>
         <Tabs text='Transaction' path='./Transaction'/>
         <Tabs text='Transfer'path='./Transfer'/>
         <Tabs text='Deposit' path='./Deposit'/>
