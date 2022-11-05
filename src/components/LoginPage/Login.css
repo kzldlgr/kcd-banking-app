@@ -68,7 +68,7 @@
   }
 
   .loginInput[type=email]:focus, .loginInput[type=password]:focus {
-    background-color: #ddd;
+    background-color: #ddd; 
     border: 1px solid white;
   }
   
@@ -111,4 +111,9 @@
     margin-bottom: 10px;
     font-style: italic;
     font-weight: 0;
+}
+
+.errorMsg{
+    color: red;
+    font-style: italic;
 }

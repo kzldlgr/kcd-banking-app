@@ -10,6 +10,10 @@ export const UsersContextProvider = ({children}) => {
     );
         
     useEffect(() => {
+        setUsers(JSON.parse(localStorage.getItem('users')))
+    }, [])
+
+    useEffect(() => {
         console.log(users)
     }, [users])
 

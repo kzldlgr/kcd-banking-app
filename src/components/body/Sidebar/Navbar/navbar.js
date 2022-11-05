@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserBalanceContext } from '../../../../context/UserBalance';
 import { UsersContext } from '../../../../context/UsersContext';
@@ -15,10 +15,8 @@ export default function Navbar({userlevel}) {
   let usermatch; 
   
   useEffect(() => {
-    if (users === undefined || users.length === 0) return
-
-    if (users.length === undefined) {
-      setUserBalance(Number(users.mybalance))
+    if (loginUser.usertype === 'admin'){
+      setUserBalance('0.00')
     } else {
       usermatch = users.find(user => user.myemail === loginUser.myemail)
       if (usermatch !== undefined && usermatch.usertype !== 'admin') {
@@ -40,7 +38,8 @@ export default function Navbar({userlevel}) {
             <Buttons text='Send Money' path='/Bankerostmain/Transfer'/>
             <Buttons text='Friends' path='/Bankerostmain/Transfer'/>
             <Buttons text='Transaction' path='/Bankerostmain/Transaction'/>  
-            <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})}}/>
+            <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true}) 
+            sessionStorage.setItem('user', JSON.stringify({}))}}/>
           </div>
       </div>
     )
@@ -58,7 +57,8 @@ export default function Navbar({userlevel}) {
           <p>Address:</p>
           <p>Card Number:</p>
         </div>
-        <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})}}/>
+        <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})
+        sessionStorage.setItem('user', JSON.stringify({}))}}/>
       </div>
     )
   }

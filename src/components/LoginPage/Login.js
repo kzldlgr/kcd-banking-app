@@ -4,28 +4,46 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UsersContext } from '../../context/UsersContext';
 import "./Login.css"
 
-
 function Login() {
   const [users, setUsers] = useContext(UsersContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let validUsername = false;
+  let validPassword = false;
+
+  const validateUser = (e) => {
 
 
-  function validateUser(e) {
-    console.log(users);
-    let user = users.find(user => user.myemail === email && user.mypassword === password);
-    if (user === undefined) {
-      e.preventDefault();
-      return;
-    }
-    // setUsers(JSON.parse(localStorage.getItem('users')))
-    sessionStorage.setItem('user', JSON.stringify(user));
-    navigate('/Bankerostmain', { replace: true });
+      let user = users.find(user => user.myemail === email && user.mypassword === password)
+      console.log(user)
+      if (user !== undefined) {
+        validateUser = true;
+        sessionStorage.setItem('user', JSON.stringify(user));
+        navigate('/Bankerostmain', { replace: true })
+      } else {
+        console.log('Cant find any user')
+        e.preventDefault();
+      }
+    
   }
+
+
+  // let user = users.find(user => user.myemail === email && user.mypassword === password)
+  // if (user !== undefined){
+  //   sessionStorage.setItem('user', JSON.stringify(user));
+  //   navigate('/Bankerostmain', {replace: true})
+  // } else {
+  //   console.log('Cant find any user')
+  //   e.preventDefault();
+  // }
+
+
+
 
   function handleClickLogin(e) {
     validateUser(e);
+
   }
 
   return (
@@ -33,10 +51,10 @@ function Login() {
       <div className="sub-main">
         <div className='login-form'>
           <h1>Login to your account</h1>
-
           <div className="first-input">
             <h3>Username</h3>
             <input type="email" placeholder="Username" value={email} onChange={e => setEmail(e.target.value)} className="loginInput" />
+            {!validUsername ? <p className="invalid">Username does not exist</p> : <p></p>}
           </div>
 
           <div className="second-input">
