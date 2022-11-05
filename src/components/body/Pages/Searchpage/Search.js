@@ -5,7 +5,7 @@ import './search.css';
 
 export default function Search() {
 
-    const {users, userBalance, setUserBalance} = useContext(UsersContext);
+    const {users, userBalance, setUsers, setUserBalance} = useContext(UsersContext);
     const [names, setNames] = useState([]);
     const [inputList, setInputList] = useState([]);
     let searchUser, selectedUser;
