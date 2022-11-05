@@ -30,6 +30,7 @@ function App() {
           <Route path='Deposit' element={<Deposit/>}/>
           <Route path='Transfer' element={<Transfer/>}/>
           <Route path='AddClient' element={<AddClient/>}/>
+          <Route path='ManageUser' element={<ManageUser/>}/>
         </Route>
         : []
         }
