@@ -6,6 +6,7 @@ import Expenses from './Pages/Expenses/Expenseschart';
 import Tablist from './Tablist/Tablist';
 import Searchpage from './Pages/Searchpage/Search';
 
+
 import './body.css'
 
 export default function body() {
@@ -15,23 +16,24 @@ export default function body() {
   if (user.usertype !== 'admin') {
     return (
       <div className='mainbody'>
-          <Sidebar/>
-          <Dashboard>
-            <Expenses/>
-            <hr className='dashboard_divider'></hr>
-            <Tablist/>
-            <Outlet/>
-          </Dashboard>
+        <Sidebar />
+        <Dashboard>
+          <Expenses />
+          <hr className='dashboard_divider'></hr>
+          <Tablist />
+          <Outlet />
+        </Dashboard>
       </div>
     )
   } else {
     return (
       <div className='mainbody'>
-        <Sidebar userlevel='admin'/>
+        <Sidebar userlevel='admin' />
         <Dashboard>
           <Searchpage/>
-          <Tablist/>
-            <Outlet/>
+          <Tablist userlevel={user.usertype} />
+          <Outlet />
+
         </Dashboard>
       </div>
     )

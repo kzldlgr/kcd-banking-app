@@ -8,7 +8,7 @@ import "./AddClient.css"
 export default function AddClient() {
   const [details, setDetails] = useState([]);
   const current = new Date();
-  const [users, setUsers] = useContext(UsersContext);
+  const {users, setUsers} = useContext(UsersContext);
 
   const {register, handleSubmit, formState: { errors }} = useForm();
 

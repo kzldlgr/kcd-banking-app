@@ -113,7 +113,8 @@
     font-weight: 0;
 }
 
-.errorMsg{
+.errorMsgs{
     color: red;
     font-style: italic;
 }
+

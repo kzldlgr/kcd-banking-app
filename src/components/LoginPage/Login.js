@@ -29,6 +29,7 @@ function Login() {
     console.log(user)
     if (user !== undefined) {
       sessionStorage.setItem('user', JSON.stringify(user));
+      // user.usertype === 'admin' ? navigate('/Bankerostmain/Searchpages', { replace: true }) :
       navigate('/Bankerostmain', { replace: true })
     } else if (!values.email) {
       errors.email = "Email is required!";
@@ -61,7 +62,7 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
-            <p>{formErrors.email}</p>
+            <p className='errorMsgs'>{formErrors.email}</p>
             <div className="second-input">
               <h3>Password</h3>
               <input type="password"
@@ -72,8 +73,8 @@ function Login() {
                 onChange={handleChange}
               />
             </div>
-            <p>{formErrors.password}</p>
-            <button className='loginbtn'>Login</button>
+            <p className='errorMsgs'>{formErrors.password}</p>
+            <button className='loginbtn' >Login</button>
             <div className="third-input">
               <Link to='/SignUp'>Register Now</Link> |
               <Link to='/ForgotPassword'>Forgot Password</Link>
