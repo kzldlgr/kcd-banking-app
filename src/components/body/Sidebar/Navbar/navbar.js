@@ -8,7 +8,7 @@ import './navbar.css';
 export default function Navbar({userlevel}) {
 
   let navigate = useNavigate();
-  const {users, userBalance,setUserBalance} = useContext(UsersContext);
+  const {users, userBalance,setUserBalance, userInfo} = useContext(UsersContext);
   // const [userBalance, setUserBalance] = useContext(UserBalanceContext);
   const loginUser = JSON.parse(sessionStorage.getItem('user'));
 
@@ -51,11 +51,11 @@ export default function Navbar({userlevel}) {
           <p  className='balance_amount'><span>{userBalance}</span></p>
         </div>
         <div className='userinfo_container'>
-          <p>Name:</p>
-          <p>Email:</p>
-          <p>Mobile No:</p>
-          <p>Address:</p>
-          <p>Card Number:</p>
+        <p>Card Number: { userInfo.accountnum }</p>
+          <p>Name:{ userInfo.firstname } { userInfo.lastname }</p>
+          <p>Email:{ userInfo.myemail }</p>
+          <p>Mobile No: { userInfo.mymobileno }</p>
+          <p>Address: { userInfo.myaddress }</p>
         </div>
         <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})
         sessionStorage.setItem('user', JSON.stringify({}))}}/>
