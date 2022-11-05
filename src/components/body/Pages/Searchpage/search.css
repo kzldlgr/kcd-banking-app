@@ -1,3 +1,19 @@
+:root{
+    --table-column-width: 150px;
+}
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #555; 
+}
 .searchpage{
     display: flex;
     flex-direction: column;
@@ -6,36 +22,61 @@
     user-select: none;
 }
 .userlistview{
-    height: 180px;
-    width: 70%;
+    height: 600px;
+    width: 60vw;
     position: relative;
     overflow: scroll;
 }
-.userlist table {
+.tableHead{
+    display: inline-flex;
     width: 100%;
-    text-align: center;
-    font-family: 'Bebas Neue', cursive;
-    border-collapse: collapse;
-    border-spacing: 0;
+    background-color: teal;
+    border: 1px solid rgb(0, 128, 128, .3);
     border-radius: 12px 12px 0 0;
-    box-shadow: 0 2px 5px rgba(32, 32, 32, .3);
-}
-.userlist th {
-    background-color: #008080;
-    color: #fafafa;
-    letter-spacing: 2px;
+    color: whitesmoke;
     font-size: 20px;
-    text-transform: uppercase;
-    z-index: -1;
 }
-.userlist table,
-.userlist td {
-    border-bottom: 1px solid black;
-    font-size: 18px;
-} 
-.userClicked {
+.tableHead span{
+    text-align: center;
+    width: var(--table-column-width);
+}
+.tableHead span:last-child{
+    flex-grow: 1;
+}
+.usercontainer{
+    display: inline-flex;
+    width: 100%;
+    background-color: rgb(220, 241, 241);
+    border: 1px solid rgb(201, 201, 201);
+}
+.usercontainer:nth-child(even){
+    background-color: rgb(255, 255, 255);
+}
+.usercontainer span:last-child{
+    flex-grow: 1;
+}
+.usercontainer:hover{
+    background-color: rgb(0, 128, 128,.3);
     cursor: pointer;
 }
-.userClicked:hover{
-    background-color: rgb(0, 128, 128,.3);
+.usercontainer span{
+    text-align: center;
+    width: var(--table-column-width);
+    font-size: 20px;
+}
+.optionBtn{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+.searchbar{
+    display: inline-flex;
+}
+.searchbar span{
+    font-size: 25px;
+}
+.searchbar input{
+    margin-left: 20px;
+    height: 25px;
+    width: 300px;
 }

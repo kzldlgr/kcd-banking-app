@@ -1,14 +1,12 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form';
 import { UsersContext } from '../../../../context/UsersContext';
-import { UserBalanceContext } from '../../../../context/UserBalance';
 import './transfer.css';
 
 export default function Transfer() {
 
   const {register, handleSubmit} = useForm();
-  const [users, setUsers] = useContext(UsersContext);
-  const [userBalance, setUserBalance] = useContext(UserBalanceContext);
+  const {users, setUsers, userBalance, setUserBalance} = useContext(UsersContext);
   const currentUser = JSON.parse(sessionStorage.getItem('user'));
 
   let transferTo;
@@ -43,24 +41,30 @@ export default function Transfer() {
     }
   }
 
+  const checkUsers = (transferTo, data) => {
+    users.forEach(user => {
+      
+      transferReceiver(user, transferTo, data)
+      transferSender(user, transferTo, data)
+      
+      localStorage.setItem('users', JSON.stringify(users))
+      setUsers(users)
+      console.log('Successfully Transfer the amount')
+    })
+  }
+
   return (
     <div className='pages'>
       <form onSubmit={handleSubmit(data => {
 
         transferTo = users.find(user => user.accountnum === data.accountnum);
+        
         transferTo === undefined ? console.log('no user found') 
-        : userBalance >= data.amount ?
-          users.forEach(user => {
-            transferReceiver(user, transferTo, data)
-            transferSender(user, transferTo, data)
-            localStorage.setItem('users', JSON.stringify(users))
-            setUsers(users)
-            console.log('Successfully Transfer the amount')
-          })
-          :
-            console.log('insufficient funds')
-
+        : userBalance >= data.amount ?        
+          checkUsers(transferTo, data): console.log('insufficient funds')
+      
       })} className='formtransfer'>
+        
         <div className='transferinput'>
           <span>Account Number</span>
           <input  {...register('accountnum')}/>

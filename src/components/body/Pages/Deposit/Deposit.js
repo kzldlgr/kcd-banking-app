@@ -1,14 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UsersContext } from '../../../../context/UsersContext';
-import { UserBalanceContext } from "../../../../context/UserBalance";
 import './deposit.css'
 
 export default function Deposit(){
     const newDate = new Date()
     const [amount, setAmount] = useState([])
     const [balanceOutput, setBalanceOutput] = useState([])
-    const [userBalance, setUserBalance] = useContext(UserBalanceContext)
-    const [users, setUsers] = useContext(UsersContext);
+    const {users, setUsers, userBalance, setUserBalance} = useContext(UsersContext);
     const user = JSON.parse(sessionStorage.getItem('user'))
 
     let currentUser;

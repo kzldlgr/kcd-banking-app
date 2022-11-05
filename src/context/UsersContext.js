@@ -9,6 +9,8 @@ export const UsersContextProvider = ({children}) => {
         localStorage.getItem('users') === null ? localStorage.setItem('users', JSON.stringify(usersDemoData)) : JSON.parse(localStorage.getItem('users'))
     );
         
+    const [userBalance, setUserBalance] = useState('0.00');
+
     useEffect(() => {
         setUsers(JSON.parse(localStorage.getItem('users')))
     }, [])
@@ -18,7 +20,7 @@ export const UsersContextProvider = ({children}) => {
     }, [users])
 
     return (
-        <UsersContext.Provider value={[users, setUsers]}>
+        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance}}>
             {children}
         </UsersContext.Provider>
     )

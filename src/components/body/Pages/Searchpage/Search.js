@@ -1,13 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {UsersContext} from '../../../../context/UsersContext';
-import {UserBalanceContext} from '../../../../context/UserBalance';
 import Userlist from './Userlist/Userlist';
 import './search.css';
 
 export default function Search() {
 
-    const [users] = useContext(UsersContext);
-    const [userBalance, setUserBalance] = useContext(UserBalanceContext);
+    const {users, userBalance, setUserBalance} = useContext(UsersContext);
     const [names, setNames] = useState([]);
     const [inputList, setInputList] = useState([]);
     let searchUser, selectedUser;
@@ -22,7 +20,8 @@ export default function Search() {
 
     const handleUserClick = (e) => {
       selectedUser = e.target.parentElement.children;
-      setUserBalance(selectedUser[2].innerText)
+      setUserBalance(selectedUser[5].textContent)
+      console.log(selectedUser[5].textContent)
     }
 
     const displayUsers = () => {
@@ -49,20 +48,12 @@ export default function Search() {
       </div>
       <div className='userlist'>
         <div className='userlistview'>
-          <table>
-              <thead>
-                  <tr>
-                      <th>NAME</th>
-                      <th>ADDRESS</th>
-                      <th>BALANCE</th>
-                      <th>OPTIONS</th>
-                  </tr>
-              </thead>
-
-              <tbody>
-                {inputList}
-              </tbody>
-          </table>
+          <div className='tableHead'>
+            <span>Account Number</span><span>First Name</span><span>Last Name</span><span>Address</span><span>Contact</span><span>Balance</span><span>Options</span>
+          </div>
+          <div className='tableBody'>
+            {inputList}
+          </div>
         </div>
       </div>
     </div>
