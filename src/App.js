@@ -7,6 +7,7 @@ import Deposit from './components/Body/Pages/Deposit/Deposit';
 import Transfer from "./components/Body/Pages/Transfer/Transfer";
 import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
+import Expense from './components/Body/Pages/Expenses/Expense';
 import AddClient from './components/Body/Pages/AddClient/AddClient'
 import Searchpage from './components/Body/Pages/Searchpage/Search';
 import ManageUser from "./components/Body/Pages/ManageUser/ManageUser"
@@ -31,6 +32,7 @@ function App() {
           <Route path='Transaction' element={<Transaction/>}/>
           <Route path='Withdraw' element={<Withdraw/>}/>
           <Route path='Deposit' element={<Deposit/>}/>
+          <Route path='Expense' element={<Expense/>}/>
           <Route path='Transfer' element={<Transfer/>}/>
           <Route path='AddClient' element={<AddClient/>}/>
           <Route path='ManageUser' element={<ManageUser/>}/>

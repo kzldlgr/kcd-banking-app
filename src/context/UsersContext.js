@@ -15,6 +15,15 @@ export const UsersContextProvider = ({children}) => {
 
     const [searchView, setSearchView] = useState(true)
 
+    const [chartData, setChartData] = useState({
+        labels: [],
+        datasets: [{
+            label: 'Expense',
+            data: [],
+            backgroundColor: ['#E97777']
+        }]
+    })
+
     useEffect(() => {
         setUsers(JSON.parse(localStorage.getItem('users')))
     }, [])
@@ -24,7 +33,7 @@ export const UsersContextProvider = ({children}) => {
     }, [users])
 
     return (
-        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo, searchView, setSearchView}}>
+        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo, searchView, setSearchView, chartData, setChartData}}>
             {children}
         </UsersContext.Provider>
     )

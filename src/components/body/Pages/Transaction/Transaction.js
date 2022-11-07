@@ -28,20 +28,22 @@ export default function Transaction({ children }) {
     },[users])
     // console.log(users, 'hello')
     return (
-        <div className='transaction'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>DATE</th>
-                        <th>DESCRIPTION</th>
-                        <th>AMOUNT</th>
-                    </tr>
-                </thead>
+        <div className="tablecontainer">
+            <div className='transaction'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DATE</th>
+                            <th>DESCRIPTION</th>
+                            <th>AMOUNT</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    {transaction}
-                </tbody>
-            </table>
+                    <tbody>
+                        {transaction}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

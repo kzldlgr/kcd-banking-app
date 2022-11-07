@@ -9,12 +9,38 @@
 .customchart{
     height: 400px;
     width: 800px;
-    /* border-radius: 50%; */
 }
 .chart_guide{
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 5px;
+    width: 200px;
+}
+.expenseManager{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: flex-start;
+    width: 400px;
+    padding: 20px;
+}
+.expenseInput{
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    width: 200px;
+    gap: 30px;
+}
+.expenseInput span{
+    width: 150px;
+}
+.expenseInput input{
+    width: 200px;
+}
+.expenseInput select{
+    width: 200px;
+}
+.expenseInput textarea{
+    height: 60px;
     width: 200px;
 }
