@@ -32,6 +32,10 @@ export const UsersContextProvider = ({children}) => {
         console.log(users)
     }, [users])
 
+    useEffect(() =>{
+        // console.log(userInfo)
+    },[userInfo])
+
     return (
         <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo, searchView, setSearchView, chartData, setChartData}}>
             {children}

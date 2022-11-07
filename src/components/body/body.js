@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar/sidebar';
 import Dashboard from './Dashboard/dashboard'
 import Expenses from './Pages/Expenses/Expenseschart';
+import Searchpage from './Pages/Searchpage/Search'
 import Tablist from './Tablist/Tablist';
 
 
@@ -29,8 +30,9 @@ export default function body() {
       <div className='mainbody'>
         <Sidebar userlevel='admin'/>
         <Dashboard>
-          <Tablist userlevel={user.usertype}/>
-          <Outlet/>
+          <Searchpage/>
+        <Tablist userlevel={user.usertype}/>
+            <Outlet/>
         </Dashboard>
       </div>
     )

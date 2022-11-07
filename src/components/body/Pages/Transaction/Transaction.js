@@ -4,7 +4,7 @@ import './Transaction.css';
 
 export default function Transaction({ children }) {
 
-    const {users, setUsers} = useContext(UsersContext);
+    const {users, setUsers, userInfo, setUserInfo} = useContext(UsersContext);
     const [transaction, setTransaction] = useState([]);
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     
@@ -13,7 +13,7 @@ export default function Transaction({ children }) {
         if (users === undefined) return
     
         Array.from(users).forEach(client => {
-            if (client.myemail === currentUser.myemail) {
+            if (client.myemail === currentUser.myemail && currentUser.usertype !== 'admin') {
                 
                 setTransaction(client.myhistory.map((e, index) => (
                     <tr key={index}>
@@ -22,13 +22,20 @@ export default function Transaction({ children }) {
                         <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
                     </tr>
                 )))
+            }else {
+                setTransaction(userInfo.myhistory.map((e, index) => (
+                    <tr key={index}>
+                    <td>{e.date}</td>
+                    <td>{e.description}</td>
+                    <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
+                </tr>
+                )))
             }
         });    
 
     },[users])
-    // console.log(users, 'hello')
-    return (
-        <div className="tablecontainer">
+
+        return (
             <div className='transaction'>
                 <table>
                     <thead>
@@ -38,13 +45,12 @@ export default function Transaction({ children }) {
                             <th>AMOUNT</th>
                         </tr>
                     </thead>
-
+    
                     <tbody>
                         {transaction}
                     </tbody>
                 </table>
             </div>
-        </div>
-    )
+        )
 }
 
