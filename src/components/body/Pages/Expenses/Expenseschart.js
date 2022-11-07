@@ -1,4 +1,5 @@
 import './expenses.css'
+import BarChart from '../../../CustomCharts/BarChart';
 
 export default function Expenses() {
     
@@ -7,10 +8,11 @@ export default function Expenses() {
             <div className='expenses'>
                 <h1>My Expenses</h1>
                 <div className='chart_container'>
-                    <div className='piechart'></div>
+                    <div className='customchart'><BarChart/></div>
+                    
                     <div className='chart_guide'>
                         <p>Housing</p>
-                        <p>Transportion</p>
+                        <p>Transportation</p>
                         <p>Food</p>
                         <p>Utilities</p>
                         <p>Insurance</p>

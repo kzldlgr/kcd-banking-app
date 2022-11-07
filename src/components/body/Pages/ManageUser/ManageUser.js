@@ -3,8 +3,7 @@ import { UsersContext } from '../../../../context/UsersContext';
 import { useForm } from 'react-hook-form'
 import './ManageUser.css'
 
-
-const ManageUser = () => {
+export default function ManageUser() {
 
  const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
 
@@ -38,7 +37,7 @@ const ManageUser = () => {
       })
   })
 
-  return (
+  return ( 
     <div className='ManageUserContainer'>
       <h1>Edit Client's Account</h1>
 
@@ -81,6 +80,3 @@ const ManageUser = () => {
     </div>
   )
 }
-
-export default ManageUser
-

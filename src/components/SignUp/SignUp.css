@@ -54,10 +54,7 @@ body {
     justify-content: center;
 }
 
-.inputBox[type=text],
-.inputBox[type=password],
-.inputBox[type=number],
-.inputBox[type=email] {
+.inputBox {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -66,10 +63,7 @@ body {
     background: white;
 }
 
-.inputBox[type=text]:focus,
-.inputBox[type=password]:focus,
-.inputBox[type=number]:focus,
-.inputBox[type=email]:focus {
+.inputBox:focus {
     background-color: #ddd; 
     border: 1px solid white;
 }
