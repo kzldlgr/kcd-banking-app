@@ -6,16 +6,18 @@ import "./Login.css"
 
 
 function Login() {
+  
   const {users} = useContext(UsersContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [goTo, setGoTo] = useState([])
 
   const validateUser = (e) => { 
     let user = users.find(user => user.myemail === email && user.mypassword === password)
     if (user !== undefined){
       sessionStorage.setItem('user', JSON.stringify(user));
-      navigate('/Bankerostmain', {replace: true})
+      user.usertype === 'admin' ? navigate('/Bankerostmain/Search') : navigate('/Bankerostmain/Transaction')
     } else {
       console.log('Cant find any user')
       e.preventDefault();
@@ -42,9 +44,9 @@ function Login() {
             <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="loginInput" />
           </div>
 
-          <Link className='linkbutton' to='/Bankerostmain/Transaction'>
-            <button className='loginbtn' onClick={handleClickLogin}>Login</button>
-          </Link>
+          {/* <Link className='linkbutton'> */}
+            <button className='linkbutton loginbtn' onClick={handleClickLogin}>Login</button>
+          {/* </Link> */}
 
           <div className="third-input">
             <Link to='/SignUp'>Register Now</Link> |

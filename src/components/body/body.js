@@ -4,8 +4,7 @@ import Sidebar from './Sidebar/sidebar';
 import Dashboard from './Dashboard/dashboard'
 import Expenses from './Pages/Expenses/Expenseschart';
 import Tablist from './Tablist/Tablist';
-import Searchpage from './Pages/Searchpage/Search';
-import ManageUser from './Pages/ManageUser/ManageUser';
+
 
 import './body.css'
 
@@ -30,8 +29,8 @@ export default function body() {
       <div className='mainbody'>
         <Sidebar userlevel='admin'/>
         <Dashboard>
-        <Tablist userlevel={user.usertype}/>
-            <Outlet/>
+          <Tablist userlevel={user.usertype}/>
+          <Outlet/>
         </Dashboard>
       </div>
     )

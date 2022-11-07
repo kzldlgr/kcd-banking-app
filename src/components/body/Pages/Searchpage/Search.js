@@ -22,7 +22,6 @@ export default function Search() {
       selectedUser = e.currentTarget.children[5].textContent;
       setUserBalance(selectedUser)
       setUserInfo(users.find(user => user.accountnum.toString() === e.currentTarget.children[0].textContent.toString()))
-      // console.log(users.find(user => user.accountnum.toString() === e.currentTarget.children[0].textContent.toString()))
     }
 
     const displayUsers = () => {
