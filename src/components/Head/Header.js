@@ -4,10 +4,6 @@ import logo from "../../assets/images/logo3.png"
 
 const Header = () => {
 
-    const users = JSON.parse(sessionStorage.getItem('user'));
-
-
-
     return (
         <div className="headerContainer">
             <div className="leftSide">

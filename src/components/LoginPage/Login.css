@@ -19,7 +19,7 @@
 .sub-main {
     display: flex;
     justify-content: center;
-    font-family: 'Bebas';
+    font-family:sans-serif;
     letter-spacing: 3px;
     height: 550px;
     width: 500px;
@@ -32,22 +32,21 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.first-input{
+    margin-top: 30px;
+}
+
+.second-input {
+    margin-top: 10px;
 }
 
 .linkbutton{
     align-self: center;
     text-decoration: none;
-}
-
-.imgs {
-    padding-top: 20px;
-    justify-content: center;
-    display: flex;
-}
-
-.banner-img{
-    width: 65%;
 }
 
 .email{
@@ -58,7 +57,7 @@
 }
 
 
-.loginInput[type=email], .loginInput[type=password] {
+.loginInput {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -67,7 +66,7 @@
     background: white;
   }
 
-  .loginInput[type=email]:focus, .loginInput[type=password]:focus {
+  .loginInput:focus {
     background-color: #ddd; 
     border: 1px solid white;
   }
@@ -118,3 +117,6 @@
     font-style: italic;
 }
 
+.third-input{
+    margin-top: 60px;
+}

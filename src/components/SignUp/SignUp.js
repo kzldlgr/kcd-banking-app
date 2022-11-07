@@ -1,35 +1,43 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom';
+import { AdminContext } from '../../context/AdminContext';
 import { UsersContext } from '../../context/UsersContext';
 import "./SignUp.css"
 
 function SignUp() {
   const [details, setDetails] = useState([]);
+  const { users } = useContext(UsersContext);
   const current = new Date();
-  const {users, setUsers} = useContext(UsersContext);
+  const { userRequest, setUserRequest } = useContext(AdminContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   let lastAccount;
   let valid = false;
 
   useEffect(() => {
     if (details === undefined || details.length === 0) return
-    lastAccount = users[users.length - 1]
-    setUsers(account => [...account, { ...details, accountnum: Number(lastAccount.accountnum) + 1 }])
-    localStorage.setItem('users', JSON.stringify(users));
+    setUserRequest(account => [...account, { ...details}])
+
     console.log("Succesfully add new client")
   }, [details])
 
   const validate = (data) => {
     let user = users.find(user => user.myemail === data.myemail)
-    if(data.myemail === user){
+    if (data.myemail === user) {
       valid = true;
     }
   }
 
   const onSubmit = data => {
     validate(data);
-    setDetails({ ...data, usertype: 'user', myhistory: [], cardnum: Date.now(), transfer: [], balance: 0 });
+    setDetails({
+      ...data,
+      usertype: 'user',
+      myhistory: [],
+      cardnum: Date.now(),
+      transfer: [],
+      balance: 0
+    });
   }
 
   return (
@@ -89,7 +97,7 @@ function SignUp() {
             placeholder='Enter your Email'
           />
           <p className='errorMsgs'>{errors.myemail?.message}</p>
-          {valid?<p className="errorMsgs">Email already exists</p>: []}
+          {valid ? <p className="errorMsgs">Email already exists</p> : []}
           <label>Password:</label>
           <input className='inputBox'
             {...register("mypassword",
@@ -111,7 +119,7 @@ function SignUp() {
           <p>By creating an account you agree to our <Link to='/SignUp' >Terms & Privacy</Link>.</p>
           <button className='signupbtn' type="submit">Sign Up</button>
           <Link to="/" >
-            <button className="cancelbtn" onClick={e => handleSubmit(e)}>Cancel</button>
+            <button className="cancelbtn" >Cancel</button>
           </Link>
         </div>
       </form>

@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom';
 import editIcon from '../../../../../assets/icons/edit1.png'
 import deleteIcon from '../../../../../assets/icons/delete1.png'
-import { Link, useNavigate } from 'react-router-dom';
+import { AdminContext } from '../../../../../context/AdminContext';
 
 export default function Userlist({ userinfo, handleUserClick }) {
 
   let userBalance = Number(userinfo.balance);
-  const navigate = useNavigate();
-
-
+  const {isToggled, setIsToggled} = useContext(AdminContext);
 
   return (
     <div className='usercontainer' onClick={handleUserClick}>
@@ -19,7 +18,7 @@ export default function Userlist({ userinfo, handleUserClick }) {
       <span>{userinfo.mymobileno}</span>
       <span>{userBalance.toLocaleString('tl-PH', { style: 'currency', currency: 'PHP', })}</span>
       <span>
-        <Link to='/Bankerostmain/MangeUser' className='optionBtn edit'><img className="btnIcon" src={editIcon} /></Link>
+        <Link onClick={() => setIsToggled(!isToggled)} to='/Bankerostmain/ManageUser' className='optionBtn edit'><img className="btnIcon" src={editIcon} /></Link>
         <button className='optionBtn delete'><img className="btnIcon" src={deleteIcon} /></button>
       </span>
     </div>

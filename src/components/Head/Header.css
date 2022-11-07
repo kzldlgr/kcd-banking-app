@@ -24,7 +24,7 @@
     
 }
 
-.rightSide p:active{
+.rightSide{
     padding-right: 15px;
     font-family: 'Bebas Neue', cursive;
     font-size: 18px;

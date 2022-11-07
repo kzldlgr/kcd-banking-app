@@ -54,7 +54,7 @@ export default function Navbar({userlevel}) {
         <p>Card Number: { userInfo.accountnum }</p>
           <p>Name:{ userInfo.firstname } { userInfo.lastname }</p>
           <p>Email:{ userInfo.myemail }</p>
-          <p>Mobile No: { userInfo.mymobileno }</p>
+          <p>Contact: { userInfo.mymobileno }</p>
           <p>Address: { userInfo.myaddress }</p>
         </div>
         <Buttons text='Logout' path='/' onMouseClick={() =>{navigate('/', {replace: true})

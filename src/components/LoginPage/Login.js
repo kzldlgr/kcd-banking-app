@@ -4,7 +4,7 @@ import { UsersContext } from '../../context/UsersContext';
 import "./Login.css"
 
 function Login() {
-  const { users } = useContext(UsersContext);
+  const { users, loginUser ,setLoginUser } = useContext(UsersContext);
   const navigate = useNavigate();
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
@@ -29,17 +29,18 @@ function Login() {
     console.log(user)
     if (user !== undefined) {
       sessionStorage.setItem('user', JSON.stringify(user));
-      // user.usertype === 'admin' ? navigate('/Bankerostmain/Searchpages', { replace: true }) :
+      setLoginUser(users.find(user=> user.myemail === values.email))
+      user.usertype === 'admin' ? navigate('/Bankerostmain/Admin', { replace: true }) :
       navigate('/Bankerostmain', { replace: true })
     } else if (!values.email) {
-      errors.email = "Email is required!";
+      errors.email = "Email is required.";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
     } else if (user === undefined) {
-      errors.email = "Email does not exist!"
+      errors.email = "Email does not exist."
     }
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = "Password is required.";
     } else if (values.password.length < 8) {
       errors.password = "Password must be more than 4 characters";
     }
@@ -52,6 +53,7 @@ function Login() {
         <div className='login-form'>
           <form onSubmit={handleSubmit}>
             <h1>Login to your account</h1>
+            <hr></hr>
             <div className="first-input">
               <h3>Username</h3>
               <input type="email"
@@ -61,8 +63,9 @@ function Login() {
                 value={formValues.email}
                 onChange={handleChange}
               />
+              <p className='errorMsgs'>{formErrors.email}</p>
             </div>
-            <p className='errorMsgs'>{formErrors.email}</p>
+
             <div className="second-input">
               <h3>Password</h3>
               <input type="password"
@@ -72,8 +75,8 @@ function Login() {
                 value={formValues.password}
                 onChange={handleChange}
               />
+              <p className='errorMsgs'>{formErrors.password}</p>
             </div>
-            <p className='errorMsgs'>{formErrors.password}</p>
             <button className='loginbtn' >Login</button>
             <div className="third-input">
               <Link to='/SignUp'>Register Now</Link> |
