@@ -5,7 +5,7 @@ import './search.css';
 
 export default function Search() {
 
-    const {users, userBalance, setUserBalance, userInfo, setUserInfo} = useContext(UsersContext);
+    const {users, userBalance, setUsers, setUserBalance, userInfo, setUserInfo} = useContext(UsersContext);
     const [names, setNames] = useState([]);
     const [inputList, setInputList] = useState([]);
     let searchUser, selectedUser;
@@ -18,10 +18,14 @@ export default function Search() {
       displayUsers()
     }, [names])
 
+    useEffect(() =>{
+      console.log(userInfo)
+    },[userInfo])
+
     const handleUserClick = (e) => {
       selectedUser = e.currentTarget.children[5].textContent;
-      setUserBalance(selectedUser)
-      setUserInfo(users.find(user => user.accountnum.toString() === e.currentTarget.children[0].textContent.toString()))
+      setUserBalance(selectedUser);
+      setUserInfo(users.find(user=> user.accountnum.toString() === e.currentTarget.children[0].textContent.toString()))
     }
 
     const displayUsers = () => {

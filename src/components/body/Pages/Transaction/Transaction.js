@@ -10,19 +10,33 @@ export default function Transaction({ children }) {
     
     useEffect(() => {
 
-        if (users === undefined) return
-    
+        // const newUser = users.find(user => 
+        //     user.myemail === currentUser.myemail 
+        // )
+        
+        // setTransaction(client.myhistory.map((e, index) => (
+        //     <tr key={index}>
+        //         <td>{e.date}</td>
+        //         <td>{e.description}</td>
+        //         <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
+        //     </tr>
+        // )))
+        // console.log(newUser)
+
         Array.from(users).forEach(client => {
-            if (client.myemail === currentUser.myemail && currentUser.usertype !== 'admin') {
+            
+            if (userInfo !== undefined) {
+                if (client.myemail === currentUser.myemail) {
+                    setTransaction(client.myhistory.map((e, index) => (
+                        <tr key={index}>
+                            <td>{e.date}</td>
+                            <td>{e.description}</td>
+                            <td>{Number(e.amount).toLocaleString('tl-PH', { style: 'currency', currency: 'PHP', })}</td>
+                        </tr>
+                    )))
+                }
+                }else {
                 
-                setTransaction(client.myhistory.map((e, index) => (
-                    <tr key={index}>
-                        <td>{e.date}</td>
-                        <td>{e.description}</td>
-                        <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
-                    </tr>
-                )))
-            }else {
                 setTransaction(userInfo.myhistory.map((e, index) => (
                     <tr key={index}>
                     <td>{e.date}</td>
@@ -34,8 +48,9 @@ export default function Transaction({ children }) {
         });    
 
     },[users])
-
-        return (
+    // console.log(users, 'hello')
+    return (
+        <div className="tablecontainer">
             <div className='transaction'>
                 <table>
                     <thead>
@@ -45,12 +60,13 @@ export default function Transaction({ children }) {
                             <th>AMOUNT</th>
                         </tr>
                     </thead>
-    
+
                     <tbody>
                         {transaction}
                     </tbody>
                 </table>
             </div>
-        )
+        </div>
+    )
 }
 

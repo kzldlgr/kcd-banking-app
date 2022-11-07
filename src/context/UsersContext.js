@@ -13,6 +13,8 @@ export const UsersContextProvider = ({children}) => {
 
     const [userInfo, setUserInfo] = useState([])
 
+    const [loginUser ,setLoginUser] =useState([])
+
     const [searchView, setSearchView] = useState(true)
 
     const [chartData, setChartData] = useState({
@@ -37,7 +39,7 @@ export const UsersContextProvider = ({children}) => {
     },[userInfo])
 
     return (
-        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo, searchView, setSearchView, chartData, setChartData}}>
+        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo, searchView, setSearchView, chartData, setChartData, loginUser ,setLoginUser}}>
             {children}
         </UsersContext.Provider>
     )

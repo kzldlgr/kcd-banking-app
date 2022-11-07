@@ -1,49 +1,124 @@
-import React,{ useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { UsersContext } from '../../../../context/UsersContext';
 import "./AddClient.css"
 
-
-
-export default function AddClient() {
-  const [details, setDetails] = useState([]);
+function AddClient() {
+  const newDate = new Date();
+  const { register, handleSubmit } = useForm();
+  const { users, setUsers } = useContext(UsersContext);
+  const [clientInfo, setClientInfo] = useState([]);
   const current = new Date();
-  const [users, setUsers] = useContext(UsersContext);
+  let lastAccount;
+  let valid;
 
-  const {register, handleSubmit, formState: { errors }} = useForm();
-
-  useEffect(()=>{
-    if(details === undefined || details.length === 0) return
-    setUsers(account => {account.push(details)})
-    localStorage.setItem('users', JSON.stringify(users));
+  useEffect(() => {
+    if (clientInfo === undefined || clientInfo.length === 0) return
+    lastAccount = users[users.length - 1]
+    setUsers(account => [...account, { ...clientInfo, accountnum: Number(lastAccount.accountnum) + 1 }])
+    localStorage.setItem('users',JSON.stringify(users));
     console.log("Succesfully add new client")
-  },[details])
+  }, [clientInfo])
 
+  const validate = (data) => {
+    users.forEach(user => {
+      if(user.myemail === data.myemail) {
+          valid = false;
+      }
+  })
+  }
 
-
-  const onSubmit = data =>{
-    setDetails({...data, myhistory: [], cardnum: Date.now()})
+  const onSubmit = data => {
+    validate(data);
+    console.log(data)
+    setClientInfo({
+      firstname: data.firstname,
+      lastname: data.lastname,
+      myaddress: data.myaddress,
+      myemail: data.myemail,
+      mymobileno: data.mymobileno,
+      mypassword: data.mypassword,
+      usertype: 'user',
+      myhistory: [{
+        amount: data.amount,
+        category: "",
+        date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+        description: "initial deposit",
+        type: "deposit"
+      }],
+      cardnum: Date.now(),
+      transfer: [],
+      balance: data.amount
+    });
   }
 
   return (
-    <form onSubmit={ handleSubmit(onSubmit)}>
-    <label>First Name:</label>
-    <input className='addClientInput' {...register("firstName")}/>
-    <label>Last Name:</label>
-    <input className='addClientInput' {...register("lastName")} type="name"/>
-    <label>Addres:</label>
-    <input className='addClientInput' {...register("address")} type="text"/>
-    <label>Mobile No.:</label>
-    <input className='addClientInput' {...register("mobileNo")} type="number"/>
-    <label>Email:</label>
-    <input className='addClientInput' {...register("email")} type="email"/>
-    <label>Password:</label>
-    <input className='addClientInput' {...register("password")} type="password"/>
-    <label>Usertype:</label>
-    <input className='addClientInput' {...register("userType")} type="text"/>
-    <label>Initial Deposit:</label>
-    <input className='addClientInput' {...register("initialDeposit")} type="number"/>
-    <button className='addClientBtn' type="submit">ADD NEW CLIENT</button>
-    </form>
+    <div className='ManageUserContainer'>
+      <h1>New Client Account</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='fullName'>
+          <div className='Firstname'>
+            <label className='labels'>First Name</label>
+            <input type='text'
+              placeholder='First Name'
+              {...register("firstname")}
+            />
+          </div>
+
+          <div className='Lastname'>
+            <label className='labels'>Last Name</label>
+            <input type='text'
+              placeholder='Last Name'
+              {...register("lastname")}
+            />
+          </div>
+        </div>
+
+        <div className='Address'>
+          <label className='labels'>Address</label>
+          <input type='text'
+            placeholder='Address'
+            {...register("myaddress")}
+          />
+        </div>
+
+        <div className='Contact'>
+          <label className='labels'>Contact</label>
+          <input type='text'
+            placeholder='Contact'
+            {...register("mymobileno")}
+          />
+        </div>
+
+        <div className='Deposit'>
+          <label className='labels'>Initial Deposit</label>
+          <input type='text'
+            placeholder='Initial Deposit'
+            {...register("amount")}
+          />
+        </div>
+
+        <div className='Email'>
+          <label className='labels'>Email</label>
+          <input type='email'
+            placeholder='Email'
+            {...register("myemail")}
+          />
+          {valid && <p className='errorMsgs'>Email already exist</p>}
+        </div>
+
+        <div className='Password'>
+          <label className='labels'>Password</label>
+          <input type='password'
+            placeholder='Password'
+            {...register("mypassword")}
+          />
+        </div>
+
+        <button>Add new client</button>
+      </form>
+    </div>
   )
 }
+
+export default AddClient;

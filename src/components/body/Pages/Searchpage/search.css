@@ -69,6 +69,12 @@
     height: 20px;
     margin-left: 10px;
 }
+.btnIcon{
+    width: 15px;
+}
+.btnIconEdit{
+    width: 18px;
+}
 .searchbar{
     display: inline-flex;
 }

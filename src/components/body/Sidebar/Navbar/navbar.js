@@ -51,11 +51,11 @@ export default function Navbar({ userlevel }) {
           <p className='balance_amount'><span>{userBalance}</span></p>
         </div>
         <div className='userinfo_container'>
-          <p>Name: {userInfo.firstname} {userInfo.lastname}</p>
-          <p>Email: {userInfo.myemail}</p>
-          <p>Mobile No: {userInfo.mymobileno}</p>
-          <p>Address: {userInfo.myaddress}</p>
-          <p>Card Number: {userInfo.myaddress}</p>
+        <p>Card Number: { userInfo.accountnum }</p>
+          <p>Name:{ userInfo.firstname } { userInfo.lastname }</p>
+          <p>Email:{ userInfo.myemail }</p>
+          <p>Contact: { userInfo.mymobileno }</p>
+          <p>Address: { userInfo.myaddress }</p>
         </div>
         <Buttons text='Logout' path='/' onMouseClick={() => {
           navigate('/', { replace: true })
