@@ -18,11 +18,9 @@ export const AdminContextProvider = ({ children }) => {
 
     useEffect(() => {
         setIsToggled(isToggled)
-        console.log(isToggled)
     }, [isToggled])
 
     useEffect(() => {
-        console.log(userRequest)
         localStorage.setItem('userrequest', JSON.stringify(userRequest));
     }, [userRequest])
 

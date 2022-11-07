@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Check from '../../../../../assets/icons/check.png'
 import Delete from '../../../../../assets/icons/deleteicon.png'
 
 export default function RequestList({ userinfo, handleApprove, index}) {
+
 
     return (
         <div className='usercontainer' onClick={handleApprove}>
@@ -14,7 +16,7 @@ export default function RequestList({ userinfo, handleApprove, index}) {
             <span>{userinfo.myemail}</span>
             <span>
 
-                <button className="checkBtn" ><img className="checkIcon" src={Check} /></button>
+                <Link to='/Bankerostmain/AddClient' className="checkBtn" ><img className="checkIcon" src={Check} /></Link>
                 <button className="checkBtn" ><img className="checkIcon" src={Delete} /></button>
             </span>
         </div>
