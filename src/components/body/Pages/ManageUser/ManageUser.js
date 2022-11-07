@@ -1,52 +1,86 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react';
+import { UsersContext } from '../../../../context/UsersContext';
 import { useForm } from 'react-hook-form'
 import './ManageUser.css'
 
+
 const ManageUser = () => {
 
-  const { register, handleSubmit } = useForm();
+ const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
+
+  const { register, handleSubmit, setValue } = useForm({
+    defaultValues: {
+      input: {
+        firstname: userInfo.firstname,
+        lastname: userInfo.lastname,
+        myaddress: userInfo.myaddress,
+        mymobileno: userInfo.mymobileno,
+        myemail: userInfo.myemail,
+        mypassword: userInfo.mypassword,
+      }
+    }
+  });
+
+  const onSubmit = handleSubmit((data) => {
+      console.log(data.input)
+      users.forEach((client) => {
+          if(client.accountnum === userInfo.accountnum) {
+            client.firstname = data.input.firstname
+           client.lastname = data.input.lastname 
+            client.myaddress = data.input.myaddress
+           client.mymobileno = data.input.mymobileno
+            client.myemail = data.input.myemail
+            client.mypassword = data.input.mypassword
+            localStorage.setItem('users', JSON.stringify(users))
+            setUsers(users)
+            setUserInfo(users)
+          }
+      })
+  })
 
   return (
     <div className='ManageUserContainer'>
       <h1>Edit Client's Account</h1>
-      <form>
+
+      <form onSubmit={onSubmit}>
 
         <div className='fullName'>
           <div className='Firstname'>
             <label className='labels'>First Name</label>
-            <input  type='text' placeholder='First Name'/>
+            <input {...register('input.firstname')} type='text' placeholder='First Name' ></input>
           </div>
 
           <div className='Lastname'>
             <label className='labels'>Last Name</label>
-            <input  type='text' placeholder='Last Name'/>
+            <input {...register('input.lastname')} type='text' placeholder='Last Name' />
           </div>
         </div>
 
         <div className='Address'>
           <label className='labels'>Address</label>
-          <input  type='text' placeholder='Address'/>
+          <input {...register('input.myaddress')} type='text' placeholder='Address' />
         </div>
 
         <div className='Contact'>
           <label className='labels'>Contact</label>
-          <input  type='text' placeholder='Contact'/>
+          <input {...register('input.mymobileno')} type='text' placeholder='Contact' />
         </div>
 
         <div className='Email'>
           <label className='labels'>Email</label>
-          <input  type='email' placeholder='Email'/>
+          <input {...register('input.myemail')} type='email' placeholder='Email' />
         </div>
 
         <div className='Password'>
           <label className='labels'>Password</label>
-          <input  type='password' placeholder='Password'/>
+          <input {...register('input.mypassword')} type='password' placeholder='Password' />
         </div>
 
-        <button>Proceed</button>
+        <button >Proceed</button>
       </form>
     </div>
   )
 }
 
 export default ManageUser
+

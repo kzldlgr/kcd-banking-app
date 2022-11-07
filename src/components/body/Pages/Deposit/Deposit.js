@@ -6,7 +6,7 @@ export default function Deposit(){
     const newDate = new Date()
     const [amount, setAmount] = useState([])
     const [balanceOutput, setBalanceOutput] = useState([])
-    const {users, setUsers, userBalance, setUserBalance} = useContext(UsersContext);
+    const {users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo} = useContext(UsersContext);
     const user = JSON.parse(sessionStorage.getItem('user'))
 
     let currentUser;
