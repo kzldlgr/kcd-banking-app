@@ -1,36 +1,51 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { UsersContext } from '../../../../context/UsersContext';
+import { AdminContext } from '../../../../context/AdminContext';
 import "./AddClient.css"
+import { Navigate } from 'react-router-dom';
 
 function AddClient() {
   const newDate = new Date();
-  const { register, handleSubmit } = useForm();
+  const { userRequest, requestInfo, setRequestInfo, setIsToggled } = useContext(AdminContext);
   const { users, setUsers } = useContext(UsersContext);
   const [clientInfo, setClientInfo] = useState([]);
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      firstname: requestInfo.firstname,
+      lastname: requestInfo.lastname,
+      myaddress: requestInfo.myaddress,
+      mymobileno: requestInfo.mymobileno,
+      myemail: requestInfo.myemail,
+      mypassword: requestInfo.mypassword
+    }
+  }
+  );
+
   const current = new Date();
   let lastAccount;
   let valid;
+
 
   useEffect(() => {
     if (clientInfo === undefined || clientInfo.length === 0) return
     lastAccount = users[users.length - 1]
     setUsers(account => [...account, { ...clientInfo, accountnum: Number(lastAccount.accountnum) + 1 }])
-    localStorage.setItem('users',JSON.stringify(users));
+    localStorage.setItem('users', JSON.stringify(users));
+
     console.log("Succesfully add new client")
   }, [clientInfo])
 
-  const validate = (data) => {
-    users.forEach(user => {
-      if(user.myemail === data.myemail) {
-          valid = false;
-      }
-  })
+  function removeUser() {
+    let removeRequest = userRequest.filter(user => {
+      return user.myemail != requestInfo.myemail
+    })
+    localStorage.setItem('userrequest', JSON.stringify(removeRequest))
+    setRequestInfo([]);
+    console.log(requestInfo)
   }
 
   const onSubmit = data => {
-    validate(data);
-    console.log(data)
     setClientInfo({
       firstname: data.firstname,
       lastname: data.lastname,
@@ -42,7 +57,7 @@ function AddClient() {
       myhistory: [{
         amount: data.amount,
         category: "",
-        date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+        date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
         description: "initial deposit",
         type: "deposit"
       }],
@@ -50,6 +65,10 @@ function AddClient() {
       transfer: [],
       balance: data.amount
     });
+    if (!requestInfo) {
+      removeUser();
+    }
+    setIsToggled(true);
   }
 
   return (
