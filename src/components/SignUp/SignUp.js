@@ -10,7 +10,7 @@ function SignUp() {
   const { users } = useContext(UsersContext);
   const current = new Date();
   const { userRequest, setUserRequest } = useContext(AdminContext);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, reset, handleSubmit, formState: { errors } } = useForm();
   let lastAccount;
   let valid = false;
 
@@ -38,6 +38,15 @@ function SignUp() {
       transfer: [],
       balance: 0
     });
+
+    reset({
+      firstname: "",
+      lastname: "",
+      myaddress: "",
+      mymobileno: "",
+      myemail: "",
+      mypassword: ""
+    })
   }
 
   return (

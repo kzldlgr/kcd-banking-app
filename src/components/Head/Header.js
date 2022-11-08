@@ -10,8 +10,6 @@ const Header = () => {
                 <img src={logo} />
                 <h1>Bankerost</h1>
             </div>
-            <div className="rightSide">
-            </div>
         </div>
     )
 }
