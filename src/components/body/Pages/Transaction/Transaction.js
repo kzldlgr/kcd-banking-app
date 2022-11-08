@@ -7,36 +7,31 @@ export default function Transaction({ children }) {
     const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
     const [transaction, setTransaction] = useState([]);
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
-    
+
     useEffect(() => {
 
-        Array.from(users).forEach(client => {
-            
-            if (userInfo !== undefined) {
-                if (client.myemail === currentUser.myemail) {
-                    setTransaction(client.myhistory.map((e, index) => (
-                        <tr key={index}>
-                            <td>{e.date}</td>
-                            <td>{e.description}</td>
-                            <td>{Number(e.amount).toLocaleString('tl-PH', { style: 'currency', currency: 'PHP', })}</td>
-                        </tr>
-                    )))
+        if (currentUser.usertype === 'user'){
+            const newUser = users.find(user => user.myemail === currentUser.myemail)
 
-                }
-                // else {
-                //     setTransaction(userInfo.myhistory.map((e, index) => (
-                //         <tr key={index}>
-                //         <td>{e.date}</td>
-                //         <td>{e.description}</td>
-                //         <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
-                //     </tr>
-                //     )))
-                //     console.log(userInfo)
-                // }
+            setTransaction(newUser.myhistory.map((e, index) => (
+                <tr key={index}>
+                    <td>{e.date}</td>
+                    <td>{e.description}</td>
+                    <td>{Number(e.amount).toLocaleString('tl-PH', { style: 'currency', currency: 'PHP', })}</td>
+                </tr>
+            )))
+        } else {
+            if (userInfo !== undefined && userInfo.length !== 0) {
+                setTransaction(userInfo.myhistory.map((e, index) => (
+                    <tr key={index}>
+                    <td>{e.date}</td>
+                    <td>{e.description}</td>
+                    <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
+                </tr>
+                )))
             }
-        });    
-
-    },[users])
+        }
+    }, [users])
 
     return (
         <div className="tablecontainer">

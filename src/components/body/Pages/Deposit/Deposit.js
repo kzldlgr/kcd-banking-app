@@ -21,8 +21,8 @@ export default function Deposit(){
             setBalanceOutput(Number(currentUser.balance) + Number(amount))
         }
     }, [amount])
-    
-    const onHandleClick = (e) => {
+
+    const clientSide = () =>{
         if (amount === '' || amount.length === 0) return
         users.forEach(client => {
             if (client.myemail === user.myemail && client.usertype === 'user') { 
@@ -52,6 +52,10 @@ export default function Deposit(){
                 setAmount('')
             }
         });
+    }
+    
+    const onHandleClick = (e) => {
+        
     }
 
     return (
