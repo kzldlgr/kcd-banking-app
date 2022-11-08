@@ -11,14 +11,11 @@ function SignUp() {
   const current = new Date();
   const { userRequest, setUserRequest } = useContext(AdminContext);
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
-  let lastAccount;
   let valid = false;
 
   useEffect(() => {
     if (details === undefined || details.length === 0) return
     setUserRequest(account => [...account, { ...details}])
-
-    console.log("Succesfully add new client")
   }, [details])
 
   const validate = (data) => {

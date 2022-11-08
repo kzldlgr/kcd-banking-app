@@ -6,7 +6,7 @@ import './UserRequest.css'
 export default function UserRequest() {
 
     const [inputList, setInputList] = useState([]);
-    const { userRequest, setRequestInfo } = useContext(AdminContext);
+    const { userRequest, requestInfo, setRequestInfo } = useContext(AdminContext);
     let currentEmail;
 
     const handleApprove = (e) => {

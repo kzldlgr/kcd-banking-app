@@ -7,11 +7,10 @@ import { Navigate } from 'react-router-dom';
 
 function AddClient() {
   const newDate = new Date();
-  const { userRequest, requestInfo, setRequestInfo, setIsToggled } = useContext(AdminContext);
+  const { userRequest, setUserRequest, requestInfo, setRequestInfo, setIsToggled } = useContext(AdminContext);
   const { users, setUsers } = useContext(UsersContext);
-  const [clientInfo, setClientInfo] = useState([]);
   const [formErrors, setFormErrors] = useState([]);
-  const { register, handleSubmit } = useForm({
+  const { register, reset, handleSubmit } = useForm({
     defaultValues: {
       firstname: requestInfo.firstname,
       lastname: requestInfo.lastname,
@@ -25,53 +24,14 @@ function AddClient() {
 
   const current = new Date();
   let lastAccount;
-  let validEmail;
+  let validEmail = false;
 
-
-  const validateEmail = (data) => {
-    const errors = {};
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    let user = users.find(user => user.myemail === data.myemail)
-    if (user) {
-      validEmail = false;
-      errors.myemail = "email already exist";
-    } else if (!regex.test(data.myemail)) {
-      errors.myemail = "This is not a valid email format!";
-    } else {
-      validEmail = true;
-    }
-  }
-
-  function addClient() {
-    if (validateEmail && validEmail) {
-      if (clientInfo === undefined || clientInfo.length === 0) return
-      lastAccount = users[users.length - 1]
-      setUsers(account => [...account, { ...clientInfo, accountnum: Number(lastAccount.accountnum) + 1 }])
-      localStorage.setItem('users', JSON.stringify(users));
-    }
-    console.log("Succesfully add new client")
-    removeUser();
-  }
-
-  function removeUser() {
-    let removeRequest = userRequest.filter(user => {
-      return user.myemail == requestInfo.myemail
-    })
-    localStorage.removeItem('userrequest', JSON.stringify(removeRequest))
-    console.log(requestInfo)
-  }
-
-
-  const onSubmit = data => {
-    addClient();
-    setClientInfo({
-      firstname: data.firstname,
-      lastname: data.lastname,
-      myaddress: data.myaddress,
-      myemail: data.myemail,
-      mymobileno: data.mymobileno,
-      mypassword: data.mypassword,
-      usertype: 'user',
+  function addNewClient(data) {
+    if (data === undefined || data.length === 0) return
+    lastAccount = users[users.length - 1]
+    setUsers(account => [...account, {
+      ...data,
+      accountnum: Number(lastAccount.accountnum) + 1,
       myhistory: [{
         amount: data.amount,
         category: "",
@@ -82,8 +42,29 @@ function AddClient() {
       cardnum: Date.now(),
       transfer: [],
       balance: data.amount
-    });
-    // setIsToggled(true);
+    }])
+    console.log("Succesfully add new client")
+  }
+
+  function removeUser() {
+    let removeRequest = userRequest.filter(user => user.myemail != requestInfo.myemail)
+    localStorage.setItem('userrequest', JSON.stringify(removeRequest))
+    setUserRequest(removeRequest)
+    setRequestInfo({});
+  }
+
+  const onSubmit = data => {
+    addNewClient(data);
+    removeUser();
+    reset({
+      firstname: "",
+      lastname: "",
+      myaddress: "",
+      myemail: "",
+      mypassword: "",
+      amount: "",
+      mymobileno: ""
+    })
   }
 
   return (
