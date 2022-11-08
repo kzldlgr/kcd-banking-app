@@ -71,8 +71,8 @@ export default function Transfer() {
           accountname: '',
           amount: '',
           purpose: '',
-          note: 'test note from reset'
-        },{keepDefaultValues: true})
+          note: ''
+        })
       
       })} className='formtransfer'>
         
