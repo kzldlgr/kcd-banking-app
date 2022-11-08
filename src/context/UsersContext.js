@@ -31,11 +31,13 @@ export const UsersContextProvider = ({children}) => {
     }, [])
 
     useEffect(() => {
-        console.log(users)
+        if(users !== undefined){
+           localStorage.setItem('users', JSON.stringify(users));
+        }
     }, [users])
 
     useEffect(() =>{
-        // console.log(userInfo)
+        console.log(userInfo)
     },[userInfo])
 
     return (

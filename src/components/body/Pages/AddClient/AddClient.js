@@ -7,10 +7,10 @@ import { Navigate } from 'react-router-dom';
 
 function AddClient() {
   const newDate = new Date();
-  const { userRequest, requestInfo, setRequestInfo, setIsToggled } = useContext(AdminContext);
+  const { userRequest, setUserRequest, requestInfo, setRequestInfo, setIsToggled } = useContext(AdminContext);
   const { users, setUsers } = useContext(UsersContext);
-  const [clientInfo, setClientInfo] = useState([]);
-  const { register, handleSubmit } = useForm({
+  const [formErrors, setFormErrors] = useState([]);
+  const { register, reset, handleSubmit } = useForm({
     defaultValues: {
       firstname: requestInfo.firstname,
       lastname: requestInfo.lastname,
@@ -24,36 +24,14 @@ function AddClient() {
 
   const current = new Date();
   let lastAccount;
-  let valid;
+  let validEmail = false;
 
-
-  useEffect(() => {
-    if (clientInfo === undefined || clientInfo.length === 0) return
+  function addNewClient(data) {
+    if (data === undefined || data.length === 0) return
     lastAccount = users[users.length - 1]
-    setUsers(account => [...account, { ...clientInfo, accountnum: Number(lastAccount.accountnum) + 1 }])
-    localStorage.setItem('users', JSON.stringify(users));
-
-    console.log("Succesfully add new client")
-  }, [clientInfo])
-
-  function removeUser() {
-    let removeRequest = userRequest.filter(user => {
-      return user.myemail != requestInfo.myemail
-    })
-    localStorage.setItem('userrequest', JSON.stringify(removeRequest))
-    setRequestInfo([]);
-    console.log(requestInfo)
-  }
-
-  const onSubmit = data => {
-    setClientInfo({
-      firstname: data.firstname,
-      lastname: data.lastname,
-      myaddress: data.myaddress,
-      myemail: data.myemail,
-      mymobileno: data.mymobileno,
-      mypassword: data.mypassword,
-      usertype: 'user',
+    setUsers(account => [...account, {
+      ...data,
+      accountnum: Number(lastAccount.accountnum) + 1,
       myhistory: [{
         amount: data.amount,
         category: "",
@@ -64,11 +42,29 @@ function AddClient() {
       cardnum: Date.now(),
       transfer: [],
       balance: data.amount
-    });
-    if (!requestInfo) {
-      removeUser();
-    }
-    setIsToggled(true);
+    }])
+    console.log("Succesfully add new client")
+  }
+
+  function removeUser() {
+    let removeRequest = userRequest.filter(user => user.myemail != requestInfo.myemail)
+    localStorage.setItem('userrequest', JSON.stringify(removeRequest))
+    setUserRequest(removeRequest)
+    setRequestInfo({});
+  }
+
+  const onSubmit = data => {
+    addNewClient(data);
+    removeUser();
+    reset({
+      firstname: "",
+      lastname: "",
+      myaddress: "",
+      myemail: "",
+      mypassword: "",
+      amount: "",
+      mymobileno: ""
+    })
   }
 
   return (
@@ -80,7 +76,10 @@ function AddClient() {
             <label className='labels'>First Name</label>
             <input type='text'
               placeholder='First Name'
-              {...register("firstname")}
+              {...register("firstname",
+                {
+                  required: 'First name is required.'
+                })}
             />
           </div>
 
@@ -88,7 +87,10 @@ function AddClient() {
             <label className='labels'>Last Name</label>
             <input type='text'
               placeholder='Last Name'
-              {...register("lastname")}
+              {...register("lastname",
+                {
+                  required: 'Last name is required.'
+                })}
             />
           </div>
         </div>
@@ -97,7 +99,10 @@ function AddClient() {
           <label className='labels'>Address</label>
           <input type='text'
             placeholder='Address'
-            {...register("myaddress")}
+            {...register("myaddress",
+              {
+                required: 'Address is required.'
+              })}
           />
         </div>
 
@@ -105,7 +110,10 @@ function AddClient() {
           <label className='labels'>Contact</label>
           <input type='text'
             placeholder='Contact'
-            {...register("mymobileno")}
+            {...register("mymobileno",
+              {
+                required: 'Mobile no. is required.'
+              })}
           />
         </div>
 
@@ -113,7 +121,10 @@ function AddClient() {
           <label className='labels'>Initial Deposit</label>
           <input type='text'
             placeholder='Initial Deposit'
-            {...register("amount")}
+            {...register("amount",
+              {
+                required: 'Initial Deposit is required.'
+              })}
           />
         </div>
 
@@ -121,16 +132,30 @@ function AddClient() {
           <label className='labels'>Email</label>
           <input type='email'
             placeholder='Email'
-            {...register("myemail")}
+            {...register("myemail",
+              {
+                required: 'Email is required.'
+              })}
           />
-          {valid && <p className='errorMsgs'>Email already exist</p>}
+          <p className='errorMsgs'>{formErrors.myemail}</p>
         </div>
 
         <div className='Password'>
           <label className='labels'>Password</label>
           <input type='password'
             placeholder='Password'
-            {...register("mypassword")}
+            {...register("mypassword",
+              {
+                required: 'Password is required.',
+                minLength: {
+                  value: 8,
+                  message: 'Minimum length is 8'
+                },
+                maxLength: {
+                  value: 32,
+                  message: 'Maximum length is 32'
+                }
+              })}
           />
         </div>
 
