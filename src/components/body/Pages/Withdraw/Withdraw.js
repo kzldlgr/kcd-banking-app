@@ -44,8 +44,8 @@ export default function Withdraw({children}){
     return (
         <> 
             <div className='pages'>
-                {`Hi ${user.firstname} ${user.lastname}, do you want to withdraw?`}
                 <div className="depositContainer">
+                    <p>{`Hi ${user.firstname} ${user.lastname}, do you want to withdraw?`}</p>
                     <span>Amount</span>
                     <input type='text' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
                     <p>{balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
