@@ -31,7 +31,9 @@ export default function Deposit(){
             client.myhistory.push({
                 date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                 description: 'deposit',
-                amount: amount
+                amount: amount,
+                category: '',
+                type: 'deposit'
             })
             client.balance = Number(client.balance) + Number(amount);
             console.log('Successfully Deposit')
@@ -48,8 +50,10 @@ export default function Deposit(){
             if (client.myemail === userInfo.myemail) { 
                 client.myhistory.push({
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-                    description: 'deposit',
-                    amount: amount
+                    description: 'Deposit from Bankerost main',
+                    amount: amount,
+                    category: '',
+                    type: 'deposit'
                 })
                 client.balance = Number(client.balance) + Number(amount);
                 console.log('Successfully Deposit')

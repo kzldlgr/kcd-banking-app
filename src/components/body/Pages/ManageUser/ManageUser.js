@@ -32,7 +32,6 @@ export default function ManageUser() {
             client.mypassword = data.input.mypassword
             localStorage.setItem('users', JSON.stringify(users))
             setUsers(users)
-            setUserInfo(users)
           }
       })
   })

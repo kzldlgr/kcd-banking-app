@@ -50,7 +50,7 @@ export default function Navbar({ userlevel }) {
       <div className='navbar'>
         <div className='amountbalance_container'>
           <p className='balance_title'>Available Balance</p>
-          <p className='balance_amount'><span>{userBalance}</span></p>
+          <p className='balance_amount'><span>{userBalance.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</span></p>
         </div>
         
         <div className='userinfo_container'>
@@ -61,27 +61,38 @@ export default function Navbar({ userlevel }) {
           <p>Address: { userInfo.myaddress }</p>
         </div>
         <div className='navbtns_container'>
+          
           <Buttons text='Search' path='/Bankerostmain/Admin' 
           onMouseClick={() =>{
             navigate('/Bankerostmain/Admin', { replace: true })
             setIsToggled(true)
             }} image={require('../../../../assets/icons/search.png')}/>
+
           <Buttons text='Add Client' path='/Bankerostmain/AddClient' 
           onMouseClick={() =>{
             navigate('/Bankerostmain/AddClient', { replace: true })
             setIsToggled(false)
             }} image={require('../../../../assets/icons/add-user.png')}/>
+
           <Buttons text='Request' path='/Bankerostmain/UserRequest' 
             onMouseClick={() =>{
               navigate('/Bankerostmain/UserRequest', { replace: true })
               setIsToggled(false)
               }} image={require('../../../../assets/icons/notification.png')}/>
+
+          <Buttons text='Transfer' path='/Bankerostmain/Transfer' 
+            onMouseClick={() =>{
+              navigate('/Bankerostmain/Transfer', { replace: true })
+              setIsToggled(false)
+              }} image={require('../../../../assets/icons/transaction.png')}/>
+
           <Buttons text='Logout'  path='/' 
           onMouseClick={() => {
             navigate('/', { replace: true })
             sessionStorage.setItem('user', JSON.stringify({}))
             setIsToggled(true)
           }} image={require('../../../../assets/icons/logout2.png')}/>
+
         </div> 
       </div>
     )

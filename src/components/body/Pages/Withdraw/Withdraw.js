@@ -30,8 +30,10 @@ const adminSide = (client) => {
                 console.log('Withdraw Successful') 
                 client.myhistory.push({
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-                    description: 'withdraw',
+                    description: 'Withdraw from Bankerost main',
                     amount: amount,
+                    category: '',
+                    type: 'withdraw'
                 })
                 client.balance -= Number(amount)
                 localStorage.setItem('users', JSON.stringify(users))
@@ -52,6 +54,8 @@ const clientSide = (client) => {
                 date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                 description: 'withdraw',
                 amount: amount,
+                category: '',
+                type: 'withdraw'
             })
             client.balance -= Number(amount)
             localStorage.setItem('users', JSON.stringify(users))
