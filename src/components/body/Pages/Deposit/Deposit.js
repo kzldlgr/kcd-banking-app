@@ -42,8 +42,9 @@ export default function Deposit(){
 
     return (
         <div className='pages'>
-            {`Hi ${user.firstname} ${user.lastname}, do you want to deposit?`}
+            
             <div className="depositContainer">
+                <p>{`Hi ${user.firstname} ${user.lastname}, do you want to deposit?`}</p>
                 <span>Amount</span>
                 <input type='text' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
                 <p>{balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>

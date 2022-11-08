@@ -26,7 +26,6 @@ export default function Tablist({userlevel}) {
         <Tabs text='Transfer'path='./Transfer'/>
         <Tabs text='Add Client' path='./AddClient'/>
         <Tabs text='Request' path='./UserRequest' />
-        <Tabs text='Employee' path='./Employee'/>
       </div>
     )
   }

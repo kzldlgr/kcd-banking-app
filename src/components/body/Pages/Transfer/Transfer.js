@@ -89,7 +89,7 @@ export default function Transfer() {
           <span>Note</span>
           <textarea {...register('note')}/>
         </div>
-        <input type='submit' value='Continue'/>
+        <input className='submitbtn' type='submit' value='Continue'/>
       </form>
     </div>
   )

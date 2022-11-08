@@ -7,16 +7,16 @@
     padding: 10px;
 }
 .customchart{
-    height: 400px;
-    width: 800px;
+    height: 350px;
+    width: 700px;
 }
-.chart_guide{
+/* .chart_guide{
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 5px;
     width: 200px;
-}
+} */
 .expenseManager{
     display: flex;
     flex-direction: column;
