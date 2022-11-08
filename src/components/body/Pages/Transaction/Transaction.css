@@ -1,15 +1,13 @@
 .transaction {
-    width: 100%;
-    padding: 20px;
-    
-}
-.tablecontainer{
     width: 70%;
+    padding: 20px;
+    /* width: 70%; */
     max-height: 400px;
     overflow: scroll;
+    
 }
 .transaction table {
-    width: 102%;
+    width: 100%;
     text-align: center;
     font-family: 'Bebas Neue', cursive;
     border-collapse: collapse;
@@ -33,10 +31,10 @@
 
 .transaction table,
 .transaction td {
-    border-bottom: 1px solid black;
+    border: 1px solid rgb(201, 201, 201);
     font-size: 18px;
 } 
 
 .transaction tr:nth-child(even){
-    background-color: #f1f1f1;
+    background-color: rgb(255, 255, 255);
 }

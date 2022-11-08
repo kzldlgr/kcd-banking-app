@@ -34,7 +34,6 @@ export default function Body() {
         <Sidebar userlevel='admin' />
         <Dashboard>
           {isToggled && <Searchpage />}
-          {!isToggled && <Link onClick={() => setIsToggled(true)} to='/Bankerostmain/Admin' className='optionBtn edit'>Back</Link>}
           {!isToggled && <Tablist userlevel={user.usertype} />}
           {!isToggled && <Outlet />}
         </Dashboard>

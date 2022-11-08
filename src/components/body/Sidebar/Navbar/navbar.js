@@ -37,6 +37,7 @@ export default function Navbar({ userlevel }) {
           <Buttons text='Withdraw' path='/Bankerostmain/Withdraw' image={require('../../../../assets/icons/withdrawal.png')}/>
           <Buttons text='Send Money' path='/Bankerostmain/Transfer' image={require('../../../../assets/icons/sendmoney.png')}/>
           <Buttons text='Transaction' path='/Bankerostmain/Transaction' image={require('../../../../assets/icons/transaction2.png')}/>
+          <Buttons text='Expenses' path='/Bankerostmain/Expense' image={require('../../../../assets/icons/budget.png')}/>
           <Buttons text='Logout' path='/' image={require('../../../../assets/icons/logout2.png')} onMouseClick={() => {
             navigate('/', { replace: true })
             sessionStorage.setItem('user', JSON.stringify({}))
@@ -75,11 +76,12 @@ export default function Navbar({ userlevel }) {
               navigate('/Bankerostmain/UserRequest', { replace: true })
               setIsToggled(false)
               }} image={require('../../../../assets/icons/notification.png')}/>
-          <Buttons text='Logout' image={require('../../../../assets/icons/logout2.png')} path='/' onMouseClick={() => {
+          <Buttons text='Logout'  path='/' 
+          onMouseClick={() => {
             navigate('/', { replace: true })
             sessionStorage.setItem('user', JSON.stringify({}))
             setIsToggled(true)
-          }} />
+          }} image={require('../../../../assets/icons/logout2.png')}/>
         </div> 
       </div>
     )

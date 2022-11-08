@@ -10,19 +10,6 @@ export default function Transaction({ children }) {
     
     useEffect(() => {
 
-        // const newUser = users.find(user => 
-        //     user.myemail === currentUser.myemail 
-        // )
-        
-        // setTransaction(client.myhistory.map((e, index) => (
-        //     <tr key={index}>
-        //         <td>{e.date}</td>
-        //         <td>{e.description}</td>
-        //         <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
-        //     </tr>
-        // )))
-        // console.log(newUser)
-
         Array.from(users).forEach(client => {
             
             if (userInfo !== undefined) {

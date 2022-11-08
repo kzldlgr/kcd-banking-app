@@ -5,6 +5,7 @@ export default function Withdraw({children}){
     const newDate = new Date()
     const {users, setUsers, userBalance, setUserBalance} = useContext(UsersContext)
     const [amount, setAmount] = useState([])
+    const [errorMsgs, setErrorMsgs] = useState('')
     const [balanceOutput, setBalanceOutput] = useState([])
     const user = JSON.parse(sessionStorage.getItem('user'))
 
@@ -36,7 +37,7 @@ export default function Withdraw({children}){
                     setUserBalance(balanceOutput)
                     setAmount('')
                     return
-                } return console.log('Not Enough Cash')
+                } return setErrorMsgs('Not Enough Cash')
             }
         });
     }
@@ -45,10 +46,10 @@ export default function Withdraw({children}){
         <> 
             <div className='pages'>
                 <div className="depositContainer">
-                    <p>{`Hi ${user.firstname} ${user.lastname}, do you want to withdraw?`}</p>
                     <span>Amount</span>
-                    <input type='text' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
-                    <p>{balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
+                    <input type='number' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
+                    <p className='errorMsgs'>{errorMsgs}</p>
+                    <p>Balance: {balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
                     <button onClick={onHandleClick}>Confirm</button> 
                 </div>
                 {children}

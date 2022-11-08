@@ -9,6 +9,9 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(32, 32, 32, .3);
 }
+.formtransfer p{
+    align-self: center;
+}
 .transferinput{
     display: grid;
     grid-template-columns: repeat(2, 100px);
