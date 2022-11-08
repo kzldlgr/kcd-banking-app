@@ -1,9 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { UsersContext } from '../../../../context/UsersContext';
 import { AdminContext } from '../../../../context/AdminContext';
 import "./AddClient.css"
-import { Navigate } from 'react-router-dom';
 
 function AddClient() {
   const newDate = new Date();
@@ -30,8 +29,13 @@ function AddClient() {
     if (data === undefined || data.length === 0) return
     lastAccount = users[users.length - 1]
     setUsers(account => [...account, {
-      ...data,
       accountnum: Number(lastAccount.accountnum) + 1,
+      firstname: data.firstname,
+      lastname: data.lastname,
+      mymobileno: data.mymobileno,
+      myaddress: data.myaddress,
+      myemail: data.myemail,
+      mypassword: data.mypassword,
       myhistory: [{
         amount: data.amount,
         category: "",
@@ -41,7 +45,8 @@ function AddClient() {
       }],
       cardnum: Date.now(),
       transfer: [],
-      balance: data.amount
+      balance: data.amount,
+      usertype: 'user'
     }])
     console.log("Succesfully add new client")
   }
