@@ -23,7 +23,7 @@ export default function Deposit(){
     const onHandleClick = (e) => {
         if (amount === '' || amount.length === 0) return
         users.forEach(client => {
-            if (client.myemail === user.myemail) { 
+            if (client.myemail === user.myemail && client.usertype === 'user') { 
                 client.myhistory.push({
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                     description: 'deposit',
@@ -36,6 +36,18 @@ export default function Deposit(){
                 setUserBalance(balanceOutput)
                 setAmount('')
                 return
+            } else {
+                userInfo.myhistory.push({
+                    date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+                    description: 'deposit',
+                    amount: amount
+                })
+                userInfo.balance = Number(userInfo.balance) + Number(amount);
+                console.log('Successfully Deposit')
+                localStorage.setItem('users', JSON.stringify(users))
+                setUsers(users)
+                setUserBalance(balanceOutput)
+                setAmount('')
             }
         });
     }

@@ -18,9 +18,9 @@ export default function Search() {
       displayUsers()
     }, [names])
 
-    useEffect(() =>{
-      console.log(userInfo)
-    },[userInfo])
+      // useEffect(() =>{
+      //   console.log(userInfo)
+      // },[userInfo])
 
     const handleUserClick = (e) => {
       selectedUser = e.currentTarget.children[5].textContent;
