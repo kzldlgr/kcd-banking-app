@@ -9,23 +9,43 @@ export default function Deposit(){
     const [balanceOutput, setBalanceOutput] = useState([])
     const {register, formState: {errors}} = useForm()
     const {users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo} = useContext(UsersContext);
-    const user = JSON.parse(sessionStorage.getItem('user'))
+    const currentUser = JSON.parse(sessionStorage.getItem('user'))
 
-    let currentUser;
+    let newUser;
 
-    useEffect(() => {      
-        if (users === undefined || users.length === 0) return
-
-        if (users.length !== undefined) {
-            currentUser = users.find(client => client.myemail === user.myemail)
-            setBalanceOutput(Number(currentUser.balance) + Number(amount))
+    useEffect(() => {   
+        if (currentUser.usertype === 'admin'){
+            if (userInfo !== undefined && userInfo.length !== 0){
+                newUser = users.find(client => client.myemail === userInfo.myemail)
+                setBalanceOutput(Number(newUser.balance) + Number(amount))    
+            }
+        }else if(currentUser.usertype === 'user'){
+            newUser = users.find(client => client.myemail === currentUser.myemail)
+            setBalanceOutput(Number(newUser.balance) + Number(amount))
         }
+        
     }, [amount])
     
-    const onHandleClick = (e) => {
-        if (amount === '' || amount.length === 0) return
-        users.forEach(client => {
-            if (client.myemail === user.myemail) { 
+    const clientSide = (client) =>{
+        if (client.myemail === currentUser.myemail) { 
+            client.myhistory.push({
+                date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+                description: 'deposit',
+                amount: amount
+            })
+            client.balance = Number(client.balance) + Number(amount);
+            console.log('Successfully Deposit')
+            localStorage.setItem('users', JSON.stringify(users))
+            setUsers(users)
+            setUserBalance(balanceOutput)
+            setAmount('')
+            return
+        }
+    }
+
+    const adminSide = (client) => {
+        if (userInfo !== undefined && userInfo.length !== 0) {
+            if (client.myemail === userInfo.myemail) { 
                 client.myhistory.push({
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                     description: 'deposit',
@@ -38,6 +58,19 @@ export default function Deposit(){
                 setUserBalance(balanceOutput)
                 setAmount('')
                 return
+            }
+        }
+    }
+
+    const onHandleClick = (e) => {
+        e.preventDefault()
+        if (amount === '' || amount.length === 0) return
+        
+        users.forEach(client => {
+            if (currentUser.usertype === 'admin'){
+                adminSide(client)
+            } else if (currentUser.usertype === 'user'){
+                clientSide(client)
             }
         });
     }
