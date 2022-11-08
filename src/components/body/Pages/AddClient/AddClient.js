@@ -32,7 +32,6 @@ function AddClient() {
     lastAccount = users[users.length - 1]
     setUsers(account => [...account, { ...clientInfo, accountnum: Number(lastAccount.accountnum) + 1 }])
     localStorage.setItem('users', JSON.stringify(users));
-
     console.log("Succesfully add new client")
   }, [clientInfo])
 
@@ -65,9 +64,7 @@ function AddClient() {
       transfer: [],
       balance: data.amount
     });
-    if (!requestInfo) {
-      removeUser();
-    }
+
     setIsToggled(true);
   }
 
