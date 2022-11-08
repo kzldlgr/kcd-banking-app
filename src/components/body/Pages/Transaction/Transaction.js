@@ -7,7 +7,7 @@ export default function Transaction({ children }) {
     const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
     const [transaction, setTransaction] = useState([]);
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
-
+    
     useEffect(() => {
 
         Array.from(users).forEach(client => {

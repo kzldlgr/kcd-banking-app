@@ -7,15 +7,8 @@
     padding: 10px;
 }
 .customchart{
-    height: 400px;
-    width: 800px;
-}
-.chart_guide{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px;
-    width: 200px;
+    height: 350px;
+    width: 700px;
 }
 .expenseManager{
     display: flex;

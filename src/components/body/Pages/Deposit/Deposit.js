@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { UsersContext } from '../../../../context/UsersContext';
 import './deposit.css'
 
@@ -6,6 +7,7 @@ export default function Deposit(){
     const newDate = new Date()
     const [amount, setAmount] = useState([])
     const [balanceOutput, setBalanceOutput] = useState([])
+    const {register, formState: {errors}} = useForm()
     const {users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo} = useContext(UsersContext);
     const user = JSON.parse(sessionStorage.getItem('user'))
 
@@ -54,14 +56,13 @@ export default function Deposit(){
 
     return (
         <div className='pages'>
-            {`Hi ${user.firstname} ${user.lastname}, do you want to deposit?`}
-            <div className="depositContainer">
+            <form className="depositContainer">
                 <span>Amount</span>
-                <input type='text' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
-                <p>{balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
+                <input type='number' {...register('amount')} maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
+                <p className='errorMsgs'>{errors.amount?.message}</p>
+                <p>Balance: {balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
                 <button onClick={onHandleClick}>Confirm</button> 
-            </div>
-            
+            </form>        
         </div>
     )
 }

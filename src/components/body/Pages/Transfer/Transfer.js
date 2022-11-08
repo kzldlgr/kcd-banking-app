@@ -1,11 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { UsersContext } from '../../../../context/UsersContext';
 import './transfer.css';
 
 export default function Transfer() {
 
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, reset, formState: {errors}} = useForm();
+  const [errorMessages, setErrorMessages] = useState('')
   const {users, setUsers, userBalance, setUserBalance} = useContext(UsersContext);
   const currentUser = JSON.parse(sessionStorage.getItem('user'));
 
@@ -49,9 +50,11 @@ export default function Transfer() {
       
       localStorage.setItem('users', JSON.stringify(users))
       setUsers(users)
-      console.log('Successfully Transfer the amount')
+      setErrorMessages('Successfully Transfer the amount')
     })
   }
+
+  
 
   return (
     <div className='pages'>
@@ -59,15 +62,24 @@ export default function Transfer() {
 
         transferTo = users.find(user => user.accountnum === data.accountnum);
         
-        transferTo === undefined ? console.log('no user found') 
+        transferTo === undefined ? setErrorMessages('no user found') 
         : userBalance >= data.amount ?        
-          checkUsers(transferTo, data): console.log('insufficient funds')
+          checkUsers(transferTo, data): setErrorMessages('insufficient funds')
+
+        reset({
+          accountnum: '',
+          accountname: '',
+          amount: '',
+          purpose: '',
+          note: 'test note from reset'
+        },{keepDefaultValues: true})
       
       })} className='formtransfer'>
         
         <div className='transferinput'>
           <span>Account Number</span>
-          <input {...register('accountnum')}/>
+          <input type='number' {...register('accountnum')}/>
+          
         </div>
         
         <div className='transferinput'>
@@ -77,7 +89,7 @@ export default function Transfer() {
         
         <div className='transferinput'>
           <span>Amount</span>
-          <input  {...register('amount')}/>
+          <input type='number' {...register('amount')}/>
         </div>
         
         <div className='transferinput'>
@@ -89,7 +101,8 @@ export default function Transfer() {
           <span>Note</span>
           <textarea {...register('note')}/>
         </div>
-        <input type='submit' value='Continue'/>
+        <p className='errorMsgs'>{errorMessages}</p>
+        <input className='submitbtn' type='submit' value='Continue'/>
       </form>
     </div>
   )

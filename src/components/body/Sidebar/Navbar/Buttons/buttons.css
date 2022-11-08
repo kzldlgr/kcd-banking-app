@@ -3,10 +3,11 @@
     src: url(/src/assets/fonts/BebasNeue-Regular.ttf);
 }
 :root{
-    --button-size: 145px;
+    --button-size: 100px;
 }
 .navbtns{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #f0fef2;
@@ -15,7 +16,7 @@
     width: var(--button-size);
     height: var(--button-size);
     font-family:'Bebas Neue';
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: 0.1em;
     cursor: pointer;
@@ -35,4 +36,7 @@
 .navbtnslink{
     text-decoration: none;
     color: inherit;
+}
+.btn-icon{
+    width: 50px;
 }

@@ -24,14 +24,12 @@ function Login() {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     let user = users.find(user => user.myemail === values.email && user.mypassword === values.password)
-    console.log(values.email)
-    console.log(values.password)
-    console.log(user)
+    
     if (user !== undefined) {
       sessionStorage.setItem('user', JSON.stringify(user));
       setLoginUser(users.find(user=> user.myemail === values.email))
       user.usertype === 'admin' ? navigate('/Bankerostmain/Admin', { replace: true }) :
-      navigate('/Bankerostmain', { replace: true })
+      navigate('/Bankerostmain/Transaction', { replace: true })
     } else if (!values.email) {
       errors.email = "Email is required.";
     } else if (!regex.test(values.email)) {
