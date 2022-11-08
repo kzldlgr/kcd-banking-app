@@ -9,33 +9,20 @@ export default function Transaction({ children }) {
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     
     useEffect(() => {
-
-        // const newUser = users.find(user => 
-        //     user.myemail === currentUser.myemail 
-        // )
         
-        // setTransaction(client.myhistory.map((e, index) => (
-        //     <tr key={index}>
-        //         <td>{e.date}</td>
-        //         <td>{e.description}</td>
-        //         <td>{Number(e.amount).toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</td>
-        //     </tr>
-        // )))
-        // console.log(newUser)
+        if (currentUser.usertype === 'user'){
+            const newUser = users.find(user => user.myemail === currentUser.myemail)
 
-        Array.from(users).forEach(client => {
+            setTransaction(newUser.myhistory.map((e, index) => (
+                <tr key={index}>
+                    <td>{e.date}</td>
+                    <td>{e.description}</td>
+                    <td>{Number(e.amount).toLocaleString('tl-PH', { style: 'currency', currency: 'PHP', })}</td>
+                </tr>
+            )))
+        } else if (currentUser.usertype === 'admin') {
             
-            if (userInfo !== undefined) {
-                if (client.myemail === currentUser.myemail) {
-                    setTransaction(client.myhistory.map((e, index) => (
-                        <tr key={index}>
-                            <td>{e.date}</td>
-                            <td>{e.description}</td>
-                            <td>{Number(e.amount).toLocaleString('tl-PH', { style: 'currency', currency: 'PHP', })}</td>
-                        </tr>
-                    )))
-                }
-                }else {
+            if (userInfo !== undefined && userInfo.length !== 0) {
                 
                 setTransaction(userInfo.myhistory.map((e, index) => (
                     <tr key={index}>
@@ -45,10 +32,10 @@ export default function Transaction({ children }) {
                 </tr>
                 )))
             }
-        });    
+        }
 
     },[users])
-    // console.log(users, 'hello')
+    
     return (
         <div className="tablecontainer">
             <div className='transaction'>
@@ -69,4 +56,3 @@ export default function Transaction({ children }) {
         </div>
     )
 }
-

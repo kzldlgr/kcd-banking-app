@@ -78,7 +78,7 @@ export default function Expense() {
             
             <div className='expenseInput'>
                 <span>Amount</span>
-                <input  {...register('amount')}/>
+                <input type='number' {...register('amount')}/>
             </div>
             
             <div className='expenseInput'>

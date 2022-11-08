@@ -10,13 +10,6 @@
     height: 350px;
     width: 700px;
 }
-/* .chart_guide{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px;
-    width: 200px;
-} */
 .expenseManager{
     display: flex;
     flex-direction: column;
