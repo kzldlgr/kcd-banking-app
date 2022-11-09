@@ -1,15 +1,15 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { UsersContext } from '../../../../context/UsersContext';
 import { AdminContext } from '../../../../context/AdminContext';
+import swal from 'sweetalert';
 import "./AddClient.css"
-import { Navigate } from 'react-router-dom';
 
 function AddClient() {
   const newDate = new Date();
   const { userRequest, setUserRequest, requestInfo, setRequestInfo, setIsToggled } = useContext(AdminContext);
   const { users, setUsers } = useContext(UsersContext);
-  const [formErrors, setFormErrors] = useState([]);
+  const [formErrors] = useState([]);
   const { register, reset, handleSubmit } = useForm({
     defaultValues: {
       firstname: requestInfo.firstname,
@@ -30,7 +30,12 @@ function AddClient() {
     if (data === undefined || data.length === 0) return
     lastAccount = users[users.length - 1]
     setUsers(account => [...account, {
-      ...data,
+      firstname: data.firstname,
+      lastname: data.lastname,
+      myaddress: data.myaddress,
+      mymobileno: data.mymobileno,
+      myemail: data.myemail,
+      mypassword: data.mypassword,
       accountnum: Number(lastAccount.accountnum) + 1,
       myhistory: [{
         amount: data.amount,
@@ -41,7 +46,8 @@ function AddClient() {
       }],
       cardnum: Date.now(),
       transfer: [],
-      balance: data.amount
+      balance: data.amount,
+      usertype: 'user'
     }])
     console.log("Succesfully add new client")
   }
@@ -54,6 +60,7 @@ function AddClient() {
   }
 
   const onSubmit = data => {
+    console.log(data)
     addNewClient(data);
     removeUser();
     reset({
@@ -65,6 +72,12 @@ function AddClient() {
       amount: "",
       mymobileno: ""
     })
+
+    swal({
+      text: "New user has been added",
+      icon: "success",
+      button: "Done",
+    });
   }
 
   return (

@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AdminContext } from '../../context/AdminContext';
 import { UsersContext } from '../../context/UsersContext';
+import swal from 'sweetalert';
 import "./SignUp.css"
 
 function SignUp() {
+  let navigate = useNavigate();
   const [details, setDetails] = useState([]);
   const { users } = useContext(UsersContext);
   const current = new Date();
@@ -15,7 +17,7 @@ function SignUp() {
 
   useEffect(() => {
     if (details === undefined || details.length === 0) return
-    setUserRequest(account => [...account, { ...details}])
+    setUserRequest(account => [...account, { ...details }])
   }, [details])
 
   const validate = (data) => {
@@ -44,6 +46,19 @@ function SignUp() {
       myemail: "",
       mypassword: ""
     })
+    swal({
+      text: "Successfully created an account!",
+      icon: "success",
+      button: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        navigate('/', { replace: true })
+        swal("Account will be review and approve by admin", {
+          icon: "success",
+        });
+      }
+    });
   }
 
   return (

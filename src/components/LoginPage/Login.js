@@ -34,7 +34,7 @@ function Login() {
       errors.email = "Email is required.";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
-    } else if (user === undefined) {
+    } else if (user.myemail !== values.email) {
       errors.email = "Email does not exist."
     }
     if (!values.password) {
