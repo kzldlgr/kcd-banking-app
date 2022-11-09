@@ -2,11 +2,10 @@ import React from 'react';
 import Navbar from './Navbar/navbar';
 import './sidebar.css';
 
-export default function sidebar({children}) {
+export default function sidebar({userlevel}) {
   return (
     <div className='sidebar'>
-        {children}
-        <Navbar/>
+        <Navbar userlevel={userlevel}/>
     </div>
   )
 }

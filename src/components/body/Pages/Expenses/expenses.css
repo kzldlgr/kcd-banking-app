@@ -1,0 +1,39 @@
+.expenses{
+    padding: 20px;
+}
+.chart_container{
+    display: flex;
+    gap:  50px;
+    padding: 10px;
+}
+.customchart{
+    height: 350px;
+    width: 700px;
+}
+.expenseManager{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: flex-start;
+    width: 400px;
+    padding: 20px;
+}
+.expenseInput{
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    width: 200px;
+    gap: 30px;
+}
+.expenseInput span{
+    width: 150px;
+}
+.expenseInput input{
+    width: 200px;
+}
+.expenseInput select{
+    width: 200px;
+}
+.expenseInput textarea{
+    height: 60px;
+    width: 200px;
+}

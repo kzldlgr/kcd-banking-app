@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .headerContainer {
     height: 4.2rem;
     width: 100%;
@@ -11,8 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #f0fef2;
     font-family: 'Bebas Neue', cursive;
+    box-shadow: 0 2px 5px rgba(32, 32, 32, .3);
 }
 
 .leftSide {
@@ -30,7 +24,7 @@
     
 }
 
-.rightSide p {
+.rightSide{
     padding-right: 15px;
     font-family: 'Bebas Neue', cursive;
     font-size: 18px;
