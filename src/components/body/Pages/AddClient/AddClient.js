@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UsersContext } from "../../../../context/UsersContext";
 import { AdminContext } from "../../../../context/AdminContext";
+import swal from "sweetalert";
 import "./AddClient.css";
 
 function AddClient() {
@@ -9,7 +10,7 @@ function AddClient() {
 	const { userRequest, setUserRequest, requestInfo, setRequestInfo, setIsToggled } =
 		useContext(AdminContext);
 	const { users, setUsers } = useContext(UsersContext);
-	const [formErrors, setFormErrors] = useState([]);
+	const [formErrors] = useState([]);
 	const { register, reset, handleSubmit } = useForm({
 		defaultValues: {
 			firstname: requestInfo.firstname,
@@ -31,13 +32,13 @@ function AddClient() {
 		setUsers((account) => [
 			...account,
 			{
-				accountnum: Number(lastAccount.accountnum) + 1,
 				firstname: data.firstname,
 				lastname: data.lastname,
-				mymobileno: data.mymobileno,
 				myaddress: data.myaddress,
+				mymobileno: data.mymobileno,
 				myemail: data.myemail,
 				mypassword: data.mypassword,
+				accountnum: Number(lastAccount.accountnum) + 1,
 				myhistory: [
 					{
 						amount: data.amount,
@@ -64,6 +65,7 @@ function AddClient() {
 	}
 
 	const onSubmit = (data) => {
+		console.log(data);
 		addNewClient(data);
 		removeUser();
 		reset({
@@ -74,6 +76,12 @@ function AddClient() {
 			mypassword: "",
 			amount: "",
 			mymobileno: "",
+		});
+
+		swal({
+			text: "New user has been added",
+			icon: "success",
+			button: "Done",
 		});
 	};
 

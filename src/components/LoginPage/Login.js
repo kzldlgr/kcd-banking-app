@@ -37,7 +37,7 @@ function Login() {
 			errors.email = "Email is required.";
 		} else if (!regex.test(values.email)) {
 			errors.email = "This is not a valid email format!";
-		} else if (user === undefined) {
+		} else if (user.myemail !== values.email) {
 			errors.email = "Email does not exist.";
 		}
 		if (!values.password) {
@@ -49,45 +49,6 @@ function Login() {
 	};
 
 	return (
-		// <div className="main">
-		//   <div className="sub-main">
-		//     <div className='login-form'>
-		//       <form onSubmit={handleSubmit}>
-		//         <h1>Login to your account</h1>
-		//         <hr></hr>
-		//         <div className="first-input">
-		//           <h3>Username</h3>
-		//           <input type="email"
-		//             name="email"
-		//             className="loginInput"
-		//             placeholder="Username"
-		//             value={formValues.email}
-		//             onChange={handleChange}
-		//           />
-		//           <p className='errorMsgs'>{formErrors.email}</p>
-		//         </div>
-
-		//         <div className="second-input">
-		//           <h3>Password</h3>
-		//           <input type="password"
-		//             name="password"
-		//             className="loginInput"
-		//             placeholder="Password"
-		//             value={formValues.password}
-		//             onChange={handleChange}
-		//           />
-		//           <p className='errorMsgs'>{formErrors.password}</p>
-		//         </div>
-		//         <button className='loginbtn' >Login</button>
-		//         <div className="third-input">
-		//           <Link to='/SignUp'>Register Now</Link> |
-		//           <Link to='/ForgotPassword'>Forgot Password</Link>
-		//         </div>
-		//       </form>
-		//     </div>
-		//   </div>
-		// </div>
-
 		<div className="hero min-h-[90%] bg-base-200 font-pop">
 			<div className="hero-content flex flex-col lg:flex-row items-center justify-between">
 				<div className="text-center lg:text-right">
@@ -97,7 +58,7 @@ function Login() {
 				<div className="card flex-shrink-0 w-[23rem] shadow-2xl bg-base-100">
 					<div className="card-body gap-4">
 						<h1 className="font-bold text-2xl">Login</h1>
-						<form onSubmit={handleSubmit} className="flex flex-col">
+						<form onSubmit={(e) => handleSubmit(e)} className="flex flex-col">
 							<div className="w-full">
 								<h3>Username</h3>
 								<input
