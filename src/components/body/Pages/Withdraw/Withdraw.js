@@ -89,7 +89,6 @@ const clientSide = (client) => {
                     <p className='errorMsgs'>{errorMsgs}</p>
                     <p>Balance: {balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
                     <button onClick={onHandleClick}>Confirm</button> 
-                    <button>Test</button> 
                 </div>
                 {children}
             </div>
