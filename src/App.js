@@ -52,7 +52,7 @@ function App() {
             <Route path='UserRequest' element={<UserRequest />} />
           </Route>
         }
-        {/* <Route path='*' element={<Navigate to='/' replace={true} />} /> */}
+        <Route path='*' element={<Navigate to='/' replace={true} />} />
       </Routes>
       </AdminContextProvider>
     </UsersContextProvider >
