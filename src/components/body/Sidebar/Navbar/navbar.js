@@ -61,7 +61,7 @@ export default function Navbar({ userlevel }) {
           <p>Address: { userInfo.myaddress }</p>
         </div>
         <div className='navbtns_container'>
-          
+
           <Buttons text='Search' path='/Bankerostmain/Admin' 
           onMouseClick={() =>{
             navigate('/Bankerostmain/Admin', { replace: true })
