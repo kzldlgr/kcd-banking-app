@@ -78,7 +78,8 @@ export default function Navbar({ userlevel }) {
             onMouseClick={() =>{
               navigate('/Bankerostmain/UserRequest', { replace: true })
               setIsToggled(false)
-              }} image={require('../../../../assets/icons/notification.png')}/>
+              }} image={require('../../../../assets/icons/notification.png')}
+              badgeOn={true}/>
 
           <Buttons text='Transfer' path='/Bankerostmain/Transfer' 
             onMouseClick={() =>{
