@@ -14,7 +14,7 @@ export default function Transfer() {
   const newDate = new Date();
   
   const transferReceiver = (userdata, receiver, data) => {
-    if (userdata.accountnum === receiver.accountnum) {
+    if (userdata.accountnum === data.accountnumreceiver) {
       userdata.balance = Number(userdata.balance) + Number(data.amount)
       userdata.transfer.push(data)
       userdata.myhistory.push({
@@ -28,8 +28,8 @@ export default function Transfer() {
   }
 
   const transferSender = (userdata, receiver, data) => {
-    if (userdata.accountnum === currentUser.accountnum) {
-      userdata.balance = Number(userdata.balance) - Number(data.amount)
+    if (userdata.accountnum === data.input.accountnum) {
+      userdata.balance = Number(userdata.balance) - Number(data.input.amount)
       userdata.transfer.push(data)
       userdata.myhistory.push({
         date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
@@ -53,8 +53,6 @@ export default function Transfer() {
       setErrorMessages('Successfully Transfer the amount')
     })
   }
-
-  
 
   return (
     <div className='pages'>
