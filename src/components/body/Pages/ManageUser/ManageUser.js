@@ -6,8 +6,8 @@ import './ManageUser.css'
 export default function ManageUser() {
 
  const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
-
-  const { register, handleSubmit, setValue } = useForm({
+const [msgUpdate, setMsgUpdate] = useState('')
+  const { register, handleSubmit, setValue, reset } = useForm({
     defaultValues: {
       input: {
         firstname: userInfo.firstname,
@@ -34,7 +34,10 @@ export default function ManageUser() {
             setUsers(users)
           }
       })
-  })
+      setMsgUpdate("Changes were successfully saved")
+  }
+
+  )
 
   return ( 
     <div className='ManageUserContainer'>
@@ -73,7 +76,7 @@ export default function ManageUser() {
           <label className='labels'>Password</label>
           <input {...register('input.mypassword')} type='password' placeholder='Password' />
         </div>
-
+        <p className='errorMsgs'>{msgUpdate}</p>
         <button >Proceed</button>
       </form>
     </div>
