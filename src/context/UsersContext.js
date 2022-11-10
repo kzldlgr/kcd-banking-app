@@ -1,48 +1,70 @@
 import React, { createContext, useState, useEffect } from "react";
-import usersDemoData from '../components/usersData'
+import usersDemoData from "../components/usersData";
 
 export let UsersContext = createContext({});
 
-export const UsersContextProvider = ({children}) => {
+export const UsersContextProvider = ({ children }) => {
+	const [users, setUsers] = useState(
+		localStorage.getItem("users") === null
+			? localStorage.setItem("users", JSON.stringify(usersDemoData))
+			: JSON.parse(localStorage.getItem("users"))
+	);
 
-    const [users, setUsers] = useState(
-        localStorage.getItem('users') === null ? localStorage.setItem('users', JSON.stringify(usersDemoData)) : JSON.parse(localStorage.getItem('users'))
-    );
-        
-    const [userBalance, setUserBalance] = useState('0.00');
+	const [userBalance, setUserBalance] = useState("0.00");
 
-    const [userInfo, setUserInfo] = useState([])
+	const [userAccount, setUserAccount] = useState("");
 
-    const [loginUser ,setLoginUser] =useState([])
+	const [userInfo, setUserInfo] = useState([]);
 
-    const [searchView, setSearchView] = useState(true)
+	const [loginUser, setLoginUser] = useState([]);
 
-    const [chartData, setChartData] = useState({
-        labels: [],
-        datasets: [{
-            label: 'Expense',
-            data: [],
-            backgroundColor: ['#E97777']
-        }]
-    })
+	const [searchView, setSearchView] = useState(true);
 
-    useEffect(() => {
-        setUsers(JSON.parse(localStorage.getItem('users')))
-    }, [])
+	const [chartData, setChartData] = useState({
+		labels: [],
+		datasets: [
+			{
+				label: "Expense",
+				data: [],
+				backgroundColor: ["#E97777"],
+			},
+		],
+	});
 
-    useEffect(() => {
-        if(users !== undefined){
-           localStorage.setItem('users', JSON.stringify(users));
-        }
-    }, [users])
+	useEffect(() => {
+		setUsers(JSON.parse(localStorage.getItem("users")));
+	}, []);
 
-    useEffect(() =>{
-        console.log(userInfo)
-    },[userInfo])
+	useEffect(() => {
+		if (users !== undefined) {
+			localStorage.setItem("users", JSON.stringify(users));
+		}
+	}, [users]);
 
-    return (
-        <UsersContext.Provider value={{users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo, searchView, setSearchView, chartData, setChartData, loginUser ,setLoginUser}}>
-            {children}
-        </UsersContext.Provider>
-    )
-}
+	useEffect(() => {
+		console.log(userInfo);
+	}, [userInfo]);
+
+	return (
+		<UsersContext.Provider
+			value={{
+				users,
+				setUsers,
+				userBalance,
+				setUserBalance,
+				userInfo,
+				setUserInfo,
+				searchView,
+				setSearchView,
+				chartData,
+				setChartData,
+				loginUser,
+				setLoginUser,
+				userAccount,
+				setUserAccount,
+			}}
+		>
+			{children}
+		</UsersContext.Provider>
+	);
+};
