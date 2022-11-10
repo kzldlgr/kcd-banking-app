@@ -1,39 +1,69 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { AdminContext } from '../../../../context/AdminContext';
-import RequestList from './RequestList/RequestList';
-import './UserRequest.css'
+import React, { useState, useEffect, useContext, useMemo } from "react";
+import { AdminContext } from "../../../../context/AdminContext";
+import RequestList from "./RequestList/RequestList";
 
 export default function UserRequest() {
+	const [inputList, setInputList] = useState([]);
+	const [name, setName] = useState("");
+	const { userRequest, requestInfo, setRequestInfo } = useContext(AdminContext);
+	let currentEmail;
 
-    const [inputList, setInputList] = useState([]);
-    const { userRequest, requestInfo, setRequestInfo } = useContext(AdminContext);
-    let currentEmail;
+	const handleApprove = (e) => {
+		currentEmail = e.currentTarget.children[5].textContent;
+		let selectedUser = userRequest.find((user) => currentEmail === user.myemail);
+		setRequestInfo(selectedUser);
+	};
 
-    const handleApprove = (e) => {
-        currentEmail = e.currentTarget.children[5].textContent;
-        let selectedUser = userRequest.find(user => currentEmail === user.myemail)
-        setRequestInfo(selectedUser);
-    }
+	const filterUser = useMemo(() => {
+		const users = userRequest;
 
-    useEffect(() => {
-        setInputList(userRequest.map((user, index) => {
-            if (user.usertype !== 'admin') {
-                return <RequestList userinfo={user} handleApprove={handleApprove} index={index + 1} key={index} />
-            }
-        }))
-    }, [])
+		const filterFName = users.filter((user) =>
+			user.firstname.toLowerCase().includes(name.toLowerCase())
+		);
 
-    return (
+		const filterLName = users.filter((user) =>
+			user.lastname.toLowerCase().includes(name.toLowerCase())
+		);
 
-        <div className='userlist'>
-            <div className='userlistview'>
-                <div className='tableHead'>
-                    <span>Request No.</span><span>First Name</span><span>Last Name</span><span>Address</span><span>Contact</span><span>Email</span><span>Options</span>
-                </div>
-                <div className='tableBody'>
-                    {inputList}
-                </div>
-            </div>
-        </div>
-    )
+		return name ? Array.from(new Set([...filterFName, ...filterLName])) : users;
+	}, [name, userRequest]);
+
+	return (
+		<div className="w-[100%] font-pop bg-base-100 p-2 rounded-md">
+			<div className="flex gap-4 items-center mb-3">
+				<h1 className="font-semibold text-lg">Search:</h1>
+				<input
+					type="text"
+					className="input input-bordered"
+					onChange={(e) => setName(e.target.value)}
+				></input>
+			</div>
+
+			<div className="max-h-[65vh] min-h-[65vh] relative w-full overflow-x-auto">
+				<table className="table table-compact w-full m-auto">
+					<thead>
+						<tr>
+							<th className="sticky top-0 px-6 py-3">Request #</th>
+							<th className="sticky top-0 px-6 py-3">First Name</th>
+							<th className="sticky top-0 px-6 py-3">Last Name</th>
+							<th className="sticky top-0 px-6 py-3">Address</th>
+							<th className="sticky top-0 px-6 py-3">Contact</th>
+							<th className="sticky top-0 px-6 py-3">Email</th>
+							<th className="sticky top-0 px-6 py-3"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{filterUser.map((user, index) => (
+							<RequestList
+								userinfo={user}
+								handleApprove={handleApprove}
+								index={index + 1}
+								key={index}
+							/>
+						))}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	);
 }

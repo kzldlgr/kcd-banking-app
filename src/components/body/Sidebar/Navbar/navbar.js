@@ -1,101 +1,75 @@
-import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AdminContext } from '../../../../context/AdminContext';
-import { UsersContext } from '../../../../context/UsersContext';
-import Buttons from './Buttons/buttons';
-import './navbar.css';
+import React, { useContext, useEffect } from "react";
+import { UsersContext } from "../../../../context/UsersContext";
+import "./navbar.css";
 
 export default function Navbar({ userlevel }) {
+	const { users, userBalance, setUserBalance, userInfo, setUserAccount, userAccount } =
+		useContext(UsersContext);
+	const loginUser = JSON.parse(sessionStorage.getItem("user"));
 
-  let navigate = useNavigate();
-  const {users, userBalance,setUserBalance,userInfo} = useContext(UsersContext);
-  const {isToggled, setIsToggled} = useContext(AdminContext);
-  const loginUser = JSON.parse(sessionStorage.getItem('user'));
+	let usermatch;
 
-  let usermatch;
+	useEffect(() => {
+		if (loginUser.usertype === "admin") {
+			setUserBalance("0.00");
+			setUserAccount("00000000");
+		} else {
+			usermatch = users.find((user) => user.myemail === loginUser.myemail);
+			if (usermatch !== undefined && usermatch.usertype !== "admin") {
+				setUserBalance(Number(usermatch.balance));
+				setUserAccount(usermatch.accountnum);
+			}
+		}
+	}, [users]);
 
-  useEffect(() => {
-    if (loginUser.usertype === 'admin') {
-      setUserBalance('0.00')
-    } else {
-      usermatch = users.find(user => user.myemail === loginUser.myemail)
-      if (usermatch !== undefined && usermatch.usertype !== 'admin') {
-        setUserBalance(Number(usermatch.balance))
-      }
-    }
-  }, [users])
+	if (userlevel !== "admin") {
+		return (
+			<div className="bg-gradient-to-r from-[#11998e] to-[#19cf5f] w-[18rem] shadow-lg rounded-lg text-base-100 p-2 flex flex-col gap-[3.5rem] font-pop">
+				<div>
+					<p className="font-light text-xs">Account No.</p>
+					<p className="text-lg font-semibold">{userAccount}</p>
+				</div>
+				<p className="self-end font-bold text-3xl">
+					{userBalance.toLocaleString("tl-PH", { style: "currency", currency: "PHP" })}
+				</p>
+			</div>
+		);
+	} else {
+		return (
+			<>
+				<div className="z-[2] bg-gradient-to-r from-[#11998e] to-[#19cf5f] w-[18rem] shadow-lg rounded-lg text-base-100 p-2 flex flex-col gap-[3.5rem] font-pop">
+					<div>
+						<p className="font-light text-xs">Account No.</p>
+						<p className="text-lg font-semibold">{userAccount}</p>
+					</div>
 
-  if (userlevel !== 'admin') {
-    return (
-      <div className='navbar'>
-        <div className='amountbalance_container'>
-          <p className='balance_title'>Available Balance</p>
-          <p className='balance_amount'><span>{Number(userBalance).toLocaleString('tl-PH', { style: 'currency', currency: 'PHP', })}</span></p>
-        </div>
-        <div className='navbtns_container'>
-          <Buttons text='Deposit' path='/Bankerostmain/Deposit' image={require('../../../../assets/icons/deposit.png')} />
-          <Buttons text='Withdraw' path='/Bankerostmain/Withdraw' image={require('../../../../assets/icons/withdrawal.png')}/>
-          <Buttons text='Send Money' path='/Bankerostmain/Transfer' image={require('../../../../assets/icons/sendmoney.png')}/>
-          <Buttons text='Transaction' path='/Bankerostmain/Transaction' image={require('../../../../assets/icons/transaction2.png')}/>
-          <Buttons text='Expenses' path='/Bankerostmain/Expense' image={require('../../../../assets/icons/budget.png')}/>
-          <Buttons text='Logout' path='/' image={require('../../../../assets/icons/logout2.png')} onMouseClick={() => {
-            navigate('/', { replace: true })
-            sessionStorage.setItem('user', JSON.stringify({}))
-          }} />
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className='navbar'>
-        <div className='amountbalance_container'>
-          <p className='balance_title'>Available Balance</p>
-          <p className='balance_amount'><span>{userBalance.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</span></p>
-        </div>
-        
-        <div className='userinfo_container'>
-        <p>Card Number: { userInfo.accountnum }</p>
-          <p>Name:{ userInfo.firstname } { userInfo.lastname }</p>
-          <p>Email:{ userInfo.myemail }</p>
-          <p>Contact: { userInfo.mymobileno }</p>
-          <p>Address: { userInfo.myaddress }</p>
-        </div>
-        <div className='navbtns_container'>
+					<p className="self-end font-bold text-3xl">
+						{userBalance.toLocaleString("tl-PH", { style: "currency", currency: "PHP" })}
+					</p>
+				</div>
 
-          <Buttons text='Search' path='/Bankerostmain/Admin' 
-          onMouseClick={() =>{
-            navigate('/Bankerostmain/Admin', { replace: true })
-            setIsToggled(true)
-            }} image={require('../../../../assets/icons/search.png')}/>
-
-          <Buttons text='Add Client' path='/Bankerostmain/AddClient' 
-          onMouseClick={() =>{
-            navigate('/Bankerostmain/AddClient', { replace: true })
-            setIsToggled(false)
-            }} image={require('../../../../assets/icons/add-user.png')}/>
-
-          <Buttons text='Request' path='/Bankerostmain/UserRequest' 
-            onMouseClick={() =>{
-              navigate('/Bankerostmain/UserRequest', { replace: true })
-              setIsToggled(false)
-              }} image={require('../../../../assets/icons/notification.png')}
-              badgeOn={true}/>
-
-          <Buttons text='Transfer' path='/Bankerostmain/Transfer' 
-            onMouseClick={() =>{
-              navigate('/Bankerostmain/Transfer', { replace: true })
-              setIsToggled(false)
-              }} image={require('../../../../assets/icons/transaction.png')}/>
-
-          <Buttons text='Logout'  path='/' 
-          onMouseClick={() => {
-            navigate('/', { replace: true })
-            sessionStorage.setItem('user', JSON.stringify({}))
-            setIsToggled(true)
-          }} image={require('../../../../assets/icons/logout2.png')}/>
-
-        </div> 
-      </div>
-    )
-  }
+				<div
+					className={`font-light font-pop text-left w-full mt-2 bg-white shadow-lg rounded-lg p-2 flex flex-col gap-2 pt-[2rem] transition-all ${
+						userInfo.firstname ? "translate-y-[-2.3rem]" : "translate-y-[-100%]"
+					} z-0`}
+				>
+					<p>
+						Name:{" "}
+						<span className="font-medium text-sm">
+							{userInfo.firstname} {userInfo.lastname}
+						</span>
+					</p>
+					<p>
+						Email: <span className="font-medium text-sm">{userInfo.myemail}</span>
+					</p>
+					<p>
+						Contact: <span className="font-medium text-sm">{userInfo.mymobileno}</span>
+					</p>
+					<p>
+						Address: <span className="font-medium text-sm">{userInfo.myaddress}</span>
+					</p>
+				</div>
+			</>
+		);
+	}
 }
