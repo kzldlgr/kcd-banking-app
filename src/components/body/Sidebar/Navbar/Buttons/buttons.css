@@ -7,6 +7,7 @@
 }
 .navbtns{
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -39,4 +40,16 @@
 }
 .btn-icon{
     width: 50px;
+}
+.badge{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: -8px;
+    right:-8px;
+    background-color: rgb(82, 108, 255);
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
 }

@@ -30,13 +30,13 @@ function AddClient() {
     if (data === undefined || data.length === 0) return
     lastAccount = users[users.length - 1]
     setUsers(account => [...account, {
+      accountnum: Number(lastAccount.accountnum) + 1,
       firstname: data.firstname,
       lastname: data.lastname,
-      myaddress: data.myaddress,
       mymobileno: data.mymobileno,
+      myaddress: data.myaddress,
       myemail: data.myemail,
       mypassword: data.mypassword,
-      accountnum: Number(lastAccount.accountnum) + 1,
       myhistory: [{
         amount: data.amount,
         category: "",

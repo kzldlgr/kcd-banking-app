@@ -21,7 +21,7 @@ export default function Transaction({ children }) {
                 </tr>
             )))
         } else if (currentUser.usertype === 'admin') {
-            
+            console.log(userInfo)
             if (userInfo !== undefined && userInfo.length !== 0) {
                 
                 setTransaction(userInfo.myhistory.map((e, index) => (
