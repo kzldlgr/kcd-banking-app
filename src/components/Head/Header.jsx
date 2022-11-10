@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo3.png";
 import { AdminContext } from "../../context/AdminContext";
-import Buttons from "../Body/Sidebar/Navbar/Buttons/buttons";
+import Buttons from "../body/Sidebar/Navbar/Buttons/buttons";
 import Side from "./Side";
 
 const Header = ({ children, loggedUser }) => {
