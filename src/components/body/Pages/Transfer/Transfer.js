@@ -3,20 +3,6 @@ import { useForm } from 'react-hook-form';
 import { UsersContext } from '../../../../context/UsersContext';
 import './transfer.css';
 import arrow from '../../../../assets/images/up-arrow.png'
-
-
-// const { register, handleSubmit, setValue } = useForm({
-//   defaultValues: {
-//     input: {
-//       firstname: userInfo.firstname,
-//       lastname: userInfo.lastname,
-//       myaddress: userInfo.myaddress,
-//       mymobileno: userInfo.mymobileno,
-//       myemail: userInfo.myemail,
-//       mypassword: userInfo.mypassword,
-//     }
-//   }
-// });
 export default function Transfer() {
 
   const [errorMessages, setErrorMessages] = useState('')
@@ -37,6 +23,36 @@ export default function Transfer() {
 
   let transferTo;
   const newDate = new Date();
+
+  const transferReceiverClient = (userdata, transferTo, data) => {
+    
+    if (userdata.accountnum === transferTo.accountnum) {
+      userdata.balance = Number(userdata.balance) + Number(data.amount)
+      userdata.transfer.push(data)
+      userdata.myhistory.push({
+        date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+        description: `You received from ${currentUser.firstname} ${currentUser.lastname}`,
+        type: 'transfer',
+        category: '',
+        amount: data.amount
+      })
+    }
+  }
+
+  const transferSenderClient = (userdata, transferTo, data) => {
+    if (userdata.accountnum === currentUser.accountnum) {
+      userdata.balance = Number(userdata.balance) - Number(data.amount)
+      userdata.transfer.push(data)
+      userdata.myhistory.push({
+        date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+        description: `You transfered to ${transferTo.firstname} ${transferTo.lastname}`,
+        type: 'transfer',
+        category: '',
+        amount: data.amount
+      })
+      setUserBalance(Number(userdata.balance))
+    } 
+  }
 
   const transferReceiver = (userdata, data) => {
     if (userdata.accountnum === data.accountnumReceiver) {
@@ -67,28 +83,32 @@ export default function Transfer() {
     } 
   }
 
-  const checkUsers = (data) => {
+  const checkUsers = (data, transferTo) => {
     users.forEach(user => {
-
-        transferReceiver(user, data)
-        transferSender(user, data)
-
-      localStorage.setItem('users', JSON.stringify(users))
-      setUsers(users)
-      setErrorMessages('Successfully Transfer the amount')
+      
+      if (currentUser.usertype === 'admin'){
+        transferReceiver(user, data);
+        transferSender(user, data);
+      }else if (currentUser.usertype === 'user'){
+        transferReceiverClient(user, transferTo, data);
+        transferSenderClient(user, transferTo, data);  
+      } 
     })
+    localStorage.setItem('users', JSON.stringify(users))
+    setUsers(users)
+    setErrorMessages('Successfully Transfer the amount')
   }
 
   if (currentUser.usertype === 'user') {
     return (
       <div className='pages'>
         <form onSubmit={handleSubmit(data => {
-
+          console.log(data)
           transferTo = users.find(user => user.accountnum === data.accountnum);
-          console.log(transferTo)
+          
           transferTo === undefined ? setErrorMessages('no user found')
             : userBalance >= data.amount ?
-              checkUsers(transferTo, data) : setErrorMessages('insufficient funds')
+              checkUsers(data, transferTo) : setErrorMessages('insufficient funds')
 
           reset({
             accountnum: '',
