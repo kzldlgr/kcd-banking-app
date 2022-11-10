@@ -34,11 +34,11 @@ export default function BarChart() {
 			) {
 				allDates.filter((e) => {
 					return e.Date === date.date;
-				})[0].Sales += +Number(date.amount);
+				})[0].Expense += +Number(date.amount);
 			} else {
 				allDates.push({
 					Date: date.date,
-					Sales: +Number(date.amount),
+					Expense: +Number(date.amount),
 				});
 			}
 
@@ -55,7 +55,7 @@ export default function BarChart() {
 			datasets: [
 				{
 					label: "Expense",
-					data: newHistory.map((data) => data.Sales),
+					data: newHistory.map((data) => data.Expense),
 					backgroundColor: ["teal"],
 				},
 			],

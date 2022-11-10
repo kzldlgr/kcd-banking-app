@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UsersContext } from "../../../../context/UsersContext";
 import { useForm } from "react-hook-form";
-import "./ManageUser.css";
 
 export default function ManageUser() {
 	const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);

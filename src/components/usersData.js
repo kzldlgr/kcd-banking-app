@@ -32,27 +32,27 @@ export default [
             },
             {
                 date: '10-25-2022',
-                description: 'rent',
+                description: 'Pizza',
                 type: 'expense',
                 category: 'Food',
                 amount: '5000'
             },
             {
-                date: '10-25-2022',
+                date: '10-26-2022',
                 description: 'rent',
                 type: 'expense',
                 category: 'housing',
                 amount: '8000'
             },
             {
-                date: '10-25-2022',
-                description: 'rent',
+                date: '10-27-2022',
+                description: 'Ultimate Seafoods',
                 type: 'expense',
                 category: 'Food',
                 amount: '5000'
             },
             {
-                date: '10-25-2022',
+                date: '10-27-2022',
                 description: 'withdraw',
                 type: 'withdraw',
                 category: '',
@@ -82,27 +82,27 @@ export default [
             },
             {
                 date: '10-25-2022',
-                description: 'rent',
+                description: 'Chocolate Bars',
                 type: 'expense',
                 category: 'Food',
                 amount: '5000'
             },
             {
-                date: '10-25-2022',
+                date: '10-26-2022',
                 description: 'rent',
                 type: 'expense',
                 category: 'housing',
                 amount: '8000'
             },
             {
-                date: '10-25-2022',
-                description: 'rent',
+                date: '10-27-2022',
+                description: 'Macaroni & Cheeza',
                 type: 'expense',
                 category: 'Food',
-                amount: '5000'
+                amount: '10000'
             },
             {
-                date: '10-25-2022',
+                date: '10-27-2022',
                 description: 'withdraw',
                 type: 'withdraw',
                 category: '',
@@ -132,27 +132,27 @@ export default [
             },
             {
                 date: '10-25-2022',
-                description: 'rent',
+                description: 'Mukbang Challenge',
                 type: 'expense',
                 category: 'Food',
                 amount: '5000'
             },
             {
-                date: '10-25-2022',
+                date: '10-26-2022',
                 description: 'rent',
                 type: 'expense',
                 category: 'housing',
                 amount: '8000'
             },
             {
-                date: '10-25-2022',
-                description: 'rent',
+                date: '10-27-2022',
+                description: 'Ultimate Meat lovers',
                 type: 'expense',
                 category: 'Food',
                 amount: '5000'
             },
             {
-                date: '10-25-2022',
+                date: '10-27-2022',
                 description: 'withdraw',
                 type: 'withdraw',
                 category: '',

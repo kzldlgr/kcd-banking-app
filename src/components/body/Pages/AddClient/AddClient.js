@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { UsersContext } from "../../../../context/UsersContext";
 import { AdminContext } from "../../../../context/AdminContext";
 import swal from "sweetalert";
-import "./AddClient.css";
 
 function AddClient() {
 	const newDate = new Date();

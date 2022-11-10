@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { UsersContext } from "../../../../context/UsersContext";
-import "./navbar.css";
 
 export default function Navbar({ userlevel }) {
 	const { users, userBalance, setUserBalance, userInfo, setUserAccount, userAccount } =
@@ -37,7 +36,7 @@ export default function Navbar({ userlevel }) {
 	} else {
 		return (
 			<>
-				<div className="z-[2] bg-gradient-to-r from-[#11998e] to-[#19cf5f] w-[18rem] shadow-lg rounded-lg text-base-100 p-2 flex flex-col gap-[3.5rem] font-pop">
+				<div className="z-[4] bg-gradient-to-r from-[#11998e] to-[#19cf5f] w-[18rem] shadow-lg rounded-lg text-base-100 p-2 flex flex-col gap-[3.5rem] font-pop">
 					<div>
 						<p className="font-light text-xs">Account No.</p>
 						<p className="text-lg font-semibold">{userAccount}</p>

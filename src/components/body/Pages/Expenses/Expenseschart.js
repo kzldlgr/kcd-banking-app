@@ -1,4 +1,3 @@
-import "./expenses.css";
 import BarChart from "../../../CustomCharts/BarChart";
 
 export default function Expenses() {

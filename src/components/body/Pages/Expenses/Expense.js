@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { UsersContext } from "../../../../context/UsersContext";
-import "./expenses.css";
 
 export default function Expense() {
 	const newDate = new Date();

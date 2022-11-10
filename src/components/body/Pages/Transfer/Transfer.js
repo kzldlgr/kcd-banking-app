@@ -1,112 +1,209 @@
-import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
-import { UsersContext } from "../../../../context/UsersContext";
-import "./transfer.css";
+import React, { useContext, useState } from 'react'
+import { useForm } from 'react-hook-form';
+import { UsersContext } from '../../../../context/UsersContext';
+import './transfer.css';
+import arrow from '../../../../assets/images/up-arrow.png'
 
+
+// const { register, handleSubmit, setValue } = useForm({
+//   defaultValues: {
+//     input: {
+//       firstname: userInfo.firstname,
+//       lastname: userInfo.lastname,
+//       myaddress: userInfo.myaddress,
+//       mymobileno: userInfo.mymobileno,
+//       myemail: userInfo.myemail,
+//       mypassword: userInfo.mypassword,
+//     }
+//   }
+// });
 export default function Transfer() {
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors },
-	} = useForm();
-	const [errorMessages, setErrorMessages] = useState("");
-	const { users, setUsers, userBalance, setUserBalance } = useContext(UsersContext);
-	const currentUser = JSON.parse(sessionStorage.getItem("user"));
 
-	let transferTo;
-	const newDate = new Date();
+  const [errorMessages, setErrorMessages] = useState('')
+  const { users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo } = useContext(UsersContext);
+  const currentUser = JSON.parse(sessionStorage.getItem('user'));
+  const [receiverData, setReceiverData] = useState({})
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    defaultValues: {
+      input: {
+        accountnum: userInfo.accountnum,
+        firstname: userInfo.firstname,
+        amount: userInfo.amount,
+        purpose: userInfo.purpose,
+        note: userInfo.note,
+      }
+    }
+  });
 
-	const transferReceiver = (userdata, receiver, data) => {
-		if (userdata.accountnum === receiver.accountnum) {
-			userdata.balance = Number(userdata.balance) + Number(data.amount);
-			userdata.transfer.push(data);
-			userdata.myhistory.push({
-				date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-				description: `You received from ${currentUser.firstname} ${currentUser.lastname}`,
-				type: "transfer",
-				category: "",
-				amount: data.amount,
-			});
-		}
-	};
+  let transferTo;
+  const newDate = new Date();
 
-	const transferSender = (userdata, receiver, data) => {
-		if (userdata.accountnum === currentUser.accountnum) {
-			userdata.balance = Number(userdata.balance) - Number(data.amount);
-			userdata.transfer.push(data);
-			userdata.myhistory.push({
-				date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-				description: `You transfered to ${receiver.firstname} ${receiver.lastname}`,
-				type: "transfer",
-				category: "",
-				amount: data.amount,
-			});
-			setUserBalance(userdata.balance);
-		}
-	};
+  const transferReceiver = (userdata, data) => {
+    if (userdata.accountnum === data.accountnumReceiver) {
+      userdata.balance = Number(userdata.balance) + Number(data.input.amount)
+      userdata.transfer.push(data)
+      userdata.myhistory.push({
+        date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+        description: userInfo ? `You received from ${userInfo.firstname} ${userInfo.lastname}` : `You received from ${currentUser.firstname} ${currentUser.lastname}`,
+        type: 'transfer',
+        category: '',
+        amount: data.input.amount
+      })
+    }
+  }
 
-	const checkUsers = (transferTo, data) => {
-		users.forEach((user) => {
-			transferReceiver(user, transferTo, data);
-			transferSender(user, transferTo, data);
+  const transferSender = (userdata, data) => {
+    if (userdata.accountnum === data.input.accountnum) {
+      userdata.balance = Number(userdata.balance) - Number(data.input.amount)
+      userdata.transfer.push(data)
+      userdata.myhistory.push({
+        date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+        description: userInfo ? `You transfered to ${data.firstnameReceiver} ${data.lastnameReceiver}` : `You transfered to `,
+        type: 'transfer',
+        category: '',
+        amount: data.input.amount
+      })
+      setUserBalance(userdata.balance)
+    } 
+  }
 
-			localStorage.setItem("users", JSON.stringify(users));
-			setUsers(users);
-			setErrorMessages("Successfully Transfer the amount");
-		});
-	};
+  const checkUsers = (data) => {
+    users.forEach(user => {
 
-	return (
-		<div className="p-5 w-full place-content-center bg-base-100 rounded-md">
-			<h1 className="font-bold text-2xl mb-3">Transfer</h1>
-			<form
-				onSubmit={handleSubmit((data) => {
-					transferTo = users.find((user) => user.accountnum === data.accountnum);
+        transferReceiver(user, data)
+        transferSender(user, data)
 
-					transferTo === undefined
-						? setErrorMessages("no user found")
-						: userBalance >= data.amount
-						? checkUsers(transferTo, data)
-						: setErrorMessages("insufficient funds");
+      localStorage.setItem('users', JSON.stringify(users))
+      setUsers(users)
+      setErrorMessages('Successfully Transfer the amount')
+    })
+  }
 
-					reset({
-						accountnum: "",
-						accountname: "",
-						amount: "",
-						purpose: "",
-						note: "",
-					});
-				})}
-				className="w-full flex flex-col font-pop"
-			>
-				<div className="w-full flex flex-col">
-					<span className=" ">Account Number:</span>
-					<input className="input input-bordered" type="number" {...register("accountnum")} />
-				</div>
+  if (currentUser.usertype === 'user') {
+    return (
+      <div className='pages'>
+        <form onSubmit={handleSubmit(data => {
 
-				<div className="w-full flex flex-col">
-					<span className=" ">Account Name:</span>
-					<input className="input input-bordered" {...register("accountname")} />
-				</div>
+          transferTo = users.find(user => user.accountnum === data.accountnum);
+          console.log(transferTo)
+          transferTo === undefined ? setErrorMessages('no user found')
+            : userBalance >= data.amount ?
+              checkUsers(transferTo, data) : setErrorMessages('insufficient funds')
 
-				<div className="w-full flex flex-col">
-					<span className=" ">Amount:</span>
-					<input className="input input-bordered" type="number" {...register("amount")} />
-				</div>
+          reset({
+            accountnum: '',
+            accountname: '',
+            amount: '',
+            purpose: '',
+            note: ''
+          })
+        })} className='formtransfer'>
 
-				<div className="w-full flex flex-col">
-					<span className=" ">Purpose:</span>
-					<input className="input input-bordered" {...register("purpose")} />
-				</div>
+          <div className='transferinput'>
+            <span>Account Number</span>
+            <input type='number' {...register('accountnum')} />
 
-				<div className="w-full flex flex-col">
-					<span className=" ">Note:</span>
-					<textarea {...register("note")} className="textarea textarea-bordered" />
-				</div>
-				<p className="errorMsgs">{errorMessages}</p>
-				<input className="btn btn-primary self-end mt-3" type="submit" value="Continue" />
-			</form>
-		</div>
-	);
+          </div>
+
+          <div className='transferinput'>
+            <span>Account Name</span>
+            <input  {...register('firstname')} />
+          </div>
+
+          <div className='transferinput'>
+            <span>Amount</span>
+            <input type='number' {...register('amount')} />
+          </div>
+
+          <div className='transferinput'>
+            <span>Purpose</span>
+            <input {...register('purpose')} />
+          </div>
+
+          <div className='transferinput'>
+            <span>Note</span>
+            <textarea {...register('note')} />
+          </div>
+          <p className='errorMsgs'>{errorMessages}</p>
+          <input className='submitbtn' type='submit' value='Continue' />
+        </form>
+      </div>
+
+    )
+  } else {
+    return (
+      <div className='pages'>
+        <form onSubmit={handleSubmit(data => {
+          
+          data.accountnumReceiver === undefined ? setErrorMessages('no user found')
+            : Number(userInfo.balance) >= data.input.amount ?
+              checkUsers(data) : setErrorMessages('insufficient funds')
+
+          reset({
+            accountnum: '',
+            accountname: '',
+            amount: '',
+            purpose: '',
+            note: ''
+          })
+        })} className='formtransfer'>
+
+          <div className='transferinput'>
+            <span>Account Number</span>
+            <input type='number' {...register('input.accountnum')} />
+
+          </div>
+
+          <div className='transferinput'>
+            <span>Account Name</span>
+            <input  {...register('input.firstname')} />
+          </div>
+
+          <div className='transferinput'>
+            <span>Amount</span>
+            <input type='number' {...register('input.amount')} />
+          </div>
+
+          <div className='transferinput'>
+            <span>Purpose</span>
+            <input {...register('input.purpose')} />
+          </div>
+
+          <div className='transferinput'>
+            <span>Note</span>
+            <textarea {...register('input.note')} />
+          </div>
+          <p className='errorMsgs'>{errorMessages}</p>
+          <input className='submitbtn' type='submit' value='Continue' />
+        </form>
+
+
+
+        <div className="transferDivider">
+          <img src={arrow} className="arrow-img" />
+        </div>
+
+
+
+        <form className='secondForm'>
+
+          <div className='transferinput'>
+            <span>Account Number</span>
+            <input type='number' {...register('accountnumReceiver')} />
+
+          </div>
+
+          <div className='transferinput'>
+            <span>First Name</span>
+            <input  {...register('firstnameReceiver')} />
+          </div>
+
+          <div className='transferinput'>
+            <span>Last Name</span>
+            <input  {...register('lastnameReceiver')} />
+          </div>
+        </form>
+      </div>
+    )
+  }
 }
