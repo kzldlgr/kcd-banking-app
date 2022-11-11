@@ -62,7 +62,7 @@ export default function Expense() {
 	}, []);
 
 	const onSubmit = (data) => {
-		console.log(data)
+		
 		users.forEach((user) => {
 			if (user.accountnum === currentUser.accountnum) {
 				user.balance = data.checksavings ? Number(user.balance) - Number(data.amount) : user.balance
@@ -72,7 +72,7 @@ export default function Expense() {
 						date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
 						category: data.category,
 						amount: data.amount,
-						description: data.description,
+						description: data.checksavings ? `${data.description} paid using your savings account` : data.description,
 						type: "expense",
 					},
 				];
