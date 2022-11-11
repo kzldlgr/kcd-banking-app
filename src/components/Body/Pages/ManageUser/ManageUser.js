@@ -6,7 +6,7 @@ export default function ManageUser() {
 	const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
 	const [updateMsg, setUpdateMsg] = useState('')
 
-	const { register, handleSubmit, setValue } = useForm({
+	const { register, handleSubmit, setValue, formState: { errors }, } = useForm({
 		defaultValues: {
 			input: {
 				firstname: userInfo.firstname,
@@ -21,7 +21,9 @@ export default function ManageUser() {
 
 	const onSubmit = handleSubmit((data) => {
 		console.log(data.input);
-		setUpdateMsg('Changes were successfully saved')
+		setUpdateMsg(updateMsg => {
+			
+		})
 		users.forEach((client) => {
 			if (client.accountnum === userInfo.accountnum) {
 				client.firstname = data.input.firstname;
@@ -110,8 +112,11 @@ export default function ManageUser() {
 						type="password"
 						placeholder="Password"
 					/>
+					<p className="italic font-light text-red-600 text-sm">
+						{errors.inputmypassword?.message}
+					</p>
 				</div>
-					{<p>{updateMsg}</p>}
+				{<p>{updateMsg}</p>}
 				<button className="btn btn-primary self-end mt-3">Proceed</button>
 			</form>
 		</div>
