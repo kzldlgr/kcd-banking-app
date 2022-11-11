@@ -62,15 +62,17 @@ export default function Expense() {
 	}, []);
 
 	const onSubmit = (data) => {
+		
 		users.forEach((user) => {
 			if (user.accountnum === currentUser.accountnum) {
+				user.balance = data.checksavings ? Number(user.balance) - Number(data.amount) : user.balance
 				user.myhistory = [
 					...user.myhistory,
 					{
 						date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
 						category: data.category,
 						amount: data.amount,
-						description: data.description,
+						description: data.checksavings ? `${data.description} paid using your savings account` : data.description,
 						type: "expense",
 					},
 				];
@@ -94,7 +96,12 @@ export default function Expense() {
 				<span className="font-bold text-lg">Description</span>
 				<textarea {...register("description")} className="input input-bordered" />
 
+				<div className="flex">
+					<input {...register('checksavings')} type='checkbox' id="flexCheckChecked" className='form-check-input h-4 w-4 mt-1 mr-2 cursor-pointer'/>
+					<label for='flexCheckChecked' className="form-check-label inline-block text-gray-800 grow-1">Use your Savings</label>
+				</div>
 				<input type="submit" value="Add" className="btn btn-primary self-end mt-3" />
+				
 			</form>
 		</div>
 	);

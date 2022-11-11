@@ -8,7 +8,6 @@ export default function Transfer() {
   const [errorMessages, setErrorMessages] = useState('')
   const { users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo } = useContext(UsersContext);
   const currentUser = JSON.parse(sessionStorage.getItem('user'));
-  const [receiverData, setReceiverData] = useState({})
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
       input: {
@@ -60,7 +59,7 @@ export default function Transfer() {
       userdata.transfer.push(data)
       userdata.myhistory.push({
         date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-        description: userInfo ? `You received from ${userInfo.firstname} ${userInfo.lastname}` : `You received from ${currentUser.firstname} ${currentUser.lastname}`,
+        description: `You received from ${userInfo.firstname} ${userInfo.lastname}`,
         type: 'transfer',
         category: '',
         amount: data.input.amount
@@ -74,7 +73,7 @@ export default function Transfer() {
       userdata.transfer.push(data)
       userdata.myhistory.push({
         date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-        description: userInfo ? `You transfered to ${data.firstnameReceiver} ${data.lastnameReceiver}` : `You transfered to `,
+        description: `You transfered to ${data.firstnameReceiver} ${data.lastnameReceiver}`,
         type: 'transfer',
         category: '',
         amount: data.input.amount
