@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import editIcon from "../../../../../assets/icons/edit1.png";
-import deleteIcon from "../../../../../assets/icons/delete1.png";
 import { AdminContext } from "../../../../../context/AdminContext";
 
-export default function Userlist({ userinfo, handleUserClick, index }) {
+export default function Userlist({ userinfo, handleUserClick, index, deleteFunc }) {
 	let userBalance = Number(userinfo.balance);
 	const { isToggled, setIsToggled } = useContext(AdminContext);
 
@@ -37,7 +35,7 @@ export default function Userlist({ userinfo, handleUserClick, index }) {
 						/>
 					</svg>
 				</Link>
-				<button className="btn btn-ghost delete">
+				<button className="btn btn-ghost delete" onClick={() => deleteFunc(userinfo.myemail)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
