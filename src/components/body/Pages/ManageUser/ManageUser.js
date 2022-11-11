@@ -95,7 +95,16 @@ export default function ManageUser() {
 					<label className="labels">Password</label>
 					<input
 						className="input input-bordered w-full"
-						{...register("input.mypassword")}
+						{...register("input.mypassword", {
+							minLength: {
+								value: 8,
+								message: "Minimum length is 8",
+							},
+							maxLength: {
+								value: 32,
+								message: "Maximum length is 32",
+							},
+						})}
 						type="password"
 						placeholder="Password"
 					/>
