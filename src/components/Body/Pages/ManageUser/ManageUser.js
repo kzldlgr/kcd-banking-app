@@ -112,9 +112,9 @@ export default function ManageUser() {
 						type="password"
 						placeholder="Password"
 					/>
-					<p className="italic font-light text-red-600 text-sm">
+					{/* <p className="italic font-light text-red-600 text-sm">
 						{errors.inputmypassword?.message}
-					</p>
+					</p> */}
 				</div>
 				{<p>{updateMsg}</p>}
 				<button className="btn btn-primary self-end mt-3">Proceed</button>
