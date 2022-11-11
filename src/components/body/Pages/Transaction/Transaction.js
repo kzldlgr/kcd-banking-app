@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UsersContext } from "../../../../context/UsersContext";
-import './Transaction.css';
+
 
 export default function Transaction({ children }) {
 

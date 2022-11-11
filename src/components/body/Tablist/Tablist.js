@@ -1,6 +1,6 @@
 import React from 'react';
 import Tabs from './tabs/Tabs';
-import './tablist.css'
+
 
 
 export default function Tablist({userlevel}) {

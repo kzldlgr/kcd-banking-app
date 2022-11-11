@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { UsersContext } from '../../../../context/UsersContext';
-import './deposit.css'
+
 
 export default function Deposit(){
     const newDate = new Date()

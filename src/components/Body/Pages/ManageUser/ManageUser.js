@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 export default function ManageUser() {
 	const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
+	const [updateMsg, setUpdateMsg] = useState('')
 
 	const { register, handleSubmit, setValue } = useForm({
 		defaultValues: {
@@ -20,6 +21,7 @@ export default function ManageUser() {
 
 	const onSubmit = handleSubmit((data) => {
 		console.log(data.input);
+		setUpdateMsg('Changes were successfully saved')
 		users.forEach((client) => {
 			if (client.accountnum === userInfo.accountnum) {
 				client.firstname = data.input.firstname;
@@ -109,7 +111,7 @@ export default function ManageUser() {
 						placeholder="Password"
 					/>
 				</div>
-				<p></p>
+					{<p>{updateMsg}</p>}
 				<button className="btn btn-primary self-end mt-3">Proceed</button>
 			</form>
 		</div>

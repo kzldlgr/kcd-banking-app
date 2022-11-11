@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AdminContext } from "../../context/AdminContext";
-import Buttons from "../body/Sidebar/Navbar/Buttons/buttons";
+import Buttons from "../Body/Sidebar/Navbar/Buttons/buttons";
 
 const Side = () => {
 	const navigate = useNavigate();
