@@ -21,10 +21,6 @@ export default function Search() {
 		displayUsers();
 	}, [names]);
 
-	useEffect(() => {
-		console.log(userInfo);
-	}, [userInfo]);
-
 	const handleUserClick = (e) => {
 		selectedUser = e.currentTarget.children[5].textContent;
 		setUserBalance(selectedUser);
@@ -36,10 +32,29 @@ export default function Search() {
 		);
 	};
 
+	function deleteUser(email) {
+		if (!email) return;
+
+		const filteredUser = JSON.parse(localStorage.getItem("users")).filter(
+			(user) => user.myemail !== email
+		);
+
+		localStorage.setItem("users", JSON.stringify(filteredUser));
+
+		setUserBalance("0.00");
+		setUserAccount({});
+		setUserInfo({});
+
+		setUsers(filteredUser);
+
+		displayUsers();
+	}
+
 	const displayUsers = () => {
 		if (searchUser === undefined || searchUser.length === 0) {
+			console.log(users);
 			setInputList(
-				users.map((user, index) => {
+				JSON.parse(localStorage.getItem("users")).map((user, index) => {
 					if (user.usertype !== "admin") {
 						return (
 							<Userlist
@@ -47,6 +62,7 @@ export default function Search() {
 								index={index}
 								handleUserClick={handleUserClick}
 								key={index}
+								deleteFunc={deleteUser}
 							/>
 						);
 					}
@@ -62,6 +78,7 @@ export default function Search() {
 								index={index}
 								handleUserClick={handleUserClick}
 								key={index}
+								deleteFunc={() => deleteUser()}
 							/>
 						);
 					}
