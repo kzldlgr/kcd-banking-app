@@ -109,7 +109,7 @@ export default function ManageUser() {
 						placeholder="Password"
 					/>
 				</div>
-
+				<p></p>
 				<button className="btn btn-primary self-end mt-3">Proceed</button>
 			</form>
 		</div>
