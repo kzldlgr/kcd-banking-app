@@ -1,0 +1,88 @@
+:root{
+    --table-column-width: 150px;
+}
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #555; 
+}
+.searchpage{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    user-select: none;
+}
+.userlistview{
+    height: 600px;
+    width: 60vw;
+    position: relative;
+    overflow: scroll;
+}
+.tableHead{
+    display: inline-flex;
+    width: 100%;
+    background-color: teal;
+    border: 1px solid rgb(0, 128, 128, .3);
+    border-radius: 12px 12px 0 0;
+    color: whitesmoke;
+    font-size: 20px;
+}
+.tableHead span{
+    text-align: center;
+    width: var(--table-column-width);
+}
+.tableHead span:last-child{
+    flex-grow: 1;
+}
+.usercontainer{
+    display: inline-flex;
+    width: 100%;
+    background-color: rgb(220, 241, 241);
+    border: 1px solid rgb(201, 201, 201);
+}
+.usercontainer:nth-child(even){
+    background-color: rgb(255, 255, 255);
+}
+.usercontainer span:last-child{
+    flex-grow: 1;
+}
+.usercontainer:hover{
+    background-color: rgb(0, 128, 128,.3);
+    cursor: pointer;
+}
+.usercontainer span{
+    text-align: center;
+    width: var(--table-column-width);
+    font-size: 20px;
+}
+.optionBtn{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+.btnIcon{
+    width: 15px;
+}
+.btnIconEdit{
+    width: 18px;
+}
+.searchbar{
+    display: inline-flex;
+}
+.searchbar span{
+    font-size: 25px;
+}
+.searchbar input{
+    margin-left: 20px;
+    height: 25px;
+    width: 300px;
+}

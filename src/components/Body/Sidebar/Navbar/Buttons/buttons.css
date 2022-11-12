@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url(/src/assets/fonts/BebasNeue-Regular.ttf);
+}
+:root{
+    --button-size: 100px;
+}
+.navbtns{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0fef2;
+    border: 2px solid teal;
+    border-radius: 25px;
+    width: var(--button-size);
+    height: var(--button-size);
+    font-family:'Bebas Neue';
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+.navbtns:hover{
+    background-color: #bffac8;
+}
+.navbtns:active{
+    background-color: #5b5e5b;
+    box-shadow: 0 1px rgb(156, 156, 156); 
+    transform: translateY(2px); 
+}
+.navbtns.logoutbtn{
+    position: absolute;
+    bottom: 10px;
+}
+.navbtnslink{
+    text-decoration: none;
+    color: inherit;
+}
+.btn-icon{
+    width: 50px;
+}

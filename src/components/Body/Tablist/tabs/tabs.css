@@ -1,0 +1,29 @@
+
+.tabs{
+    position: relative;
+    width: 100px;
+    height: 28px;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.active{
+    position: relative;
+    background-color: teal;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.active::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 3px;
+    background-color: rgb(0, 128, 128, .3);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 94px;
+    height: 30px;
+    z-index: -1;
+    transform: scale(1.1);
+}

@@ -7,6 +7,7 @@ import Deposit from './components/Body/Pages/Deposit/Deposit';
 import Transfer from "./components/Body/Pages/Transfer/Transfer";
 import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
+import PayBills from './components/Body/Pages/PayBills/PayBills';
 import AddClient from './components/Body/Pages/AddClient/AddClient'
 import SignUp from "./components/SignUp/SignUp";
 import { UsersContextProvider } from './context/UsersContext';
@@ -33,6 +34,7 @@ function App() {
             <Route path='Transaction' element={<Transaction />} />
             <Route path='Withdraw' element={<Withdraw />} />
             <Route path='Deposit' element={<Deposit />} />
+            <Route path='PayBills' element={<PayBills />} />
             <Route path='Transfer' element={<Transfer />} />
             <Route path='AddClient' element={<AddClient />} />
             <Route path='Expensechart' element={<Expensechart />} />
@@ -47,6 +49,7 @@ function App() {
             <Route path='ManageUser' element={<ManageUser />} />
             <Route path='Withdraw' element={<Withdraw />} />
             <Route path='Deposit' element={<Deposit />} />
+            <Route path='PayBills' element={<PayBills />} />
             <Route path='Transfer' element={<Transfer />} />
             <Route path='AddClient' element={<AddClient />} />
             <Route path='UserRequest' element={<UserRequest />} />
