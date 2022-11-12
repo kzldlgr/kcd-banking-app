@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UsersContext } from "../../../../context/UsersContext";
-import arrow from "../../../../assets/images/up-arrow.png";
+
 export default function Transfer() {
 	const [errorMessages, setErrorMessages] = useState("");
 	const { users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo } =

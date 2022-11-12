@@ -129,7 +129,8 @@ function AddClient() {
 					<input
 						type="text"
 						placeholder="Contact"
-						pattern="^[1-9]\d*$"
+						maxlength="11"
+						pattern="[0-9]{11}"
 						className="input input-bordered w-full"
 						{...register("mymobileno", {
 							required: "Mobile no. is required.",

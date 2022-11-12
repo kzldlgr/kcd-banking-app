@@ -23,18 +23,7 @@ export default function Buttons({ text, path, onMouseClick, children, image, bad
 		setIsBadgeOn(badgeOn);
 	}, [userRequest]);
 
-	return text === "Logout" ? (
-		<Link to={path} className="w-full">
-			<div
-				className="flex items-center gap-3 font-pop justify-end hover:bg-base-100 w-full px-4 py-2 transition-all text-base-100 hover:text-black relative"
-				onClick={onMouseClick}
-			>
-				<p>{text}</p>
-				<div className="relative">{image}</div>
-				{children}
-			</div>
-		</Link>
-	) : (
+	return (
 		<Link to={path} className="w-full">
 			<div
 				className="flex items-center gap-3 font-pop justify-end hover:bg-base-100 w-full px-4 py-2 transition-all text-base-100 hover:text-black relative"

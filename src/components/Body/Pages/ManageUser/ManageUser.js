@@ -77,6 +77,8 @@ export default function ManageUser() {
 						{...register("input.mymobileno")}
 						type="text"
 						placeholder="Contact"
+						maxlength="11"
+						pattern="[0-9]{11}"
 					/>
 				</div>
 

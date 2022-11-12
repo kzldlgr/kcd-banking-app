@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AdminContext } from "../../context/AdminContext";
 import { UsersContext } from "../../context/UsersContext";
 import swal from "sweetalert";
-import "./SignUp.css";
 
 function SignUp() {
 	let navigate = useNavigate();
