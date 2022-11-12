@@ -52,7 +52,7 @@ function App() {
 								<Route path="Paybills" element={<Paybill />} />
 							</Route>
 						)}
-						{/* <Route path="*" element={<Navigate to="/" replace={true} />} /> */}
+						<Route path="*" element={<Navigate to="/" replace={true} />} />
 					</Routes>
 				</Head>
 			</AdminContextProvider>

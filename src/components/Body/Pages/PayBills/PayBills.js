@@ -33,7 +33,7 @@ const adminSide = (client) => {
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                     description: biller + ' Bill Payment from Bankerost main',
                     amount: amount,
-                    category: '',
+                    category: 'UTI',
                     type: 'Bill Payment'
                 })
                 client.balance -= Number(amount)
@@ -56,7 +56,7 @@ const clientSide = (client) => {
                 description: biller + ' Bill Payment',
                 amount: amount,
                 category: '',
-                type: 'Bill Payment'
+                type: 'expense'
             })
             client.balance -= Number(amount)
             localStorage.setItem('users', JSON.stringify(users))
@@ -79,6 +79,7 @@ const clientSide = (client) => {
                 clientSide(client)
             }
         });
+        setUsers(JSON.parse(localStorage.getItem("users")));
     }
 
     return (
@@ -108,6 +109,3 @@ const clientSide = (client) => {
         
     )
 }
-
-// --OTP
-// --Validation
