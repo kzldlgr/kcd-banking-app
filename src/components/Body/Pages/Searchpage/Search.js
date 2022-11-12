@@ -52,7 +52,7 @@ export default function Search() {
 
 	const displayUsers = () => {
 		if (searchUser === undefined || searchUser.length === 0) {
-			console.log(users);
+			
 			setInputList(
 				JSON.parse(localStorage.getItem("users")).map((user, index) => {
 					if (user.usertype !== "admin") {

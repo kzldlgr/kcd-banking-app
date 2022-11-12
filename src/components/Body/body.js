@@ -18,7 +18,7 @@ export default function Body() {
 			<div className="mainbody">
 				<Dashboard>
 					<Expenses />
-					<div class="divider"></div>
+					<div className="divider"></div>
 					<Tablist />
 					<Outlet />
 				</Dashboard>
