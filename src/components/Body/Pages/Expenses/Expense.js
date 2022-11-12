@@ -103,7 +103,7 @@ export default function Expense() {
 
 				<div className="flex">
 					<input {...register('checksavings')} type='checkbox' id="flexCheckChecked" className='form-check-input h-4 w-4 mt-1 mr-2 cursor-pointer'/>
-					<label for='flexCheckChecked' className="form-check-label inline-block text-gray-800 grow-1">Use your Savings</label>
+					<label htmlFor='flexCheckChecked' className="form-check-label inline-block text-gray-800 grow-1">Use your Savings</label>
 				</div>
 				<span className="text-red-500">{errorMsgs}</span>
 				<input type="submit" value="Add" className="btn btn-primary self-end mt-3" />

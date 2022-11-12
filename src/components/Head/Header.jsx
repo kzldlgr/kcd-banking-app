@@ -17,7 +17,7 @@ const Header = ({ children, loggedUser }) => {
 				{/* NAVBAR */}
 				<div className="flex bg-primary p-3 items-center text-white justify-between">
 					<div className="flex gap-3 items-center">
-						<label for="my-drawer-2" className="btn btn-ghost drawer-button lg:hidden">
+						<label htmlFor="my-drawer-2" className="btn btn-ghost drawer-button lg:hidden">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -45,7 +45,7 @@ const Header = ({ children, loggedUser }) => {
 			{/* SIDEBAR */}
 			{user.usertype && (
 				<div className="drawer-side">
-					<label for="my-drawer-2" className="drawer-overlay"></label>
+					<label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 					<ul className="w-[13rem] bg-primary text-base-content pt-[4.5rem] flex flex-col gap-5 overflow-visible">
 						<Side />
 
