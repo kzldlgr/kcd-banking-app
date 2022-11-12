@@ -37,10 +37,9 @@ const adminSide = (client) => {
                     type: 'expense'
                 })
                 client.balance -= Number(amount)
+                setUserBalance(balanceOutput);
+                setUsers(users);
                 localStorage.setItem('users', JSON.stringify(users))
-                setUsers(users)
-                setUserBalance(balanceOutput)
-                setAmount('')
                 return
             } return setErrorMsgs('Not Enough Cash')
         }
@@ -49,7 +48,6 @@ const adminSide = (client) => {
 
 const clientSide = (client) => {  
     if (client.myemail === currentUser.myemail) { 
-        console.log(client)
         if (Number(client.balance) >= amount) {
             console.log("Payment to " + biller + " is successful") 
             client.myhistory.push({
@@ -60,10 +58,10 @@ const clientSide = (client) => {
                 type: 'expense'
             })
             client.balance -= Number(amount)
+            setUserBalance(balanceOutput);
+            setUsers(users);
             localStorage.setItem('users', JSON.stringify(users))
-            setUsers(users)
-            setUserBalance(balanceOutput)
-            setAmount('')
+            setUsers(JSON.parse(localStorage.getItem("users")));
             return
         } return setErrorMsgs('Not Enough Cash')
     }
@@ -80,7 +78,7 @@ const clientSide = (client) => {
                 clientSide(client)
             }
         });
-        setUsers(JSON.parse(localStorage.getItem("users")));
+        setAmount('');
     }
 
     return (
