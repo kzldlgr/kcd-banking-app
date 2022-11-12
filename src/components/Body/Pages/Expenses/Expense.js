@@ -76,29 +76,27 @@ export default function Expense() {
     }
   
     return (
-    <div className='pages'>
-        <form className='expenseManager' onSubmit={handleSubmit(onSubmit)}>
-            
-            <div className='expenseInput'>
-                <span>Category</span>
-                <select {...register('category')}>
-                    {category}
-                </select>
-            </div>
-            
-            <div className='expenseInput'>
-                <span>Amount</span>
-                <input type='number' {...register('amount')}/>
-            </div>
-            
-            <div className='expenseInput'>
-                <span>Description</span>
-                <textarea {...register('description')}/>
-            </div>
+		<div className="p-5 w-full place-content-center font-pop bg-base-100 rounded-md">
+		<form className="w-full flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+			<span className="font-bold text-lg">Category</span>
+			<select {...register("category")} className="select select-bordered w-full">
+				{category}
+			</select>
 
-            <input type='submit' value='Add'/>
+			<span className="font-bold text-lg">Amount</span>
+			<input type="number" {...register("amount")} className="input input-bordered" />
 
-        </form>
-    </div>
+			<span className="font-bold text-lg">Description</span>
+			<textarea {...register("description")} className="input input-bordered" />
+
+			<div className="flex">
+				<input {...register('checksavings')} type='checkbox' id="flexCheckChecked" className='form-check-input h-4 w-4 mt-1 mr-2 cursor-pointer'/>
+				<label for='flexCheckChecked' className="form-check-label inline-block text-gray-800 grow-1">Use your Savings</label>
+			</div>
+			<span className='text-red-500'>{errorMsgs}</span>
+			<input type="submit" value="Add" className="btn btn-primary self-end mt-3" />
+
+		</form>
+	</div>
   )
 }
