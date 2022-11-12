@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Body from "./components/Body/body";
-import Head from "./components/Head/Header";
-import Login from "./components/LoginPage/Login";
-import Deposit from "./components/Body/Pages/Deposit/Deposit";
+import Head from "./components/Head/Header"
+import Login from "./components/LoginPage/Login"
+import Deposit from './components/Body/Pages/Deposit/Deposit';
 import Transfer from "./components/Body/Pages/Transfer/Transfer";
 import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw/Withdraw';

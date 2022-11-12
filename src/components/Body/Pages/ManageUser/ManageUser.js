@@ -5,6 +5,7 @@ import swal from "sweetalert";
 
 export default function ManageUser() {
 	const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
+	const [updateMsg, setUpdateMsg] = useState('')
 
 	const { register, handleSubmit, setValue, formState: { errors } } = useForm({
 		defaultValues: {
@@ -28,6 +29,7 @@ export default function ManageUser() {
 				client.mypassword = data.mypassword;
 				localStorage.setItem("users", JSON.stringify(users));
 				setUsers(users);
+				setUpdateMsg(data.mypassword.length >= 8 && data.mypassword.length <= 32 ? 'Changes were successfully saved' : '')
 			}
 		});
 		swal({
