@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UsersContext } from "../../../../context/UsersContext";
+import swal from "sweetalert";
 
 export default function Withdraw({ children }) {
 	const newDate = new Date();
@@ -28,7 +29,6 @@ export default function Withdraw({ children }) {
 		if (userInfo !== undefined && userInfo.length !== 0) {
 			if (client.myemail === userInfo.myemail) {
 				if (client.balance >= amount) {
-					console.log("Withdraw Successful");
 					client.myhistory.push({
 						date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
 						description: "Withdraw from Bankerost main",
@@ -51,7 +51,6 @@ export default function Withdraw({ children }) {
 	const clientSide = (client) => {
 		if (client.myemail === currentUser.myemail) {
 			if (client.balance >= amount) {
-				console.log("Withdraw Successful");
 				client.myhistory.push({
 					date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
 					description: "withdraw",
@@ -80,6 +79,11 @@ export default function Withdraw({ children }) {
 			} else if (currentUser.usertype === "user") {
 				clientSide(client);
 			}
+		});
+		swal({
+			text: "You have successfully withdraw",
+			icon: "success",
+			button: "Done",
 		});
 	};
 

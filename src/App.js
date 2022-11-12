@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Body from "./components/Body/body";
-import Head from "./components/Head/Header";
-import Login from "./components/LoginPage/Login";
-import Deposit from "./components/Body/Pages/Deposit/Deposit";
+import Head from "./components/Head/Header"
+import Login from "./components/LoginPage/Login"
+import Deposit from './components/Body/Pages/Deposit/Deposit';
 import Transfer from "./components/Body/Pages/Transfer/Transfer";
 import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
-import Paybill from './components/Body/Pages/Paybills/Paybills';
 import AddClient from './components/Body/Pages/AddClient/AddClient';
 import SignUp from "./components/SignUp/SignUp";
+import PayBill from "./components/Body/Pages/Paybills/Paybills"
 import { UsersContextProvider } from "./context/UsersContext";
 import { AdminContextProvider } from "./context/AdminContext";
 import ManageUser from "./components/Body/Pages/ManageUser/ManageUser";
@@ -40,7 +40,7 @@ function App() {
 								<Route path="ManageUser" element={<ManageUser />} />
 								<Route path="Admin" element={<Search />} />
 								<Route path="UserRequest" element={<UserRequest />} />
-								<Route path="Paybills" element={<Paybill />} />
+								<Route path="Paybills" element={<PayBill />} />
 							</Route>
 						) : (
 							<Route path="/Bankerostmain" element={<Body />}>
@@ -49,7 +49,7 @@ function App() {
 								<Route path="Withdraw" element={<Withdraw />} />
 								<Route path="Deposit" element={<Deposit />} />
 								<Route path="Transfer" element={<Transfer />} />
-								<Route path="Paybills" element={<Paybill />} />
+								<Route path="Paybills" element={<PayBill />} />
 							</Route>
 						)}
 						<Route path="*" element={<Navigate to="/" replace={true} />} />

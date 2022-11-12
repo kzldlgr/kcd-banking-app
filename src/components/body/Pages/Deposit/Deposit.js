@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { UsersContext } from "../../../../context/UsersContext";
+import swal from "sweetalert";
 
 export default function Deposit() {
 	const newDate = new Date();
@@ -38,7 +39,6 @@ export default function Deposit() {
 				type: "deposit",
 			});
 			client.balance = Number(client.balance) + Number(amount);
-			console.log("Successfully Deposit");
 			localStorage.setItem("users", JSON.stringify(users));
 			setUsers(users);
 			setUserBalance(balanceOutput);
@@ -58,7 +58,6 @@ export default function Deposit() {
 					type: "deposit",
 				});
 				client.balance = Number(client.balance) + Number(amount);
-				console.log("Successfully Deposit");
 				localStorage.setItem("users", JSON.stringify(users));
 				setUsers(users);
 				setUserBalance(balanceOutput);
@@ -78,6 +77,11 @@ export default function Deposit() {
 			} else if (currentUser.usertype === "user") {
 				clientSide(client);
 			}
+		});
+		swal({
+			text: "You have successfully deposited",
+			icon: "success",
+			button: "Done",
 		});
 	};
 

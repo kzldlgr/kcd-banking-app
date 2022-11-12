@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UsersContext } from "../../context/UsersContext";
 
 function Login() {
-	const { users, loginUser, setLoginUser } = useContext(UsersContext);
+	const { users } = useContext(UsersContext);
 	const navigate = useNavigate();
 	const initialValues = { email: "", password: "" };
 	const [formValues, setFormValues] = useState(initialValues);
@@ -22,27 +22,24 @@ function Login() {
 	const validate = (values) => {
 		const errors = {};
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-		let user = users.find(
-			(user) => user.myemail === values.email && user.mypassword === values.password
-		);
-
-		if (user !== undefined) {
-			sessionStorage.setItem("user", JSON.stringify(user));
-			setLoginUser(users.find((user) => user.myemail === values.email));
-			user.usertype === "admin"
-				? navigate("/Bankerostmain/Admin", { replace: true })
-				: navigate("/Bankerostmain/Transaction", { replace: true });
-		} else if (!values.email) {
+		let validUser = users.find((validUser) => validUser.myemail === values.email)
+		if (!values.email) {
 			errors.email = "Email is required.";
+		} else if (!values.password) {
+			errors.password = "Password is required.";
 		} else if (!regex.test(values.email)) {
 			errors.email = "This is not a valid email format!";
-		} else if (user.myemail !== values.email) {
-			errors.email = "Email does not exist.";
-		}
-		if (!values.password) {
-			errors.password = "Password is required.";
 		} else if (values.password.length < 8) {
 			errors.password = "Password must be more than 4 characters";
+		} else if (validUser === undefined) {
+			errors.email = "User does not exist";
+		} else if (values.password !== validUser.mypassword) {
+			errors.password = "Wrong password";
+		} else {
+			sessionStorage.setItem("user", JSON.stringify(validUser));
+			validUser.usertype === 'admin'
+			? navigate("/Bankerostmain/Admin", { replace: true })
+			: navigate("/Bankerostmain/Transaction", { replace: true });
 		}
 		return errors;
 	};
@@ -61,14 +58,14 @@ function Login() {
 							<div className="w-full">
 								<h3>Username</h3>
 								<input
-									type="email"
+									type="text"
 									name="email"
 									className="input input-bordered w-full"
 									placeholder="Username"
 									value={formValues.email}
 									onChange={handleChange}
 								/>
-								<p className="errorMsgs">{formErrors.email}</p>
+								<p className="text-red-500">{formErrors.email}</p>
 							</div>
 
 							<div className="w-full">
@@ -81,7 +78,7 @@ function Login() {
 									value={formValues.password}
 									onChange={handleChange}
 								/>
-								<p className="errorMsgs">{formErrors.password}</p>
+								<p className="text-red-600">{formErrors.password}</p>
 							</div>
 							<button
 								className="btn-primary mt-10 rounded-lg py-2 px-3 w-max self-end"

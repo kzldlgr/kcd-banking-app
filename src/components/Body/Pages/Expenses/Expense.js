@@ -1,6 +1,6 @@
-import React, {useEffect, useState, useContext} from 'react';
-import { useForm } from 'react-hook-form';
-import {UsersContext} from '../../../../context/UsersContext'
+import React, { useEffect, useState, useContext } from "react";
+import { useForm } from "react-hook-form";
+import { UsersContext } from "../../../../context/UsersContext";
 
 export default function Expense() {
 
@@ -49,33 +49,28 @@ export default function Expense() {
         )))
     },[])
 
-    const onSubmit = data =>{
+	const onSubmit = (data) => {
+		
+		users.forEach((user) => {
+			if (user.accountnum === currentUser.accountnum) {
+				user.balance = data.checksavings ? Number(user.balance) - Number(data.amount) : user.balance
+				user.myhistory = [
+					...user.myhistory,
+					{
+						date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+						category: data.category,
+						amount: data.amount,
+						description: data.checksavings ? `${data.description} paid using your savings account` : data.description,
+						type: "expense",
+					},
+				];
+			}
+		});
+		localStorage.setItem("users", JSON.stringify(users));
+		setUsers(JSON.parse(localStorage.getItem("users")));
+	};
 
-        if(data.checksavings && userBalance <= data.amount){
-			setErrorMsgs('Insufficient Balance')
-		} else {
-			users.forEach((user) => {
-				if (user.accountnum === currentUser.accountnum) {
-					user.balance = data.checksavings ? Number(user.balance) - Number(data.amount) : user.balance
-					user.myhistory = [
-						...user.myhistory,
-						{
-							date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-							category: data.category,
-							amount: data.amount,
-							description: data.checksavings ? `${data.description} paid using your savings account` : data.description,
-							type: "expense",
-						},
-					];
-				}
-			});
-			localStorage.setItem("users", JSON.stringify(users));
-			setUsers(JSON.parse(localStorage.getItem("users")));
-			setErrorMsgs('')
-		}
-    }
-  
-    return (
+	return (
 		<div className="p-5 w-full place-content-center font-pop bg-base-100 rounded-md">
 		<form className="w-full flex flex-col" onSubmit={handleSubmit(onSubmit)}>
 			<span className="font-bold text-lg">Category</span>
