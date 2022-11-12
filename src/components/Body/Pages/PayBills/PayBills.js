@@ -27,14 +27,14 @@ export default function Paybills({children}){
 const adminSide = (client) => {
     if (userInfo !== undefined && userInfo.length !== 0) {
         if (client.myemail === userInfo.myemail) { 
-            if (client.balance >= amount) {
+            if (Number(client.balance) >= amount) {
                 console.log("Payment to " + biller + " is successful") 
                 client.myhistory.push({
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                     description: biller + ' Bill Payment from Bankerost main',
                     amount: amount,
                     category: 'UTI',
-                    type: 'Bill Payment'
+                    type: 'expense'
                 })
                 client.balance -= Number(amount)
                 localStorage.setItem('users', JSON.stringify(users))
@@ -49,13 +49,14 @@ const adminSide = (client) => {
 
 const clientSide = (client) => {  
     if (client.myemail === currentUser.myemail) { 
-        if (client.balance >= amount) {
+        console.log(client)
+        if (Number(client.balance) >= amount) {
             console.log("Payment to " + biller + " is successful") 
             client.myhistory.push({
                 date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
                 description: biller + ' Bill Payment',
                 amount: amount,
-                category: '',
+                category: 'UTI',
                 type: 'expense'
             })
             client.balance -= Number(amount)
