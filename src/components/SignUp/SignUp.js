@@ -11,14 +11,14 @@ function SignUp() {
 	const [details, setDetails] = useState([]);
 	const { users } = useContext(UsersContext);
 	const current = new Date();
-	const { userRequest, setUserRequest } = useContext(AdminContext);
+	const [formErrors, setFormErrors] = useState({});
+	const { setUserRequest } = useContext(AdminContext);
 	const {
 		register,
 		reset,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	let valid = false;
 
 	useEffect(() => {
 		if (details === undefined || details.length === 0) return;
@@ -26,43 +26,53 @@ function SignUp() {
 	}, [details]);
 
 	const validate = (data) => {
-		let user = users.find((user) => user.myemail === data.myemail);
-		if (data.myemail === user) {
-			valid = true;
+		const errors = {};
+		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+		let invalidUser = users.find((invalidUser) => invalidUser.myemail.toLowerCase() === data.myemail.toLowerCase());
+		let invalidName = users.find((invalidName) => invalidName.firstname.toLowerCase() == data.firstname.toLowerCase() && invalidName.lastname.toLowerCase() == data.lastname.toLowerCase())
+		if (invalidName !== undefined) {
+			errors.firstname = "Name already exist";
+		} else if (invalidUser !== undefined) {
+			errors.myemail = "User does already exist";
+		} else if (!regex.test(data.myemail)) {
+			errors.email = "This is not a valid email format!";
+		} else {
+			setDetails({
+				...data,
+				usertype: "user",
+				myhistory: [],
+				cardnum: "",
+				transfer: [],
+				balance: 0,
+			});
+
+			reset({
+				firstname: "",
+				lastname: "",
+				myaddress: "",
+				mymobileno: "",
+				myemail: "",
+				mypassword: "",
+			});
+			swal({
+				text: "Successfully created an account!",
+				icon: "success",
+				button: true,
+			}).then((willDelete) => {
+				if (willDelete) {
+					navigate("/", { replace: true });
+					swal("Account will be review and approve by admin", {
+						icon: "success",
+					});
+				}
+			});
 		}
+		return errors
 	};
 
 	const onSubmit = (data) => {
-		validate(data);
-		setDetails({
-			...data,
-			usertype: "user",
-			myhistory: [],
-			cardnum: Date.now(),
-			transfer: [],
-			balance: 0,
-		});
+		setFormErrors(validate(data));
 
-		reset({
-			firstname: "",
-			lastname: "",
-			myaddress: "",
-			mymobileno: "",
-			myemail: "",
-			mypassword: "",
-		});
-		swal({
-			text: "Successfully created an account!",
-			icon: "success",
-			button: true,
-		}).then((willDelete) => {
-			if (willDelete) {
-				navigate("/", { replace: true });
-				swal("Account will be review and approve by admin", {
-					icon: "success",
-				});
-			}
-		});
 	};
 
 	return (
@@ -90,6 +100,7 @@ function SignUp() {
 								<p className="italic font-light text-red-600 text-sm">
 									{errors.firstname?.message}
 								</p>
+								<p className="text-red-500">{formErrors.firstname}</p>
 							</div>
 
 							<div>
@@ -102,7 +113,8 @@ function SignUp() {
 									type="text"
 									placeholder="Enter your Last Name"
 								/>
-								<p className="italic font-light text-red-600 text-sm">{errors.lastname?.message}</p>
+								<p className="italic font-light text-red-600 text-sm">
+									{errors.lastname?.message}</p>
 							</div>
 							<div>
 								<label>Address:</label>
@@ -126,7 +138,8 @@ function SignUp() {
 									{...register("mymobileno", {
 										required: "Mobile no. is required.",
 									})}
-									type="number"
+									type="text"
+									pattern="^[1-9]\d*$"
 									placeholder="Enter your Mobile No."
 								/>
 								<p className="italic font-light text-red-600 text-sm">
@@ -144,11 +157,7 @@ function SignUp() {
 									placeholder="Enter your Email"
 								/>
 								<p className="italic font-light text-red-600 text-sm">{errors.myemail?.message}</p>
-								{valid ? (
-									<p className="italic font-light text-red-600 text-sm">Email already exists</p>
-								) : (
-									[]
-								)}
+								<p className="text-red-500">{formErrors.myemail}</p>
 							</div>
 							<div>
 								<label>Password:</label>

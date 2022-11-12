@@ -105,7 +105,6 @@ export default function Transfer() {
 			<div className="p-5 w-full place-content-center font-pop bg-base-100 rounded-md">
 				<form
 					onSubmit={handleSubmit((data) => {
-						console.log(data);
 						transferTo = users.find((user) => user.accountnum === data.accountnum);
 
 						transferTo === undefined

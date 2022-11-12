@@ -9,6 +9,7 @@ import Transaction from "./components/Body/Pages/Transaction/Transaction";
 import Withdraw from "./components/Body/Pages/Withdraw/Withdraw";
 import AddClient from "./components/Body/Pages/AddClient/AddClient";
 import SignUp from "./components/SignUp/SignUp";
+import PayBills from "./components/Body/Pages/PayBills/Paybills"
 import { UsersContextProvider } from "./context/UsersContext";
 import { AdminContextProvider } from "./context/AdminContext";
 import ManageUser from "./components/Body/Pages/ManageUser/ManageUser";
@@ -39,6 +40,7 @@ function App() {
 								<Route path="ManageUser" element={<ManageUser />} />
 								<Route path="Admin" element={<Search />} />
 								<Route path="UserRequest" element={<UserRequest />} />
+								<Route path="PayBills" element={<PayBills />} />
 							</Route>
 						) : (
 							<Route path="/Bankerostmain" element={<Body />}>
@@ -51,7 +53,7 @@ function App() {
 								<Route path="UserRequest" element={<UserRequest />} />
 							</Route>
 						)}
-						<Route path="*" element={<Navigate to="/" replace={true} />} />
+						{/* <Route path="*" element={<Navigate to="/" replace={true} />} /> */}
 					</Routes>
 				</Head>
 			</AdminContextProvider>

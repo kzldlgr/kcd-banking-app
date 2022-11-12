@@ -53,7 +53,6 @@ function AddClient() {
 				usertype: "user",
 			},
 		]);
-		console.log("Succesfully add new client");
 	}
 
 	function removeUser() {
@@ -64,7 +63,6 @@ function AddClient() {
 	}
 
 	const onSubmit = (data) => {
-		console.log(data);
 		addNewClient(data);
 		removeUser();
 		reset({
@@ -131,6 +129,7 @@ function AddClient() {
 					<input
 						type="text"
 						placeholder="Contact"
+						pattern="^[1-9]\d*$"
 						className="input input-bordered w-full"
 						{...register("mymobileno", {
 							required: "Mobile no. is required.",
@@ -141,7 +140,7 @@ function AddClient() {
 				<div className="w-full">
 					<label className="labels">Initial Deposit:</label>
 					<input
-						type="text"
+						type="number"
 						placeholder="Initial Deposit"
 						className="input input-bordered w-full"
 						{...register("amount", {

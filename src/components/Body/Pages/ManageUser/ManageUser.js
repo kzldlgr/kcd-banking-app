@@ -19,7 +19,6 @@ export default function ManageUser() {
 	});
 
 	const onSubmit = handleSubmit((data) => {
-		console.log(data.input);
 		users.forEach((client) => {
 			if (client.accountnum === userInfo.accountnum) {
 				client.firstname = data.input.firstname;

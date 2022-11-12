@@ -38,7 +38,6 @@ export default function Deposit() {
 				type: "deposit",
 			});
 			client.balance = Number(client.balance) + Number(amount);
-			console.log("Successfully Deposit");
 			localStorage.setItem("users", JSON.stringify(users));
 			setUsers(users);
 			setUserBalance(balanceOutput);
@@ -58,7 +57,6 @@ export default function Deposit() {
 					type: "deposit",
 				});
 				client.balance = Number(client.balance) + Number(amount);
-				console.log("Successfully Deposit");
 				localStorage.setItem("users", JSON.stringify(users));
 				setUsers(users);
 				setUserBalance(balanceOutput);
