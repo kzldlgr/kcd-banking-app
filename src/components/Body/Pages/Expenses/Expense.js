@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { UsersContext } from "../../../../context/UsersContext";
+import swal from "sweetalert";
 
 export default function Expense() {
 	const newDate = new Date();
@@ -80,6 +81,11 @@ export default function Expense() {
 		});
 		localStorage.setItem("users", JSON.stringify(users));
 		setUsers(JSON.parse(localStorage.getItem("users")));
+		swal({
+			text: "Successfully added an expense",
+			icon: "success",
+			button: "Done",
+		});
 	};
 
 	return (

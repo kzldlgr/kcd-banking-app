@@ -127,10 +127,9 @@ function AddClient() {
 				<div className="w-full">
 					<label className="labels">Contact:</label>
 					<input
-						type="text"
+						type="number"
 						placeholder="Contact"
 						maxlength="11"
-						pattern="[0-9]{11}"
 						className="input input-bordered w-full"
 						{...register("mymobileno", {
 							required: "Mobile no. is required.",

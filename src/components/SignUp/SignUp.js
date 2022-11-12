@@ -137,8 +137,8 @@ function SignUp() {
 									{...register("mymobileno", {
 										required: "Mobile no. is required.",
 									})}
-									type="text"
-									pattern="^[1-9]\d*$"
+									type="number"
+									maxLength="11"
 									placeholder="Enter your Mobile No."
 								/>
 								<p className="italic font-light text-red-600 text-sm">

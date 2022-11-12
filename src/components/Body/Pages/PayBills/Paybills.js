@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UsersContext } from "../../../../context/UsersContext";
 import "./PayBills.css";
+import swal from "sweetalert";
 
 export default function Paybills({children}){
     const newDate = new Date()
@@ -41,6 +42,11 @@ const adminSide = (client) => {
                 setUsers(users)
                 setUserBalance(balanceOutput)
                 setAmount('')
+                swal({
+                    text: "Successfully paid a bill",
+                    icon: "success",
+                    button: "Done",
+                });
                 return
             } return setErrorMsgs('Not Enough Cash')
         }
@@ -62,6 +68,11 @@ const clientSide = (client) => {
             setUsers(users)
             setUserBalance(balanceOutput)
             setAmount('')
+            swal({
+                text: "Successfully paid a bill",
+                icon: "success",
+                button: "Done",
+            });
             return
         } return setErrorMsgs('Not Enough Cash')
     }

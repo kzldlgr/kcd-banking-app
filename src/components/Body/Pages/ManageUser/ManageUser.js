@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UsersContext } from "../../../../context/UsersContext";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 export default function ManageUser() {
 	const { users, setUsers, userInfo, setUserInfo } = useContext(UsersContext);
@@ -31,6 +32,12 @@ export default function ManageUser() {
 				setUsers(users);
 			}
 		});
+		swal({
+			text: "Successfully updated a client info",
+			icon: "success",
+			button: "Done",
+		});
+
 	});
 
 	return (
@@ -75,10 +82,9 @@ export default function ManageUser() {
 					<input
 						className="input input-bordered w-full"
 						{...register("input.mymobileno")}
-						type="text"
+						type="number"
 						placeholder="Contact"
 						maxlength="11"
-						pattern="[0-9]{11}"
 					/>
 				</div>
 

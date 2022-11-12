@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UsersContext } from "../../../../context/UsersContext";
+import swal from "sweetalert";
 
 export default function Transfer() {
 	const [errorMessages, setErrorMessages] = useState("");
@@ -97,7 +98,11 @@ export default function Transfer() {
 		});
 		localStorage.setItem("users", JSON.stringify(users));
 		setUsers(users);
-		setErrorMessages("Successfully Transfer the amount");
+		swal({
+			text: "Successfully transfered",
+			icon: "success",
+			button: "Done",
+		});
 	};
 
 	if (currentUser.usertype === "user") {
@@ -120,6 +125,7 @@ export default function Transfer() {
 							purpose: "",
 							note: "",
 						});
+
 					})}
 					className="w-full flex flex-col mt-6 gap-2"
 				>
