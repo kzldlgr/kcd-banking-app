@@ -6,7 +6,7 @@ export default function Paybills({children}){
     const newDate = new Date()
     const {users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo} = useContext(UsersContext)
     const [amount, setAmount] = useState([])
-    const [biller, setBiller] = useState([0])
+    const [biller, setBiller] = useState([])
     const [errorMsgs, setErrorMsgs] = useState('')
     const [balanceOutput, setBalanceOutput] = useState([])
     const currentUser = JSON.parse(sessionStorage.getItem('user'))
@@ -25,40 +25,14 @@ export default function Paybills({children}){
         }
     }, [amount])
 
-    const adminSide = (client) => {
-        if (userInfo !== undefined && userInfo.length !== 0) {
-            if (client.myemail === userInfo.myemail) { 
-                if (Number(client.balance) >= amount) {
-                    console.log("Payment to " + biller + " is successful") 
-                    client.myhistory.push({
-                        date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-                        description: biller + ' Bill Payment from Bankerost main',
-                        amount: amount,
-                        category: 'UTI',
-                        type: 'expense'
-                    })
-                    client.balance -= Number(amount)
-                    setUserBalance(balanceOutput);
-                    setUsers(users);
-                    localStorage.setItem('users', JSON.stringify(users))
-                    swal({
-                        text: "Successfully paid a bill",
-                        icon: "success",
-                        button: "Done",
-                    });
-                    return
-                } return setErrorMsgs('Not Enough Cash')
-            }
-        }
-    }
-
-    const clientSide = (client) => {  
-        if (client.myemail === currentUser.myemail) { 
+const adminSide = (client) => {
+    if (userInfo !== undefined && userInfo.length !== 0) {
+        if (client.myemail === userInfo.myemail) { 
             if (Number(client.balance) >= amount) {
                 console.log("Payment to " + biller + " is successful") 
                 client.myhistory.push({
                     date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-                    description: biller + ' Bill Payment',
+                    description: biller + ' Bill Payment from Bankerost main',
                     amount: amount,
                     category: 'UTI',
                     type: 'expense'
@@ -67,7 +41,6 @@ export default function Paybills({children}){
                 setUserBalance(balanceOutput);
                 setUsers(users);
                 localStorage.setItem('users', JSON.stringify(users))
-                setUsers(JSON.parse(localStorage.getItem("users")));
                 swal({
                     text: "Successfully paid a bill",
                     icon: "success",
@@ -77,6 +50,33 @@ export default function Paybills({children}){
             } return setErrorMsgs('Not Enough Cash')
         }
     }
+}
+
+const clientSide = (client) => {  
+    if (client.myemail === currentUser.myemail) { 
+        if (Number(client.balance) >= amount) {
+            console.log("Payment to " + biller + " is successful") 
+            client.myhistory.push({
+                date: `${newDate.getMonth()+1}-${newDate.getDate()}-${newDate.getFullYear()}`,
+                description: biller + ' Bill Payment',
+                amount: amount,
+                category: 'UTI',
+                type: 'expense'
+            })
+            client.balance -= Number(amount)
+            setUserBalance(balanceOutput);
+            setUsers(users);
+            localStorage.setItem('users', JSON.stringify(users))
+            setUsers(JSON.parse(localStorage.getItem("users")));
+            swal({
+                text: "Successfully paid a bill",
+                icon: "success",
+                button: "Done",
+            });
+            return
+        } return setErrorMsgs('Not Enough Cash')
+    }
+}
 
     const onHandleClick = (e) => {
         e.preventDefault()
