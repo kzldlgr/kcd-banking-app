@@ -129,7 +129,7 @@ function AddClient() {
 					<input
 						type="number"
 						placeholder="Contact"
-						maxlength="11"
+						maxLength="11"
 						className="input input-bordered w-full"
 						{...register("mymobileno", {
 							required: "Mobile no. is required.",

@@ -43,6 +43,11 @@ export default function Deposit() {
 			setUsers(users);
 			setUserBalance(balanceOutput);
 			setAmount("");
+			swal({
+				text: "You have successfully deposited",
+				icon: "success",
+				button: "Done",
+			});
 			return;
 		}
 	};
@@ -62,6 +67,11 @@ export default function Deposit() {
 				setUsers(users);
 				setUserBalance(balanceOutput);
 				setAmount("");
+				swal({
+					text: "You have successfully deposited",
+					icon: "success",
+					button: "Done",
+				});
 				return;
 			}
 		}
@@ -77,11 +87,6 @@ export default function Deposit() {
 			} else if (currentUser.usertype === "user") {
 				clientSide(client);
 			}
-		});
-		swal({
-			text: "You have successfully deposited",
-			icon: "success",
-			button: "Done",
 		});
 	};
 
