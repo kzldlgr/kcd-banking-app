@@ -184,15 +184,13 @@ export default function Transfer() {
 						transferTo === undefined || data.accountnumReceiver === ''
 							? setErrorMessages("no user found")
 							: Number(userInfo.balance) >= data.input.amount
-							? data.input.amount <= 0 || data.input.amount === '' ? 
-							swal({
-								text: "You need to enter the amount",
-								icon: "info",
-								button: "Done",
-							}) :
-							checkUsers(data)
-							: setErrorMessages("insufficient funds");
-
+								? checkUsers(data)
+								: setErrorMessages("insufficient funds");
+						swal({
+							text: "Successfully transfered",
+							icon: "success",
+							button: "Done",
+						});
 						reset({
 							accountnum: "",
 							accountname: "",
