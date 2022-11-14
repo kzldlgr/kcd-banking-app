@@ -43,7 +43,7 @@ function AddClient() {
 						amount: data.amount,
 						category: "",
 						date: `${newDate.getMonth() + 1}-${newDate.getDate()}-${newDate.getFullYear()}`,
-						description: "initial deposit",
+						description: "Initial deposit",
 						type: "deposit",
 					},
 				],
