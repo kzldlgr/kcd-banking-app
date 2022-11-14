@@ -41,6 +41,12 @@ export default function Withdraw({ children }) {
 					setUsers(users);
 					setUserBalance(balanceOutput);
 					setAmount("");
+					setErrorMsgs('');
+					swal({
+						text: "You have successfully withdraw",
+						icon: "success",
+						button: "Done",
+					});
 					return;
 				}
 				return setErrorMsgs("Not Enough Cash");
@@ -63,6 +69,12 @@ export default function Withdraw({ children }) {
 				setUsers(users);
 				setUserBalance(balanceOutput);
 				setAmount("");
+				setErrorMsgs('');
+				swal({
+					text: "You have successfully withdraw",
+					icon: "success",
+					button: "Done",
+				});
 				return;
 			}
 			return setErrorMsgs("Not Enough Cash");
@@ -80,11 +92,7 @@ export default function Withdraw({ children }) {
 				clientSide(client);
 			}
 		});
-		swal({
-			text: "You have successfully withdraw",
-			icon: "success",
-			button: "Done",
-		});
+		
 	};
 
 	return (

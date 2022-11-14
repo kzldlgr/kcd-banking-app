@@ -54,6 +54,12 @@ export default function Transfer() {
 				amount: data.amount,
 			});
 			setUserBalance(Number(userdata.balance));
+			swal({
+				text: "Successfully transfered",
+				icon: "success",
+				button: "Done",
+			});
+			setErrorMessages('');
 		}
 	};
 
@@ -83,6 +89,12 @@ export default function Transfer() {
 				amount: data.input.amount,
 			});
 			setUserBalance(userdata.balance);
+			swal({
+				text: "Successfully transfered",
+				icon: "success",
+				button: "Done",
+			});
+			setErrorMessages('');
 		}
 	};
 
@@ -98,7 +110,6 @@ export default function Transfer() {
 		});
 		localStorage.setItem("users", JSON.stringify(users));
 		setUsers(users);
-
 	};
 
 	if (currentUser.usertype === "user") {
@@ -159,7 +170,7 @@ export default function Transfer() {
 						<span>Note</span>
 						<textarea {...register("note")} className="input input-bordered w-full" />
 					</div>
-					<p className="errorMsgs">{errorMessages}</p>
+					<p className="text-red-500">{errorMessages}</p>
 					<input className="btn btn-primary self-end mt-3" type="submit" value="Continue" />
 				</form>
 			</div>
@@ -169,16 +180,18 @@ export default function Transfer() {
 			<div className="p-5 w-full place-content-center font-pop bg-base-100 rounded-md flex items-center gap-4">
 				<form
 					onSubmit={handleSubmit((data) => {
-						data.accountnumReceiver === undefined
+						transferTo = users.find((user) => user.accountnum === data.accountnumReceiver);
+						transferTo === undefined || data.accountnumReceiver === ''
 							? setErrorMessages("no user found")
 							: Number(userInfo.balance) >= data.input.amount
-								? checkUsers(data)
-								: setErrorMessages("insufficient funds");
-						swal({
-							text: "Successfully transfered",
-							icon: "success",
-							button: "Done",
-						});
+							? data.input.amount <= 0 || data.input.amount === '' ? 
+							swal({
+								text: "You need to enter the amount",
+								icon: "info",
+								button: "Done",
+							}) :
+							checkUsers(data)
+							: setErrorMessages("insufficient funds");
 
 						reset({
 							accountnum: "",
@@ -224,7 +237,7 @@ export default function Transfer() {
 						<span>Note</span>
 						<textarea {...register("input.note")} className="input input-bordered w-full" />
 					</div>
-					<p className="errorMsgs">{errorMessages}</p>
+					<p className="text-red-500">{errorMessages}</p>
 					<input className="btn btn-primary self-end mt-3" type="submit" value="Continue" />
 				</form>
 
