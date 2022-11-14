@@ -83,11 +83,11 @@ const clientSide = (client) => {
 
     return (
         
-        <div className='p-5 w-full place-content-center font-pop bg-base-100 rounded-md'>
-            <div className="w-full flex flex-col">
+        <div>
+            <div>
                 <h1 className="font-bold text-lg">Pay Bills</h1>
 
-                <select className="select select-bordered w-full" onChange={(e) => setBiller(e.target.value)}>
+                <select  onChange={(e) => setBiller(e.target.value)}>
                     <option value="Meralco">Electricity - Meralco</option>
                     <option value="Luelco">Electricity - Luelco</option>
                     <option value="Maynilad">Water - Maynilad</option>
@@ -96,8 +96,8 @@ const clientSide = (client) => {
                     <option value="Smart">Telcos - Smart</option>
                 </select>
 
-                <span className="font-bold text-lg">Amount</span>
-                <input className="input input-bordered" type='number' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
+                <span >Amount</span>
+                <input  type='number' maxLength={10} value={amount} onChange={e => setAmount(e.target.value)}></input>
                 <p className='errorMsgs'>{errorMsgs}</p>
                 <p>Balance: {balanceOutput.toLocaleString('tl-PH', {style: 'currency', currency: 'PHP',})}</p>
                 
