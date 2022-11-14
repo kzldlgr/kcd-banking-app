@@ -6,6 +6,7 @@ import { UsersContext } from "../../context/UsersContext";
 import swal from "sweetalert";
 
 function SignUp() {
+	let storageRequest = JSON.parse(localStorage.getItem("userrequest"));
 	let navigate = useNavigate();
 	const [details, setDetails] = useState([]);
 	const { users } = useContext(UsersContext);
@@ -28,11 +29,13 @@ function SignUp() {
 		const errors = {};
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 		let invalidUser = users.find((invalidUser) => invalidUser.myemail.toLowerCase() === data.myemail.toLowerCase());
-		let invalidName = users.find((invalidName) => invalidName.firstname.toLowerCase() == data.firstname.toLowerCase() && invalidName.lastname.toLowerCase() == data.lastname.toLowerCase())
-		if (invalidName !== undefined) {
-			errors.firstname = "Name already exist";
-		} else if (invalidUser !== undefined) {
-			errors.myemail = "User does already exist";
+		let invalidName = users.find((invalidName) => invalidName.firstname.toLowerCase() === data.firstname.toLowerCase() && invalidName.lastname.toLowerCase() === data.lastname.toLowerCase())
+		let invalidUserRequest = storageRequest.find((invalidUserRequest) => invalidUserRequest.myemail.toLowerCase() === data.myemail.toLowerCase());
+		let invalidNameRequest = storageRequest.find((invalidNameRequest) => invalidNameRequest.firstname.toLowerCase() === data.firstname.toLowerCase() && invalidNameRequest.lastname.toLowerCase() === data.lastname.toLowerCase())
+		if (invalidName !== undefined || invalidNameRequest !== undefined) {
+			errors.firstname = "Name already exists";
+		} else if (invalidUser !== undefined || invalidUserRequest !== undefined) {
+			errors.myemail = "Email already exists";
 		} else if (!regex.test(data.myemail)) {
 			errors.email = "This is not a valid email format!";
 		} else {

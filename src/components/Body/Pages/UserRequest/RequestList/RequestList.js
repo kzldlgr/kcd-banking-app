@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Check from "../../../../../assets/icons/check.png";
 import Delete from "../../../../../assets/icons/deleteicon.png";
 
-export default function RequestList({ userinfo, handleApprove, index }) {
+export default function RequestList({ userinfo, handleApprove, index, deleteFunc }) {
 	return (
 		<tr className="cursor-pointer" onClick={handleApprove}>
 			<th>{index}</th>
@@ -11,9 +11,9 @@ export default function RequestList({ userinfo, handleApprove, index }) {
 			<td>{userinfo.lastname}</td>
 			<td>{userinfo.myaddress}</td>
 			<td>{userinfo.mymobileno}</td>
-			<td>{userinfo.myemail}</td>
-			<td className="flex items-center gap-5">
-				<Link to="/Bankerostmain/AddClient" className="btn btn-ghost">
+			<td >{userinfo.myemail}</td>
+			<td className="flex items-center gap-5" >
+				<Link to="/Bankerostmain/AddClient" className="btn btn-ghost" >
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -29,7 +29,7 @@ export default function RequestList({ userinfo, handleApprove, index }) {
 						/>
 					</svg>
 				</Link>
-				<button className="btn btn-ghost">
+				<button className="btn btn-ghost" onClick={() => deleteFunc(userinfo.myemail)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

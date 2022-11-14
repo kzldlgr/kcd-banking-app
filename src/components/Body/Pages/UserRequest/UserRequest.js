@@ -5,7 +5,7 @@ import RequestList from "./RequestList/RequestList";
 export default function UserRequest() {
 	const [inputList, setInputList] = useState([]);
 	const [name, setName] = useState("");
-	const { userRequest, requestInfo, setRequestInfo } = useContext(AdminContext);
+	const { userRequest, requestInfo, setRequestInfo, setUserRequest } = useContext(AdminContext);
 	let currentEmail;
 
 	const handleApprove = (e) => {
@@ -13,6 +13,20 @@ export default function UserRequest() {
 		let selectedUser = userRequest.find((user) => currentEmail === user.myemail);
 		setRequestInfo(selectedUser);
 	};
+
+	function deleteUser(email) {
+		if (!email) return;
+
+		const filteredUser = JSON.parse(localStorage.getItem("userrequest")).filter(
+			(user) => user.myemail !== email
+		);
+
+		localStorage.setItem("userrequest", JSON.stringify(filteredUser));
+		setRequestInfo(filteredUser);
+		setUserRequest(filteredUser);
+		console.log(requestInfo)
+
+	}
 
 	const filterUser = useMemo(() => {
 		const users = userRequest;
@@ -59,6 +73,7 @@ export default function UserRequest() {
 								handleApprove={handleApprove}
 								index={index + 1}
 								key={index}
+								deleteFunc={deleteUser}
 							/>
 						))}
 					</tbody>

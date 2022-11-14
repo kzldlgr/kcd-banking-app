@@ -30,7 +30,7 @@ function Login() {
 		} else if (!regex.test(values.email)) {
 			errors.email = "This is not a valid email format!";
 		} else if (values.password.length < 8) {
-			errors.password = "Password must be more than 4 characters";
+			errors.password = "Password must be more than 8 characters";
 		} else if (validUser === undefined) {
 			errors.email = "User does not exist";
 		} else if (values.password !== validUser.mypassword) {

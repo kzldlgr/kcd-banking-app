@@ -9,7 +9,7 @@ import Transaction from './components/Body/Pages/Transaction/Transaction';
 import Withdraw from './components/Body/Pages/Withdraw/Withdraw';
 import AddClient from './components/Body/Pages/AddClient/AddClient';
 import SignUp from "./components/SignUp/SignUp";
-import PayBill from "./components/Body/Pages/Paybills/Paybills"
+import PayBill from "./components/Body/Pages/PayBills/Paybills"
 import { UsersContextProvider } from "./context/UsersContext";
 import { AdminContextProvider } from "./context/AdminContext";
 import ManageUser from "./components/Body/Pages/ManageUser/ManageUser";
