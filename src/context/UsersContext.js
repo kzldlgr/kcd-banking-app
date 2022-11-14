@@ -42,7 +42,6 @@ export const UsersContextProvider = ({ children }) => {
 	}, [users]);
 
 	useEffect(() => {
-		console.log(userInfo);
 	}, [userInfo]);
 
 	return (

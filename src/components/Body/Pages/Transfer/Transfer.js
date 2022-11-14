@@ -98,11 +98,7 @@ export default function Transfer() {
 		});
 		localStorage.setItem("users", JSON.stringify(users));
 		setUsers(users);
-		swal({
-			text: "Successfully transfered",
-			icon: "success",
-			button: "Done",
-		});
+
 	};
 
 	if (currentUser.usertype === "user") {
@@ -115,8 +111,8 @@ export default function Transfer() {
 						transferTo === undefined
 							? setErrorMessages("no user found")
 							: userBalance >= data.amount
-							? checkUsers(data, transferTo)
-							: setErrorMessages("insufficient funds");
+								? checkUsers(data, transferTo)
+								: setErrorMessages("insufficient funds");
 
 						reset({
 							accountnum: "",
@@ -124,6 +120,12 @@ export default function Transfer() {
 							amount: "",
 							purpose: "",
 							note: "",
+						});
+						
+						swal({
+							text: "Successfully transfered",
+							icon: "success",
+							button: "Done",
 						});
 
 					})}
@@ -170,8 +172,13 @@ export default function Transfer() {
 						data.accountnumReceiver === undefined
 							? setErrorMessages("no user found")
 							: Number(userInfo.balance) >= data.input.amount
-							? checkUsers(data)
-							: setErrorMessages("insufficient funds");
+								? checkUsers(data)
+								: setErrorMessages("insufficient funds");
+						swal({
+							text: "Successfully transfered",
+							icon: "success",
+							button: "Done",
+						});
 
 						reset({
 							accountnum: "",
@@ -180,6 +187,8 @@ export default function Transfer() {
 							purpose: "",
 							note: "",
 						});
+
+
 					})}
 					className="w-full flex flex-col mt-6 gap-2"
 				>
