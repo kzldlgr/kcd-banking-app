@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Check from "../../../../../assets/icons/check.png";
-import Delete from "../../../../../assets/icons/deleteicon.png";
 
 export default function RequestList({ userinfo, handleApprove, index, deleteFunc }) {
 	return (

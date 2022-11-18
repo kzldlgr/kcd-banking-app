@@ -132,12 +132,6 @@ export default function Transfer() {
 							purpose: "",
 							note: "",
 						});
-						
-						swal({
-							text: "Successfully transfered",
-							icon: "success",
-							button: "Done",
-						});
 
 					})}
 					className="w-full flex flex-col mt-6 gap-2"
@@ -186,11 +180,6 @@ export default function Transfer() {
 							: Number(userInfo.balance) >= data.input.amount
 								? checkUsers(data)
 								: setErrorMessages("insufficient funds");
-						swal({
-							text: "Successfully transfered",
-							icon: "success",
-							button: "Done",
-						});
 						reset({
 							accountnum: "",
 							accountname: "",
