@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	background-color: #f0fef2;
+}
+.mainbody {
+	display: flex;
+	padding: 20px;
+	justify-content: space-between;
+	gap: 1rem;
+}
