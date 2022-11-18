@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kcd-banking-app/static/css/main.5127b4e1.css",
+    "main.js": "/kcd-banking-app/static/js/main.db004df4.js",
+    "index.html": "/kcd-banking-app/index.html",
+    "main.5127b4e1.css.map": "/kcd-banking-app/static/css/main.5127b4e1.css.map",
+    "main.db004df4.js.map": "/kcd-banking-app/static/js/main.db004df4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5127b4e1.css",
+    "static/js/main.db004df4.js"
+  ]
+}
