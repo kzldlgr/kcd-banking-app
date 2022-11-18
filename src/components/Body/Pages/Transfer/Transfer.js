@@ -122,8 +122,14 @@ export default function Transfer() {
 						transferTo === undefined
 							? setErrorMessages("no user found")
 							: userBalance >= data.amount
-								? checkUsers(data, transferTo)
-								: setErrorMessages("insufficient funds");
+							? data.amount <= 0 || data.amount === '' ? 
+							swal({
+								text: "You need to enter the amount",
+								icon: "info",
+								button: "Done",
+							}) :
+							checkUsers(data, transferTo)
+							: setErrorMessages("insufficient funds");
 
 						reset({
 							accountnum: "",
@@ -178,8 +184,15 @@ export default function Transfer() {
 						transferTo === undefined || data.accountnumReceiver === ''
 							? setErrorMessages("no user found")
 							: Number(userInfo.balance) >= data.input.amount
-								? checkUsers(data)
-								: setErrorMessages("insufficient funds");
+							? data.input.amount <= 0 || data.input.amount === '' ? 
+							swal({
+								text: "You need to enter the amount",
+								icon: "info",
+								button: "Done",
+							}) :
+							checkUsers(data)
+							: setErrorMessages("insufficient funds");
+
 						reset({
 							accountnum: "",
 							accountname: "",
@@ -187,8 +200,6 @@ export default function Transfer() {
 							purpose: "",
 							note: "",
 						});
-
-
 					})}
 					className="w-full flex flex-col mt-6 gap-2"
 				>
