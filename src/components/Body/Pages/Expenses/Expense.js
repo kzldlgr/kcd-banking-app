@@ -82,7 +82,7 @@ export default function Expense() {
 			<input type="number" {...register("amount")} className="input input-bordered" />
 
 			<span className="font-bold text-lg">Description</span>
-			<textarea {...register("description")} className="input input-bordered" />
+			<input {...register("description")} className="input input-bordered"  type="text"/>
 
 			<div className="flex">
 				<input {...register('checksavings')} type='checkbox' id="flexCheckChecked" className='form-check-input h-4 w-4 mt-1 mr-2 cursor-pointer'/>

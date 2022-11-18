@@ -8,6 +8,7 @@ export default function Paybills({children}){
     const { register, handleSubmit } = useForm()
     const {users, setUsers, userBalance, setUserBalance, userInfo, setUserInfo} = useContext(UsersContext)
     const [amount, setAmount] = useState([])
+    const [biller, setBiller] = useState([])
     const [errorMsgs, setErrorMsgs] = useState('')
     const [balanceOutput, setBalanceOutput] = useState([])
     const currentUser = JSON.parse(sessionStorage.getItem('user'))

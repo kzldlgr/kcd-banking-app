@@ -29,8 +29,7 @@ export const AdminContextProvider = ({ children }) => {
 	}, [userRequest]);
 
 	return (
-		<AdminContext.Provider
-			value={{ userRequest, setUserRequest, isToggled, setIsToggled, requestInfo, setRequestInfo }}
+		<AdminContext.Provider value={{ userRequest, setUserRequest, isToggled, setIsToggled, requestInfo, setRequestInfo }}
 		>
 			{children}
 		</AdminContext.Provider>
